@@ -11,6 +11,14 @@ class Dashboard_admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->_init();
+		if (!$this->is_logged_in()) {
+			redirect('admin');
+		}
+	}
+
+	public function is_logged_in()
+	{
+		return $this->session->userdata('logged_in') === TRUE;
 	}
 
 	private function _init()
