@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => '172.19.0.3:3306',
+	'dsn' => '',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'pass',
-	'database' => 'db_tegar',
+	'password' => '',
+	'database' => 'kelurahan',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
