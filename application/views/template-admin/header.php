@@ -54,6 +54,19 @@
                 </li>
             </ul>
         </nav>
+        <div class="modal fade" id="logoutModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h5 class="modal-title" id="exampleModalLabel">Yakin untuk keluar?</h5>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <a class="btn btn-primary" href="<?php echo base_url('logout') ?>">Yakin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
