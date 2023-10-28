@@ -32,10 +32,8 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'Password harus diisi']);
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('template-admin/assets');
-            $this->load->view('header');
             $this->load->view('menu-admin/login');
-            $this->load->view('footer', $this->app_data);
+            $this->load->view('js-custom', $this->app_data);
         } else {
             $username = $this->input->post('username');
             $password = $this->input->post('password');

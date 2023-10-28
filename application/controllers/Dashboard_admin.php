@@ -28,9 +28,22 @@ class Dashboard_admin extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('template-admin/assets');
-		$this->load->view('template-admin/header');
-		$this->load->view('menu-admin/dashboard');
+		$user = [
+			'select' => 'a.id, a.name, a.email, a.image, a.phone_number, a.address, b.name as akses',
+			'from' => 'st_user a',
+			'join' => [
+				'app_credential b, b.id = a.id_credential'
+			],
+			'where' => [
+				'a.is_deleted' => '0',
+				'a.email' => $this->session->userdata('email')
+			]
+		];
+		$this->app_data['user'] = $this->data->get($user)->row_array();
+		$this->load->view('template-admin/start');
+		$this->load->view('template-admin/header', $this->app_data);
+		$this->load->view('menu-admin/dashboard', $this->app_data);
 		$this->load->view('template-admin/footer');
+		$this->load->view('template-admin/end');
 	}
 }
