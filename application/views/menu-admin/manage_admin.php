@@ -30,9 +30,9 @@
                             <th width="5%">No</th>
                             <th width="15%">Nama</th>
                             <th width="15%">Email</th>
-                            <th width="30%">Address</th>
+                            <th width="35%">Address</th>
                             <th width="10%">Foto</th>
-                            <th width="15%">Aksi</th>
+                            <th width="10%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,6 +102,7 @@
                                         <option value="">Pilih Role Akses</option>
                                         <option value="1">Admin</option>
                                         <option value="2">Super Admin</option>
+                                        <option value="3">Masyarakat</option>
                                     </select>
                                     <small class="text-danger pl-1" id="error-akses"></small>
                                 </div>
@@ -120,12 +121,42 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <label for="image" class="col-lg-2 col-form-label">Foto</label>
+                                <label for="image" class="col-lg-2 col-form-label">Foto profil</label>
                                 <div class="col-lg-10">
-                                    <input type="file" name="image" id="image" class="form-control"
-                                        onchange="previewImage(event)">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="image" id="image"
+                                                onchange="previewImage(event)">
+                                            <label class="custom-file-label" for="image">Pilih file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-image"></small>
                                     <div id="imagePreview"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="card" class="col-lg-2 col-form-label">KTP</label>
+                                <div class="col-lg-10">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="card" id="card"
+                                                onchange="previewImage1(event)">
+                                            <label class="custom-file-label" for="card">Pilih file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 offset-2">
+                                    <small class="text-danger pl-1" id="error-card"></small>
+                                    <div id="imagePreviewCard"></div>
                                 </div>
                             </div>
                         </div>
@@ -170,10 +201,17 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" id="btn-tambah" onclick="insert_data()" class="btn btn-primary">Tambah</button>
-                <button type="button" id="btn-ubah" onclick="edit_data()" class="btn btn-primary">Edit</button>
+            <div class="modal-footer d-flex justify-content-start">
+                <div class="col-lg-2">
+                    <button type="button" id="btn-tambah" onclick="insert_data()"
+                        class="btn btn-outline-primary btn-block">Tambah</button>
+                </div>
+                <div class="col-lg-2">
+                    <button type="button" id="btn-ubah" onclick="edit_data()"
+                        class="btn btn-outline-primary btn-block">Edit</button>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -185,7 +223,7 @@
             <div class="modal-body">
                 <h5>Klik hapus jika anda ingin menghapus data ini</h5>
             </div>
-            <div class="modal-footer justify-content-between">
+            <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <button class="btn btn-warning" type="button" id="btn-hapus" data-bs-dismiss="modal">Hapus</button>
             </div>

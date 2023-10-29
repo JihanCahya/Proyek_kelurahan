@@ -60,7 +60,7 @@
                     <div class="modal-body">
                         <h5 class="modal-title" id="exampleModalLabel">Yakin untuk keluar?</h5>
                     </div>
-                    <div class="modal-footer justify-content-between">
+                    <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                         <a class="btn btn-primary" href="<?php echo base_url('logout') ?>">Yakin</a>
                     </div>
@@ -81,7 +81,7 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url('assets/image/user/') . $user['image']; ?>"
+                        <img src="<?= base_url('assets/image/user/profil/') . $user['image']; ?>"
                             class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
