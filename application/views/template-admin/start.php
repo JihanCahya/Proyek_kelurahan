@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="<?= base_url('assets/image/icon.png') ?>" rel="icon">
     <title>SIPK | Nama Page</title>
 
     <link rel="stylesheet"
@@ -18,4 +19,6 @@
         href="<?= base_url() ?>assets/template-admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet"
         href="<?= base_url() ?>assets/template-admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?= base_url() ?>assets/template-admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>

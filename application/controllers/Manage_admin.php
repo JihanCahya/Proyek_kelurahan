@@ -87,6 +87,7 @@ class Manage_admin extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[st_user.username]');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]');
         $this->form_validation->set_rules('password1', 'Ulangi', 'required|trim|matches[password]');
+        $this->form_validation->set_rules('akses', 'Role Akses', 'required'); // tambahkan validasi untuk akses
 
         if ($this->form_validation->run() == false) {
             $response['errors'] = $this->form_validation->error_array();
@@ -95,9 +96,6 @@ class Manage_admin extends CI_Controller
             }
             if (empty($_FILES['image']['name'])) {
                 $response['errors']['image'] = "Foto profil harus diupload";
-            }
-            if (empty($_FILES['card']['name'])) {
-                $response['errors']['card'] = "Foto KTP harus diupload";
             }
         } else {
             $where = array('email' => $this->session->userdata('email'));
@@ -116,45 +114,59 @@ class Manage_admin extends CI_Controller
                 $response['errors']['akses'] = "Role akses harus dipilih";
             }
             if (empty($_FILES['image']['name'])) {
-                $response['errors']['image'] = "Foto harus diupload";
-            }
-            if (empty($_FILES['card']['name'])) {
-                $response['errors']['card'] = "Foto KTP harus diupload";
+                $response['errors']['image'] = "Foto profil harus diupload";
             } else {
-                $data = array(
-                    'name' => $nama,
-                    'email' => $email,
-                    'phone_number' => $telepon,
-                    'address' => $alamat,
-                    'id_credential' => $akses,
-                    'username' => $username,
-                    'password' => $hash,
-                    'created_by' => $data['user']['id'],
-                );
+                if (empty($this->input->post('akses'))) {
+                    $response['errors']['akses'] = "Role akses harus dipilih";
+                } else {
+                    $data = array(
+                        'name' => $nama,
+                        'email' => $email,
+                        'phone_number' => $telepon,
+                        'address' => $alamat,
+                        'id_credential' => $akses,
+                        'username' => $username,
+                        'password' => $hash,
+                        'created_by' => $data['user']['id'],
+                    );
 
-                if (!empty($_FILES['image']['name'])) {
-                    $currentDateTime = date('Y-m-d_H-i-s');
-                    $config['upload_path'] = './assets/image/user/profil/';
-                    $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                    $config['file_name'] = 'profil-' . $currentDateTime;
-                    $config['max_size'] = 2048;
+                    if (!empty($_FILES['image']['name'])) {
+                        $currentDateTime = date('Y-m-d_H-i-s');
+                        $config['upload_path'] = './assets/image/user/';
+                        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                        $config['file_name'] = $username . "-" . $currentDateTime;
+                        $config['max_size'] = 2048;
 
-                    $this->load->library('upload', $config);
+                        $this->load->library('upload', $config);
 
-                    if (!$this->upload->do_upload('image')) {
-                        $response['errors']['image'] = strip_tags($this->upload->display_errors());
-                        echo json_encode($response);
-                        return;
-                    } else {
-                        $uploaded_data = $this->upload->data();
-                        $data['image'] = $uploaded_data['file_name'];
-                        $this->data->insert('st_user', $data);
+                        if (!$this->upload->do_upload('image')) {
+                            $response['errors']['image'] = strip_tags($this->upload->display_errors());
+                            echo json_encode($response);
+                            return;
+                        } else {
+                            $uploaded_data = $this->upload->data();
+                            $data['image'] = $uploaded_data['file_name'];
+                            $this->data->insert('st_user', $data);
+                        }
                     }
-                }
+                    $response['success'] = "<script>$(document).ready(function () {
+                        var Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 2000,
+                          });
 
-                $response['success'] = "Data successfully inserted!";
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Anda telah melakukan aksi tambah data Data berhasil dimasukkan'
+                          })
+                      });</script>";
+                }
             }
+
         }
         echo json_encode($response);
     }
+
 }

@@ -236,6 +236,7 @@ function insert_data() {
 				}
 			} else if (response.success) {
 				$("#exampleModal").modal("hide");
+				$("body").append(response.success);
 				get_data();
 			}
 		},
