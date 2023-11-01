@@ -87,7 +87,7 @@ class Manage_admin extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[st_user.username]');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]');
         $this->form_validation->set_rules('password1', 'Ulangi', 'required|trim|matches[password]');
-        $this->form_validation->set_rules('akses', 'Role Akses', 'required'); // tambahkan validasi untuk akses
+        $this->form_validation->set_rules('akses', 'Role Akses', 'required');
 
         if ($this->form_validation->run() == false) {
             $response['errors'] = $this->form_validation->error_array();
@@ -169,4 +169,131 @@ class Manage_admin extends CI_Controller
         echo json_encode($response);
     }
 
+    public function edit_data()
+    {
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('telepon', 'No HP', 'required|trim|numeric');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('password1', 'Password Lama', 'trim|min_length[8]');
+        $this->form_validation->set_rules('akses', 'Role Akses', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $response['errors'] = $this->form_validation->error_array();
+            if (empty($this->input->post('akses'))) {
+                $response['errors']['akses'] = "Role akses harus dipilih";
+            }
+            if (empty($_FILES['image']['name'])) {
+                $response['errors']['image'] = "Foto profil harus diupload";
+            }
+        } else {
+            $where = array('email' => $this->session->userdata('email'));
+            $data['user'] = $this->data->find('st_user', $where)->row_array();
+
+            $id = $this->input->post('id');
+            $nama = $this->input->post('nama');
+            $email = $this->input->post('email');
+            $telepon = $this->input->post('telepon');
+            $alamat = $this->input->post('alamat');
+            $akses = $this->input->post('akses');
+            $username = $this->input->post('username');
+            $password = $this->input->post('password1');
+            $hash = hash("sha256", $password . config_item('encryption_key'));
+            $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
+
+            if (empty($this->input->post('akses'))) {
+                $response['errors']['akses'] = "Role akses harus dipilih";
+            } else {
+                $data = array(
+                    'name' => $nama,
+                    'email' => $email,
+                    'phone_number' => $telepon,
+                    'address' => $alamat,
+                    'id_credential' => $akses,
+                    'username' => $username,
+                    'updated_date' => $timestamp,
+                    'updated_by' => $data['user']['id'],
+                );
+
+                if (!empty($password)) {
+                    $data['password'] = $hash;
+                }
+
+                $where = array('id' => $id);
+                $updated = $this->data->update('st_user', $where, $data);
+
+                if (!$updated) {
+                    $response['errors']['database'] = "Failed to update data in the database.";
+                } else {
+                    if (!empty($_FILES['image']['name'])) {
+                        $currentDateTime = date('Y-m-d_H-i-s');
+                        $config['upload_path'] = './assets/image/user/';
+                        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                        $config['max_size'] = 2048;
+                        $config['file_name'] = $username . "-" . $currentDateTime;
+                        $this->load->library('upload', $config);
+
+                        if ($this->upload->do_upload('image')) {
+                            $upload_data = $this->upload->data();
+                            $file_name = $upload_data['file_name'];
+
+                            $data = array('image' => $file_name);
+                            $where = array('id' => $id);
+                            $this->data->update('st_user', $where, $data);
+                        } else {
+                            $response['errors']['image'] = strip_tags($this->upload->display_errors());
+                        }
+                    }
+                    $response['success'] = "<script>$(document).ready(function () {
+                        var Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 2000,
+                          });
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Anda telah melakukan aksi edit data Data berhasil diedit'
+                          })
+                      });</script>";
+                }
+            }
+        }
+        echo json_encode($response);
+    }
+
+    public function delete_data()
+    {
+        $where = array('email' => $this->session->userdata('email'));
+        $data['user'] = $this->data->find('st_user', $where)->row_array();
+        $id = $this->input->post('id');
+        $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
+
+        $data = array(
+            'is_deleted' => '1',
+            'deleted_date' => $timestamp,
+            'deleted_by' => $data['user']['id'],
+        );
+        $where = array('id' => $id);
+
+        $updated = $this->data->update('st_user', $where, $data);
+        if ($updated) {
+            $response['success'] = "<script>$(document).ready(function () {
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000,
+                  });
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Anda telah melakukan aksi edit data Data berhasil diedit'
+                  })
+              });</script>";
+        }
+        echo json_encode($response);
+    }
 }

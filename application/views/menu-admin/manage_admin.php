@@ -225,7 +225,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-warning" type="button" id="btn-hapus" data-bs-dismiss="modal">Hapus</button>
+                <button class="btn btn-warning" type="button" id="btn-hapus" data-dismiss="modal">Hapus</button>
             </div>
         </div>
     </div>

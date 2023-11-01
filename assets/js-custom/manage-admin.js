@@ -245,3 +245,62 @@ function insert_data() {
 		},
 	});
 }
+
+function edit_data() {
+	var formData = new FormData();
+	formData.append("id", $("[name='id']").val());
+	formData.append("nama", $("[name='nama']").val());
+	formData.append("email", $("[name='email']").val());
+	formData.append("telepon", $("[name='telepon']").val());
+	formData.append("alamat", $("[name='alamat']").val());
+	formData.append("akses", $("#akses").val());
+	formData.append("username", $("[name='username']").val());
+	formData.append("password1", $("[name='password1']").val());
+
+	var imageInput = $("[name='image']")[0];
+	if (imageInput.files.length > 0) {
+		formData.append("image", imageInput.files[0]);
+	}
+
+	var imageInput1 = $("[name='card']")[0];
+	if (imageInput1.files.length > 0) {
+		formData.append("card", imageInput1.files[0]);
+	}
+
+	$.ajax({
+		type: "POST",
+		url: base_url + _controller + "/edit_data",
+		data: formData,
+		dataType: "json",
+		processData: false,
+		contentType: false,
+		success: function (response) {
+			if (response.errors) {
+				delete_error();
+				for (var fieldName in response.errors) {
+					$("#error-" + fieldName).html(response.errors[fieldName]);
+				}
+			} else if (response.success) {
+				$("#exampleModal").modal("hide");
+				$("body").append(response.success);
+				get_data();
+			}
+		},
+		error: function (xhr, status, error) {
+			console.error("AJAX Error: " + error);
+		},
+	});
+}
+
+function delete_data(x) {
+	$.ajax({
+		type: "POST",
+		data: "id=" + x,
+		url: base_url + _controller + "/delete_data",
+		success: function (response) {
+			console.log(response);
+			$("body").append(response.success);
+			get_data();
+		},
+	});
+}
