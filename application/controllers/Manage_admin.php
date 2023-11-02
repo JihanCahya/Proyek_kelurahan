@@ -35,6 +35,7 @@ class Manage_admin extends CI_Controller
                 'is_sidebar_menu' => '1'
             ]
         ];
+        
         $query_sub_menu = [
             'select' => 'id_parent,name,link,icon',
             'from' => 'app_menu',
@@ -43,6 +44,7 @@ class Manage_admin extends CI_Controller
                 'is_sidebar_menu' => '1'
             ]
         ];
+
         $user = [
             'select' => 'a.id, a.name, a.email, a.image, a.phone_number, a.address, b.name as akses',
             'from' => 'st_user a',
@@ -59,7 +61,7 @@ class Manage_admin extends CI_Controller
         $this->app_data['user'] = $this->data->get($user)->row_array();
         $this->load->view('template-admin/start');
         $this->load->view('template-admin/header', $this->app_data);
-        $this->load->view('template-admin/sidebar', $this->app_data);
+        $this->load->view('template-admin/sidebar', $this->app_data); 
         $this->load->view('menu-admin/manage_admin');
         $this->load->view('template-admin/footer');
         $this->load->view('template-admin/end');
