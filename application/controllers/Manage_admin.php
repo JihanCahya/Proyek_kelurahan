@@ -35,7 +35,6 @@ class Manage_admin extends CI_Controller
                 'is_sidebar_menu' => '1'
             ]
         ];
-        
         $query_sub_menu = [
             'select' => 'id_parent,name,link,icon',
             'from' => 'app_menu',
@@ -44,7 +43,6 @@ class Manage_admin extends CI_Controller
                 'is_sidebar_menu' => '1'
             ]
         ];
-
         $user = [
             'select' => 'a.id, a.name, a.email, a.image, a.phone_number, a.address, b.name as akses',
             'from' => 'st_user a',
