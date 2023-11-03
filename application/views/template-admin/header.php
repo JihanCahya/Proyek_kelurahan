@@ -68,3 +68,83 @@
             </div>
         </div>
         <!-- /.navbar -->
+
+        <!-- SIDEBAR -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <div class="brand-link">
+                <div class="image">
+                    <img src="<?= base_url() ?>assets/image/logo.png" style="width:100%" alt="Brawijaya_logo">
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="<?= base_url('assets/image/user/') . $user['image']; ?>"
+                            class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">
+                            <?= $user['name']; ?>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <?php foreach ($get_menu as $menu): ?>
+                            <?php if ($menu->type == 1): ?>
+                                <li class="nav-item">
+                                    <a href="<?= base_url($menu->link) ?>" class="nav-link">
+                                        <i class="nav-icon <?= $menu->icon ?>"></i>
+                                        <p>
+                                            <?= $menu->name ?>
+                                        </p>
+                                    </a>
+                                </li>
+                            <?php elseif ($menu->type == 2): ?>
+                                <li class="nav-item has-treeview">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon <?= $menu->icon ?>"></i>
+                                        <p>
+                                            <?= $menu->name ?>
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <?php foreach ($get_dropdown as $dropdown): ?>
+                                            <?php if ($dropdown->id_parent == $menu->id_parent): ?>
+                                                <?php foreach ($get_child as $child): ?>
+                                                    <?php if ($dropdown->id_parent == $child->id_parent): ?>
+                                                        <li class="nav-item">
+                                                            <a href="<?= base_url($child->link) ?>" class="nav-link">
+                                                                <i class="fa-solid fa-circle-chevron-right fa-2xs"></i>
+                                                                <p>
+                                                                    <?= $child->name ?>
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </nav>
+            </div>
+        </aside>

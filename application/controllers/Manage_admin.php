@@ -28,20 +28,28 @@ class Manage_admin extends CI_Controller
     public function index()
     {
         $query_menu = [
-            'select' => 'id_parent,name',
+            'select' => 'id_parent,name, icon, link, type, is_admin',
             'from' => 'app_menu',
             'where' => [
-                'type' => '2',
-                'is_sidebar_menu' => '1'
+                'is_admin' => '1'
             ]
         ];
 
-        $query_sub_menu = [
-            'select' => 'id_parent,name,link,icon',
+        $query_dropdown = [
+            'select' => 'id_parent,name,link,icon, type, is_admin',
+            'from' => 'app_menu',
+            'where' => [
+                'type' => '2',
+                'is_admin' => '1'
+            ]
+        ];
+
+        $query_child = [
+            'select' => 'id_parent,name,link,icon, type, is_admin',
             'from' => 'app_menu',
             'where' => [
                 'type' => '3',
-                'is_sidebar_menu' => '1'
+                'is_admin' => '1'
             ]
         ];
 
@@ -57,11 +65,11 @@ class Manage_admin extends CI_Controller
             ]
         ];
         $this->app_data['get_menu'] = $this->data->get($query_menu)->result();
-        $this->app_data['get_sub_menu'] = $this->data->get($query_sub_menu)->result();
+        $this->app_data['get_dropdown'] = $this->data->get($query_dropdown)->result();
+        $this->app_data['get_child'] = $this->data->get($query_child)->result();
         $this->app_data['user'] = $this->data->get($user)->row_array();
         $this->load->view('template-admin/start');
         $this->load->view('template-admin/header', $this->app_data);
-        $this->load->view('template-admin/sidebar', $this->app_data);
         $this->load->view('menu-admin/manage_admin');
         $this->load->view('template-admin/footer');
         $this->load->view('template-admin/end');
