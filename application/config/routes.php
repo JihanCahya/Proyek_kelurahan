@@ -56,3 +56,4 @@ $route['dashboard'] = 'Dashboard_admin';
 $route['admin'] = 'Admin';
 $route['logout'] = 'Admin/logout';
 $route['manage-admin'] = 'Manage_admin';
+$route['manage-carousel'] = 'Manage_carousel';
