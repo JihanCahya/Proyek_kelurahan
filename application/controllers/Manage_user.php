@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Manage_admin extends CI_Controller
+class Manage_user extends CI_Controller
 {
-    var $module_js = ['manage-admin'];
+    var $module_js = ['manage-user'];
     var $app_data = [];
 
     public function __construct()
@@ -70,7 +70,7 @@ class Manage_admin extends CI_Controller
         $this->app_data['user'] = $this->data->get($user)->row_array();
         $this->load->view('template-admin/start');
         $this->load->view('template-admin/header', $this->app_data);
-        $this->load->view('menu-admin/manage_admin');
+        $this->load->view('menu-admin/manage_user');
         $this->load->view('template-admin/footer');
         $this->load->view('template-admin/end');
         $this->load->view('js-custom', $this->app_data);

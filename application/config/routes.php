@@ -55,5 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = 'Dashboard_admin';
 $route['admin'] = 'Admin';
 $route['logout'] = 'Admin/logout';
-$route['manage-admin'] = 'Manage_admin';
+$route['profil-admin'] = 'Manage_user';
+$route['profil-kelurahan'] = 'Manage_district';
 $route['manage-carousel'] = 'Manage_carousel';
