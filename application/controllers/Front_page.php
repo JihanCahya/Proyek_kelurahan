@@ -19,4 +19,7 @@ class Front_page extends CI_Controller
     public function login() {
         $this->load->view('front_page/auth/login');
     }
+    public function register() {
+        $this->load->view('front_page/auth/registration');
+    }
 }
