@@ -1,43 +1,15 @@
 get_data();
 
-$(function () {
-	bsCustomFileInput.init();
-});
-
-function previewImage(event) {
-	const imageInput = event.target;
-	const imagePreview = document.getElementById("imagePreview");
-
-	if (imageInput.files && imageInput.files[0]) {
-		const reader = new FileReader();
-
-		reader.onload = function (e) {
-			imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
-		};
-		$("#error-image").html("");
-
-		reader.readAsDataURL(imageInput.files[0]);
-	} else {
-		imagePreview.innerHTML = "";
-	}
-}
-
 function delete_form() {
-	const imagePreview = document.getElementById("imagePreview");
 	$("[name='id']").val("");
-	$("[name='judul']").val("");
-	$("[name='sub']").val("");
-	$("[name='image']").val("");
-	imagePreview.innerHTML = "";
+	$("[name='nama']").val("");
 }
 
 function delete_error() {
-	$("#error-judul").hide();
-	$("#error-sub").hide();
-	$("#error-image").hide();
+	$("#error-nama").hide();
 }
 
-$("#hapusCarousel").on("show.bs.modal", function (e) {
+$("#hapusKategori").on("show.bs.modal", function (e) {
 	var button = $(e.relatedTarget);
 	var id = button.data("id");
 	var modalButton = $(this).find("#btn-hapus");
@@ -62,20 +34,7 @@ function get_data() {
 							return meta.row + 1;
 						},
 					},
-					{ data: "title" },
-					{ data: "sub_title" },
-					{
-						data: "image",
-						className: "text-center",
-						render: function (data, type, row) {
-							var imageUrl = base_url + "assets/image/carousel/" + data;
-							return (
-								'<img src="' +
-								imageUrl +
-								'" style="max-width: 100px; max-height: 400px;">'
-							);
-						},
-					},
+					{ data: "name" },
 					{
 						data: null,
 						className: "text-center",
@@ -84,7 +43,7 @@ function get_data() {
 								'<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" title="edit" onclick="submit(' +
 								row.id +
 								')"><i class="fa-solid fa-pen-to-square"></i></button> ' +
-								'<button class="btn btn-warning" data-toggle="modal" data-target="#hapusCarousel" title="hapus" data-id="' +
+								'<button class="btn btn-warning" data-toggle="modal" data-target="#hapusKategori" title="hapus" data-id="' +
 								row.id +
 								'"><i class="fa-solid fa-trash-can"></i></button>'
 							);
@@ -118,10 +77,7 @@ function submit(x) {
 			dataType: "json",
 			success: function (hasil) {
 				$("[name='id']").val(hasil[0].id);
-				$("[name='judul']").val(hasil[0].title);
-				$("[name='sub']").val(hasil[0].sub_title);
-				var nama = hasil[0].image;
-				imagePreview.innerHTML = `<br><img src="${base_url}assets/image/carousel/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				$("[name='nama']").val(hasil[0].name);
 			},
 		});
 	}
@@ -131,13 +87,7 @@ function submit(x) {
 
 function insert_data() {
 	var formData = new FormData();
-	formData.append("judul", $("[name='judul']").val());
-	formData.append("sub", $("[name='sub']").val());
-
-	var imageInput = $("[name='image']")[0];
-	if (imageInput.files.length > 0) {
-		formData.append("image", imageInput.files[0]);
-	}
+	formData.append("nama", $("[name='nama']").val());
 
 	$.ajax({
 		type: "POST",
@@ -168,13 +118,7 @@ function insert_data() {
 function edit_data() {
 	var formData = new FormData();
 	formData.append("id", $("[name='id']").val());
-	formData.append("judul", $("[name='judul']").val());
-	formData.append("sub", $("[name='sub']").val());
-
-	var imageInput = $("[name='image']")[0];
-	if (imageInput.files.length > 0) {
-		formData.append("image", imageInput.files[0]);
-	}
+	formData.append("nama", $("[name='nama']").val());
 
 	$.ajax({
 		type: "POST",

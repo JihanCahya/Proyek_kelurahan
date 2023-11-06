@@ -180,7 +180,7 @@
                                 <div class="col-lg-10">
                                     <input type="text" name="username" id="username" class="form-control"
                                         placeholder="Masukkan Username">
-                                    <small class="text-danger pl-1" id="error-username"></small>
+                                    <small class="text-danger pl-1" id="error-username"></small><br>
                                 </div>
                             </div>
 

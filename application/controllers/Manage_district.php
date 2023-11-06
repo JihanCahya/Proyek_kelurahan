@@ -88,6 +88,8 @@ class Manage_district extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('telepon', 'Nomor Telepon', 'required|trim|numeric');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('visi', 'Visi', 'required|trim');
+        $this->form_validation->set_rules('misi', 'Misi', 'required|trim');
         $this->form_validation->set_rules('map', 'Link Google Map', 'required|trim|valid_url');
 
         if ($this->form_validation->run() == false) {
@@ -101,6 +103,8 @@ class Manage_district extends CI_Controller
             $alamat = $this->input->post('alamat');
             $telepon = $this->input->post('telepon');
             $email = $this->input->post('email');
+            $visi = $this->input->post('visi');
+            $misi = $this->input->post('misi');
             $map = $this->input->post('map');
             $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
 
@@ -109,6 +113,8 @@ class Manage_district extends CI_Controller
                 'address' => $alamat,
                 'phone_number' => $telepon,
                 'email' => $email,
+                'visi' => $visi,
+                'misi' => $misi,
                 'embed_address' => $map,
                 'updated_date' => $timestamp,
                 'updated_by' => $data['user']['id'],

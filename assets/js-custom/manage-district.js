@@ -10,6 +10,8 @@ function delete_error() {
 	$("#error-telepon").hide();
 	$("#error-email").hide();
 	$("#error-map").hide();
+	$("#error-visi").hide();
+	$("#error-misi").hide();
 }
 
 function previewImage(event) {
@@ -37,11 +39,14 @@ function get_data() {
 		method: "GET",
 		dataType: "json",
 		success: function (data) {
+			console.log(data);
 			$("[name='id']").val(data[0].id);
 			$("[name='nama']").val(data[0].name);
 			$("[name='alamat']").val(data[0].address);
 			$("[name='telepon']").val(data[0].phone_number);
 			$("[name='email']").val(data[0].email);
+			$("[name='visi']").val(data[0].visi);
+			$("[name='misi']").val(data[0].misi);
 			$("[name='map']").val(data[0].embed_address);
 			var imageUrl = base_url + "/assets/image/district/" + data[0].logo;
 			imagePreview.innerHTML = `<img src="${imageUrl}" alt="Preview Image" class="img-thumbnail" style="max-width: 50%; height: auto;">`;
@@ -64,6 +69,8 @@ function edit_data() {
 	formData.append("alamat", $("[name='alamat']").val());
 	formData.append("telepon", $("[name='telepon']").val());
 	formData.append("email", $("[name='email']").val());
+	formData.append("visi", $("[name='visi']").val());
+	formData.append("misi", $("[name='misi']").val());
 	formData.append("map", $("[name='map']").val());
 
 	var imageInput = $("[name='image']")[0];

@@ -51,7 +51,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="labelAlamat">Alamat Kelurahan</label>
-                            <textarea class="form-control" rows="3" id="alamat" name="alamat"
+                            <textarea class="form-control" rows="2" id="alamat" name="alamat"
                                 placeholder="Masukkan alamat kelurahan"></textarea>
                             <small class="text-danger pl-1" id="error-alamat"></small>
                         </div>
@@ -80,6 +80,26 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
+                            <label for="labelVisi">Visi</label>
+                            <textarea class="form-control" rows="2" id="visi" name="visi"
+                                placeholder="Masukkan visi"></textarea>
+                            <small class="text-danger pl-1" id="error-visi"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="labelMisi">Misi</label>
+                            <textarea class="form-control" rows="5" id="misi" name="misi"
+                                placeholder="Masukkan misi"></textarea>
+                            <small class="text-danger pl-1" id="error-misi"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
                             <label for="labelMap">Link Map Kelurahan</label>
                             <textarea class="form-control" rows="5" id="map" name="map"
                                 placeholder="Masukkan map kelurahan"></textarea>
@@ -92,9 +112,9 @@
                         <label for="labelPreview">Preview Map</label>
                         <iframe class="w-100 mb-n2" style="height: 250px;" src="" frameborder="0" allowfullscreen=""
                             aria-hidden="false" tabindex="0"></iframe>
-                        <hr>
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-lg-2">
                         <button type="button" id="btn-edit" onclick="edit_data()" class="btn btn-primary">Edit</button>

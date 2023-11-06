@@ -86,16 +86,16 @@ function delete_form() {
 }
 
 function delete_error() {
-	$("#error-nama").html("");
-	$("#error-email").html("");
-	$("#error-telepon").html("");
-	$("#error-alamat").html("");
-	$("#error-image").html("");
-	$("#error-card").html("");
-	$("#error-akses").html("");
-	$("#error-username").html("");
-	$("#error-password").html("");
-	$("#error-password1").html("");
+	$("#error-nama").hide();
+	$("#error-email").hide();
+	$("#error-telepon").hide();
+	$("#error-alamat").hide();
+	$("#error-image").hide();
+	$("#error-card").hide();
+	$("#error-akses").hide();
+	$("#error-username").hide();
+	$("#error-password").hide();
+	$("#error-password1").hide();
 }
 
 $("#hapusAdmin").on("show.bs.modal", function (e) {
@@ -106,6 +106,7 @@ $("#hapusAdmin").on("show.bs.modal", function (e) {
 });
 
 function get_data() {
+	delete_error();
 	$.ajax({
 		url: base_url + _controller + "/get_data",
 		method: "GET",
@@ -245,6 +246,7 @@ function insert_data() {
 			delete_error();
 			if (response.errors) {
 				for (var fieldName in response.errors) {
+					$("#error-" + fieldName).show();
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
@@ -291,6 +293,7 @@ function edit_data() {
 			if (response.errors) {
 				delete_error();
 				for (var fieldName in response.errors) {
+					$("#error-" + fieldName).show();
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
