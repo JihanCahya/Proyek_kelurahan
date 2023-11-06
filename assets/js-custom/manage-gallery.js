@@ -2,11 +2,23 @@ $(".kategori").select2({
 	theme: "bootstrap4",
 });
 
+$(".filter").select2({
+	theme: "bootstrap4",
+});
+
 get_data();
 
 $(function () {
 	bsCustomFileInput.init();
 });
+
+$(".filter").on("change", function () {
+	filterData();
+});
+
+function filterData() {
+	$("#example").DataTable().search($(".filter").val()).draw();
+}
 
 function previewImage(event) {
 	const imageInput = event.target;

@@ -22,6 +22,21 @@
                 <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     onclick="submit('tambah')"><i class="fa-solid fa-circle-plus"></i> Input data</button>
                 <hr>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Filter kategori</label>
+                            <select class="form-control filter" style="width: 100%;">
+                                <option value="">Semua kategori</option>
+                                <?php foreach ($select as $row): ?>
+                                    <option value="<?php echo $row->name; ?>">
+                                        <?php echo $row->name; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                     <thead class="table-light">
                         <tr>
