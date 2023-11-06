@@ -59,6 +59,7 @@ $route['profil-admin'] = 'Manage_user';
 $route['profil-kelurahan'] = 'Manage_district';
 $route['manage-carousel'] = 'Manage_carousel';
 $route['manage-category'] = 'Manage_category';
+$route['manage-gallery'] = 'Manage_gallery';
 $route['struktur-kelurahan'] = 'Manage_struktur';
 $route['manage-news'] = 'Manage_news';
 $route['manage-jabatan'] = 'Manage_bridge';
