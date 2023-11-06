@@ -4,6 +4,21 @@ $(function () {
 	bsCustomFileInput.init();
 });
 
+$(".akses").select2({
+	theme: "bootstrap4",
+});
+$(".bridge").select2({
+	theme: "bootstrap4",
+});
+
+$(".akses").on("change", function () {
+	filterData();
+});
+
+function filterData() {
+	$("#example").DataTable().search($(".akses").val()).draw();
+}
+
 function previewImage(event) {
 	const imageInput = event.target;
 	const imagePreview = document.getElementById("imagePreview");
@@ -29,16 +44,15 @@ $("#hapusStruktur").on("show.bs.modal", function (e) {
 	modalButton.attr("onclick", "delete_data(" + id + ")");
 });
 
-
 function delete_form() {
-    const imagePreview = document.getElementById("imagePreview");
+	const imagePreview = document.getElementById("imagePreview");
 	$("[name='id']").val("");
 	$("[name='name']").val("");
 	$("#bridge").val("").trigger("change");
 	$("[name='NIP']").val("");
 	$("[name='address']").val("");
 	$("#file-label").hide();
-    $("[name='image']").val("");
+	$("[name='image']").val("");
 	imagePreview.innerHTML = "";
 }
 
@@ -207,7 +221,6 @@ function edit_data() {
 		},
 	});
 }
-
 
 function delete_data(x) {
 	$.ajax({

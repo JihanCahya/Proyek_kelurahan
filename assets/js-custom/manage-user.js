@@ -4,6 +4,18 @@ $(function () {
 	bsCustomFileInput.init();
 });
 
+$(".akses").select2({
+	theme: "bootstrap4",
+});
+
+$(".akses").on("change", function () {
+	filterData();
+});
+
+function filterData() {
+	$("#example").DataTable().search($(".akses").val()).draw();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 	var showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
 	var passwordInput = document.getElementById("password");
@@ -113,6 +125,7 @@ function get_data() {
 					{ data: "name" },
 					{ data: "email" },
 					{ data: "address" },
+					{ data: "akses" },
 					{
 						data: "image",
 						className: "text-center",

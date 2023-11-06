@@ -12,25 +12,38 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
         <div class="card">
             <h5 class="card-header">Kelola Admin</h5>
             <div class="card-body">
                 <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     onclick="submit('tambah')"><i class="fa-solid fa-circle-plus"></i> Input data</button>
                 <hr>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Filter hak akses</label>
+                            <select class="form-control akses" style="width: 100%;">
+                                <option selected="selected">Pilih akses</option>
+                                <option>Masyarakat</option>
+                                <option>Admin</option>
+                                <option>Superadmin</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                     <thead class="table-light">
                         <tr>
                             <th width="5%">No</th>
                             <th width="15%">Nama</th>
                             <th width="15%">Email</th>
-                            <th width="35%">Address</th>
+                            <th width="25%">Address</th>
+                            <th width="10%">Hak Akses</th>
                             <th width="10%">Foto</th>
                             <th width="10%">Aksi</th>
                         </tr>
