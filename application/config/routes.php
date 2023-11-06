@@ -60,3 +60,4 @@ $route['profil-kelurahan'] = 'Manage_district';
 $route['manage-carousel'] = 'Manage_carousel';
 $route['struktur-kelurahan'] = 'Manage_struktur';
 $route['manage-news'] = 'Manage_news';
+$route['manage-jabatan'] = 'Manage_bridge';
