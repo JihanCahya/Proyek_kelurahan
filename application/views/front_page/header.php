@@ -44,7 +44,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="<?php echo base_url("Front_page/index"); ?>">Home</a></li>
           <li class="dropdown"><a href="#"><span>Profil Kelurahan</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Sejarah Kelurahan</a></li>
@@ -55,10 +55,8 @@
           </li>
           <li class="dropdown"><a href="#"><span>Informasi Publik</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Sejarah Kelurahan</a></li>
-              <li><a href="#">Struktur Kelurahan</a></li>
-              <li><a href="#">Visi & Misi</a></li>
-              <li><a href="#">Lokasi & Kontak</a></li>
+              <li><a href="<?php echo base_url("Front_page/district_news"); ?>">Berita Kelurahan</a></li>
+              <li><a href="<?php echo base_url("Front_page/help_information"); ?>">Informasi Bantuan</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#services"><span>Layanan Administrasi</span> <i class="bi bi-chevron-down"></i></a>
