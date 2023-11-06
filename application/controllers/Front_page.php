@@ -22,4 +22,19 @@ class Front_page extends CI_Controller
     public function register() {
         $this->load->view('front_page/auth/registration');
     }
+    public function district_news(){
+        $this->header();
+        $this->load->view('front_page/public_information/district_news');
+        $this->footer();
+    }
+    public function detail_news(){
+        $this->header();
+        $this->load->view('front_page/public_information/detail_news');
+        $this->footer();
+    }
+    public function help_information(){
+        $this->header();
+        $this->load->view('front_page/public_information/help_information');
+        $this->footer();
+    }
 }
