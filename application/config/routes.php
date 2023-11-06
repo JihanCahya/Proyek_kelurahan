@@ -58,3 +58,5 @@ $route['logout'] = 'Admin/logout';
 $route['profil-admin'] = 'Manage_user';
 $route['profil-kelurahan'] = 'Manage_district';
 $route['manage-carousel'] = 'Manage_carousel';
+$route['struktur-kelurahan'] = 'Manage_struktur';
+$route['manage-news'] = 'Manage_news';
