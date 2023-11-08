@@ -18,6 +18,19 @@
         <div class="card">
             <h5 class="card-header">Kelola Kritik & Saran</h5>
             <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Filter status</label>
+                            <select class="form-control status" style="width: 100%;">
+                                <option value="">Semua status</option>
+                                <option>Belum dicek</option>
+                                <option>Sudah dibaca</option>
+                                <option>Sudah dibalas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                     <thead class="table-light">

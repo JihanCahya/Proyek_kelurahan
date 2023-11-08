@@ -1,5 +1,17 @@
 get_data();
 
+$(".status").select2({
+	theme: "bootstrap4",
+});
+
+$(".status").on("change", function () {
+	filterData();
+});
+
+function filterData() {
+	$("#example").DataTable().search($(".status").val()).draw();
+}
+
 $("#cekPesan").on("show.bs.modal", function (e) {
 	var button = $(e.relatedTarget);
 	var id = button.data("id");
