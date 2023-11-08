@@ -206,6 +206,7 @@ function delete_data(x) {
 	$.ajax({
 		type: "POST",
 		data: "id=" + x,
+		dataType: "json",
 		url: base_url + _controller + "/delete_data",
 		success: function (response) {
 			console.log(response);
