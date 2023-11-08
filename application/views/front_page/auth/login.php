@@ -1,81 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Login 04</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="<?= base_url() ?>assets/template-auth/css/style.css">
-
-    <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>">
-
-    <style>
-        body {
-            background-color: #FFF2D8;
-        }
-    </style>
-
+	<link href="<?php echo base_url('assets/template-user/img/icon.png') ?>" rel="icon">
+	<link href="<?php echo base_url('assets/template-user/img/icon.png') ?>" rel="apple-touch-icon">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template-auth-user/css/main.css">
 </head>
-
 <body>
-    <section class="ftco-section">
-        <div class="container"><br>
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-10">
-                    <div class="wrap d-md-flex">
-                        <div class="img" style="background-image: url(assets/image/icon.png);">
-                        </div>
-                        <div class="login-wrap p-4 p-md-5">
-                            <div class="d-flex">
-                                <div class="w-100">
-                                    <h3 class="mb-4">Selamat Datang</h3>
-                                </div>
-                            </div>
-                            <?= $this->session->flashdata('message'); ?>
-                            <form method="post" action="<?php echo base_url('admin'); ?>" class="signin-form">
-                                <div class="form-group mb-3">
-                                    <label class="label" for="name">Username</label>
-                                    <input type="text" class="form-control" placeholder="Masukkan username"
-                                        id="username" name="username" value="<?= set_value('username'); ?>">
-                                    <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="label" for="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="Masukkan password"
-                                        id="password" name="password">
-                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                                <div class="form-group d-md-flex">
-                                    <div class="w-50 text-left">
-                                        <label class="checkbox-wrap checkbox-primary mb-0"
-                                            for="showPasswordCheckbox">Lihat password
-                                            <input type="checkbox" id="showPasswordCheckbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit"
-                                        class="form-control btn btn-primary rounded submit px-3">Login</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+	
+	<div class="limiter">
+		<div class="container-login100" style="bbackground-image: url('<?= base_url() ?>assets/template-auth-user/images/bg-01.jpg');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="post" action="<?php echo base_url('Front_page/login'); ?>">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
 
-    <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url() ?>assets/template-auth/js/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/template-auth/js/popper.js"></script>
-    <script src="<?= base_url() ?>assets/template-auth/js/main.js"></script>
+					<span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" id="username" name="username" value="<?= set_value('username'); ?>" placeholder="Username">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" placeholder="Password" id="password" name="password" name="password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<!-- <div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div> -->
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Masuk
+						</button>
+					</div>
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="<?= base_url() ?>assets/template-auth-user/#">
+							Forgot Password?
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
-
 </html>
