@@ -27,14 +27,6 @@
 
   <!-- Template Main CSS File -->
   <link href="<?php echo base_url('assets/template-user/css/style.css') ?>" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Arsha
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top ">
@@ -61,10 +53,8 @@
           </li>
           <li class="dropdown"><a href="#services"><span>Layanan Administrasi</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Sejarah Kelurahan</a></li>
-              <li><a href="#">Struktur Kelurahan</a></li>
-              <li><a href="#">Visi & Misi</a></li>
-              <li><a href="#">Lokasi & Kontak</a></li>
+              <li><a href="<?php echo base_url("Front_page/submission_letter"); ?>">Pengajuan Surat</a></li>
+              <li><a href="#">History</a></li>
             </ul>
           </li>
           <li><a class="getstarted scrollto" href="<?php echo base_url("Front_page/login"); ?>">Masuk</a></li>
