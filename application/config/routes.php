@@ -64,9 +64,6 @@ $route['message-user'] = 'Manage_message';
 $route['struktur-kelurahan'] = 'Manage_struktur';
 $route['manage-news'] = 'Manage_news';
 $route['manage-jabatan'] = 'Manage_bridge';
-
-
-
-
-
 $route['manage-letter'] = 'Manage_letter';
+$route['manage-history'] = 'Manage_history';
+
