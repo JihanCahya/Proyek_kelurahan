@@ -55,3 +55,21 @@ function get_data() {
 		},
 	});
 }
+
+function detail(x) {
+	$.ajax({
+		type: "POST",
+		data: "id=" + x,
+		url: base_url + "/" + _controller + "/get_data_id",
+		dataType: "json",
+		success: function (hasil) {
+			$("[name='id']").val(hasil[0].id);
+			$("[name='nama']").val(hasil[0].name);
+			$("[name='letter']").val(hasil[0].letter_name);
+			$("[name='date']").val(hasil[0].submit_date);
+			$("[name='date2']").val(hasil[0].finish_date);
+			var url = hasil[0].file_name;
+			$("embed").attr("src", base_url + "assets/file_letter/" + url);
+		},
+	});
+}
