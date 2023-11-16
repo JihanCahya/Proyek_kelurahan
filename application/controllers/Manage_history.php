@@ -92,6 +92,29 @@ class Manage_history extends CI_Controller
         $result = $this->data->get($query)->result();
         echo json_encode($result);
     }
+    public function get_data_filter()
+    {
+        $date1 = $this->input->post('date1');
+        $date2 = $this->input->post('date2');
+
+        $query = [
+            'select' => 'a.id, a.submit_date, a.finish_date, b.name, c.name as letter_name',
+            'from' => 'administration a',
+            'join' => [
+                'st_user b, b.id = a.id_user',
+                'letter c, c.id = a.id_letter'
+            ],
+            'where' => [
+                'a.status' => '3',
+            ],
+            'between' => [
+                'submit_date' => [$date1, $date2],
+            ]
+        ];
+
+        $result = $this->data->get($query)->result();
+        echo json_encode($result);
+    }
     public function get_data_id()
     {
         $id = $this->input->post('id');

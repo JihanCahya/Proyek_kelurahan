@@ -19,3 +19,7 @@
 <script src="<?= base_url() ?>assets/template-admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="<?= base_url() ?>assets/template-admin/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="<?= base_url() ?>assets/template-admin/plugins/select2/js/select2.full.min.js"></script>
+<script src="<?= base_url() ?>assets/template-admin/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script>
