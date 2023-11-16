@@ -24,4 +24,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/template-admin/plugins/select2/css/select2.min.css">
     <link rel="stylesheet"
         href="<?= base_url() ?>assets/template-admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/template-admin/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet"
+        href="<?= base_url() ?>assets/template-admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 </head>

@@ -77,6 +77,15 @@ class Data_model extends CI_Model
         if (isset($data['where'])) {
             $this->db->where($data['where']);
         }
+        //define between
+        if (isset($data['between'])) {
+            foreach ($data['between'] as $field_name => $between_values) {
+                if (count($between_values) === 2) {
+                    // Make sure there are exactly two values provided
+                    $this->db->where("$field_name BETWEEN '{$between_values[0]}' AND '{$between_values[1]}'", '', false);
+                }
+            }
+        }
         if (isset($data['or_where'])) {
             $this->db->or_where($data['or_where']);
         }

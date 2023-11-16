@@ -19,6 +19,39 @@
         <div class="card">
             <h5 class="card-header">Data History Administrasi</h5>
             <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h6>Filter range tanggal</h6>
+                    </div>
+                </div>
+                <form method="POST" id="aksidata">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="input-group date" id="reservationdate1" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input"
+                                    data-target="#reservationdate1" id="date1" name="date1" />
+                                <div class="input-group-append" data-target="#reservationdate1"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3> - </h3>
+                        <div class="col-lg-2">
+                            <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input"
+                                    data-target="#reservationdate2" id="date2" name="date2" />
+                                <div class="input-group-append" data-target="#reservationdate2"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" class="btn btn-success" value="Cari data">
+                        </div>
+                    </div>
+                </form>
                 <hr>
                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                     <thead class="table-light">
