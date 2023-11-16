@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Login 04</title>
+    <link href="<?= base_url('assets/image/icon.png') ?>" rel="icon">
+    <title>SIPK | LOGIN</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

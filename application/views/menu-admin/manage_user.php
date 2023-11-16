@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <label>Filter hak akses</label>
                             <select class="form-control akses" style="width: 100%;">
-                                <option selected="selected">Pilih akses</option>
+                                <option value="">Pilih akses</option>
                                 <option>Masyarakat</option>
                                 <option>Admin</option>
                                 <option>Superadmin</option>

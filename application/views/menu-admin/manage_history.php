@@ -19,19 +19,6 @@
         <div class="card">
             <h5 class="card-header">Data History Administrasi</h5>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label>Filter</label>
-                            <select class="form-control filter" style="width: 100%;">
-                                <option value="">Semua administrasi</option>
-                                <option>Belum dicek</option>
-                                <option>Sudah dibaca</option>
-                                <option>Sudah dibalas</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
                 <hr>
                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                     <thead class="table-light">
