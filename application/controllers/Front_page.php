@@ -47,4 +47,9 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/administrative_services/submission_letter');
         $this->footer();
     }
+    public function history(){
+        $this->header();
+        $this->load->view('front_page/administrative_services/history');
+        $this->footer();
+    }
 }

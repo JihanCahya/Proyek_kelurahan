@@ -3,8 +3,8 @@
 
 <head>
   <!-- Template Main CSS Files -->
-  <link href="<?php echo base_url('assets-news/css/variables.css') ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets-news/css/main.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/template-user/assets-news/css/variables.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/template-user/assets-news/css/main.css') ?>" rel="stylesheet">
 </head>
 
 <body>
