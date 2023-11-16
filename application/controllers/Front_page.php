@@ -37,6 +37,11 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/public_information/help_information');
         $this->footer();
     }
+    public function detail_information(){
+        $this->header();
+        $this->load->view('front_page/public_information/detail_information');
+        $this->footer();
+    }
     public function submission_letter(){
         $this->header();
         $this->load->view('front_page/administrative_services/submission_letter');
