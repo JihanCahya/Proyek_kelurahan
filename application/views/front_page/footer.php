@@ -1,26 +1,12 @@
  <!-- ======= Footer ======= -->
  <footer id="footer">
 
-<div class="footer-newsletter">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <h4>Join Our Newsletter</h4>
-        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-        <form action="" method="post">
-          <input type="email" name="email"><input type="submit" value="Subscribe">
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="footer-top">
   <div class="container">
     <div class="row">
 
       <div class="col-lg-3 col-md-6 footer-contact">
-        <h3>BizLand<span>.</span></h3>
+        <h3>Burengan<span>.</span></h3>
         <p>
           A108 Adam Street <br>
           New York, NY 535022<br>
