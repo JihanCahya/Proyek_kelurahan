@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Login 04</title>
+    <link href="<?= base_url('assets/image/icon.png') ?>" rel="icon">
+    <title>SIPK | LOGIN</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -37,7 +38,7 @@
                                 </div>
                             </div>
                             <?= $this->session->flashdata('message'); ?>
-                            <form method="post" action="<?php echo base_url('admin'); ?>" class="signin-form">
+                            <form method="post" action="<?php echo base_url('login'); ?>" class="signin-form">
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Username</label>
                                     <input type="text" class="form-control" placeholder="Masukkan username"
@@ -63,6 +64,7 @@
                                     <button type="submit"
                                         class="form-control btn btn-primary rounded submit px-3">Login</button>
                                 </div>
+                                <a href="<?= base_url('registrasi') ?>">Belum punya akun?</a>
                             </form>
                         </div>
                     </div>

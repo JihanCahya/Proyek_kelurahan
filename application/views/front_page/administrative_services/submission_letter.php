@@ -1,23 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ Template</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        .accordion-button:not(.collapsed) {
-            background-color: #fff;
-            /* Warna latar belakang ketika belum diklik */
-        }
-
-        h1 {
-            margin-top: 100px;
-            /* Jarak atas 4px dari elemen h1 */
-        }
-    </style>
-</head>
 
 <body>
 
@@ -25,42 +5,66 @@
         <h1 class="text-center mb-4">Persyaratan Pengajuan Surat</h1>
         <div class="accordion" id="faqAccordion">
 
-            <!-- Surat 1 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading1">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                        Surat 1
+        <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basicAccordionCollapseOne" aria-expanded="false" aria-controls="basicAccordionCollapseOne">
+                        Surat #1
                     </button>
                 </h2>
-                <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body text-center">
-                        1. syarat 1 <br>
-                        2. syarat 2 <br>
-                        <a href="#" class="btn btn-primary mt-2">Ajukan Surat</a>
+                <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>This is the first item's accordion body.</strong> It is shown by default,
+                        until the collapse plugin adds the appropriate classes that we use to style each
+                        element. These classes control the overall appearance, as well as the showing and
+                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                        our default variables. It's also worth noting that just about any HTML can go within
+                        the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <br>
+
+                        <!-- Tombol untuk pindah ke halaman lain -->
+                        <a href="<?php echo base_url("Front_page/letter"); ?>" class="btn btn-primary mt-2">Ajukan Surat</a>
                     </div>
                 </div>
             </div>
-            <!-- Surat 2 -->
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading2">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse1">
-                        Surat 2
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basicAccordionCollapseTwo" aria-expanded="false" aria-controls="basicAccordionCollapseTwo">
+                        Surat #2
                     </button>
                 </h2>
-                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body text-center">
-                        1. syarat 1 <br>
-                        2. syarat 2 <br>
-                        <a href="#" class="btn btn-primary mt-2">Ajukan Surat</a>
+                <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                        until the collapse plugin adds the appropriate classes that we use to style each
+                        element. These classes control the overall appearance, as well as the showing and
+                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                        our default variables. It's also worth noting that just about any HTML can go within
+                        the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <br>
+                        <a href="halaman_lain_1.html" class="btn btn-primary mt-2">Ajukan Surat</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Tambahkan pertanyaan dan jawaban tambahan di sini -->
-
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#basicAccordionCollapseThree" aria-expanded="false" aria-controls="basicAccordionCollapseThree">
+                        Surat #3
+                    </button>
+                </h2>
+                <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                        until the collapse plugin adds the appropriate classes that we use to style each
+                        element. These classes control the overall appearance, as well as the showing and
+                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                        our default variables. It's also worth noting that just about any HTML can go within
+                        the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <br>
+                        <a href="halaman_lain_1.html" class="btn btn-primary mt-2">Ajukan Surat</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</body>
+    </body>
 
 </html>
