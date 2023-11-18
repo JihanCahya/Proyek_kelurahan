@@ -19,8 +19,61 @@ class Auth_user extends CI_Controller
 
     public function index()
     {
-        $this->load->view('front_page/auth/login');
-        $this->load->view('js-custom', $this->app_data);
+        if ($this->session->userdata('email')) {
+            redirect('');
+        }
+
+        $this->form_validation->set_rules(
+            'username',
+            'Username',
+            'required|trim',
+            ['required' => 'Username harus diisi']
+        );
+        $this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'Password harus diisi']);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('front_page/auth/login');
+            $this->load->view('js-custom', $this->app_data);
+        } else {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $hash = hash("sha256", $password . config_item('encryption_key'));
+
+            $user = $this->db->where(['username' => $username, 'is_deleted' => '0', 'id_credential' => '3'])->get('st_user')->row_array();
+
+            if ($user) {
+                if ($hash == $user['password']) {
+                    $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
+                    $ip_address = $this->input->ip_address();
+                    $data = array(
+                        'ip_address' => $ip_address,
+                        'date' => $timestamp
+                    );
+                    $this->data->insert('st_log_login', $data);
+
+                    $data = [
+                        'id' => $user['id'],
+                        'email' => $user['email'],
+                        'name' => $user['name']
+                    ];
+                    $this->session->set_userdata($data);
+                    $this->session->set_userdata('logged_in_1', TRUE);
+                    redirect('');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     <strong>ERROR,  </strong>Password yang anda masukkan salah
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>');
+                    redirect('login');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR,  </strong>Username yang anda masukkan tidak terdaftar
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>');
+                redirect('login');
+            }
+        }
     }
 
     public function register()
@@ -66,11 +119,11 @@ class Auth_user extends CI_Controller
 
         $this->session->unset_userdata('name');
         $this->session->unset_userdata('email');
-        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('logged_in_1');
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Anda telah logout,  </strong>Terima kasih sudah menggunakan sistem ini
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>');
-        redirect('admin');
+        redirect('');
     }
 }
