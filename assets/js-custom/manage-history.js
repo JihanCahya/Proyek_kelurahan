@@ -1,10 +1,10 @@
 get_data();
 
 $("#reservationdate1").datetimepicker({
-	format: "DD-MM-YYYY",
+	format: "YYYY-MM-DD",
 });
 $("#reservationdate2").datetimepicker({
-	format: "DD-MM-YYYY",
+	format: "YYYY-MM-DD",
 });
 
 $("#reservationdate1").on("change.datetimepicker", function (e) {
@@ -23,21 +23,27 @@ $(".filter").on("change", function () {
 	filterData();
 });
 
-$("#aksidata").on("submit", function (event) {
-	event.preventDefault();
-
-	var formData = new FormData();
-	formData.append("date1", $("[name='date1']").val());
-	formData.append("date2", $("[name='date2']").val());
-
+function get_data_filter() {
+	var date1 = $("#date1").val() + " 10:00:00";
+	var date2 = $("#date2").val() + " 23:59:00";
 	$.ajax({
 		url: base_url + _controller + "/get_data_filter",
-		method: "post",
-		data: formData,
+		method: "POST",
+		data: {
+			date1: date1,
+			date2: date2,
+		},
 		dataType: "json",
 		success: function (data) {
+			console.log(date1);
+			console.log(date2);
+
+			// Destroy the existing DataTable if it exists
+			if ($.fn.DataTable.isDataTable("#example")) {
+				$("#example").DataTable().destroy();
+			}
+
 			var table = $("#example").DataTable({
-				destroy: true,
 				data: data,
 				columns: [
 					{
@@ -72,7 +78,7 @@ $("#aksidata").on("submit", function (event) {
 			console.log(xhr.statusText);
 		},
 	});
-});
+}
 
 function filterData() {
 	$("#example").DataTable().search($(".filter").val()).draw();
