@@ -1,104 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>ZenBlog Bootstrap Template - Single Post</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Template Main CSS Files -->
-  <link href="<?php echo base_url('assets-news/css/variables.css') ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets-news/css/main.css') ?>" rel="stylesheet">
-</head>
-
-<body>
-
-  <main id="main">
-
-    <section class="single-post-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9 post-content" data-aos="fade-up">
-
-            <!-- ======= Single Post Content ======= -->
-            <div class="single-post">
-              <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-              <h1 class="mb-5">Detail Informasi</h1>
-              <p><span class="firstcharacter">L</span>orem ipsum dolor sit, amet consectetur adipisicing elit. Ratione officia sed, suscipit distinctio, numquam omnis quo fuga ipsam quis inventore voluptatum recusandae culpa, unde doloribus saepe labore alias voluptate expedita? Dicta delectus beatae explicabo odio voluptatibus quas, saepe qui aperiam autem obcaecati, illo et! Incidunt voluptas culpa neque repellat sint, accusamus beatae, cumque autem tempore quisquam quam eligendi harum debitis.</p>
-
-              <figure class="my-4">
-                <img src="<?php echo base_url('assets-news/img/post-landscape-1.jpg') ?>" alt="" class="img-fluid">
-                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, odit? </figcaption>
-              </figure>
-              <p>Sunt reprehenderit, hic vel optio odit est dolore, distinctio iure itaque enim pariatur ducimus. Rerum soluta, perspiciatis voluptatum cupiditate praesentium repellendus quas expedita exercitationem tempora aliquam quaerat in eligendi adipisci harum non omnis reprehenderit quidem beatae modi. Ea fugiat enim libero, ipsam dicta explicabo nihil, tempore, nulla repellendus eos necessitatibus eligendi corporis cum? Eaque harum, eligendi itaque numquam aliquam soluta.</p>
-              <p>Explicabo perspiciatis, laborum provident voluptates illum in nulla consectetur atque quaerat excepturi quisquam, veniam velit ex pariatur quos consequuntur? Excepturi reiciendis perferendis, cupiditate dolorem eos illum amet. Beatae voluptates nemo esse ratione voluptate, nesciunt fugit magnam veritatis voluptas dignissimos doloribus maiores? Aliquam, dolores natus exercitationem corrupti blanditiis, consequuntur nihil nobis sed voluptatibus maiores sunt, illo provident aliquid laborum. Vitae, ut.</p>
-              <p>Reprehenderit aut sed doloribus blanditiis, aspernatur magni? In molestias rem, similique ut esse repudiandae quod recusandae dolores neque earum omnis at, suscipit fuga? Minima qui veniam deserunt quisquam error amet at ratione nesciunt porro quis placeat repudiandae voluptatibus officiis fuga necessitatibus, expedita officia adipisci eaque labore accusamus? Nesciunt repellat illo exercitationem facilis similique quaerat, quis sequi? Praesentium nulla ipsam dolor.</p>
-              <p>Dolorum, incidunt! Adipisci harum itaque maxime dolores doloremque porro eligendi quis, doloribus vel sit rerum sunt obcaecati nam suscipit nulla vitae alias blanditiis aliquam debitis atque illo modi et placeat. Ratione iure eveniet provident. Culpa laboriosam sed ad quia. Corrupti, earum, perferendis dolore cupiditate sint nihil maiores iusto tempora nobis porro itaque est. Ut laborum culpa assumenda pariatur et perferendis?</p>
-              <p>Est soluta veritatis laboriosam, consequuntur temporibus asperiores, fugit id a ullam sed, expedita sequi doloribus fugiat. Odio et necessitatibus enim nam, iste reprehenderit cupiditate omnis ut iure aliquid obcaecati, repellendus nemo provident eveniet tempora minus! Voluptates aut laboriosam, maiores nihil accusantium, a dolorum quaerat tenetur illo eum culpa cum laudantium sunt doloremque modi possimus magni? Perferendis cum repudiandae corrupti porro.</p>
-              <figure class="my-4">
-                <img src="<?php echo base_url('assets-news/img/post-landscape-5.jpg') ?>" alt="" class="img-fluid">
-                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, odit? </figcaption>
-              </figure>
-              <p>Quis molestiae, dolorem consequuntur labore perferendis enim accusantium commodi optio, sequi magnam ad consectetur iste omnis! Voluptatibus, quia officia esse necessitatibus magnam tempore reprehenderit quo aspernatur! Assumenda, minus dolorem repellendus corporis corrupti quia temporibus repudiandae in. Sit rem aut, consectetur repudiandae perferendis nemo alias, iure ipsam omnis quam soluta, nobis animi quis aliquam blanditiis at. Dicta nemo vero sequi exercitationem.</p>
-              <p>Architecto ex id at illum aperiam corporis, quidem magnam doloribus non eligendi delectus laborum porro molestiae beatae eveniet dolor odit optio soluta dolores! Eaque odit a nihil recusandae, error repellendus debitis ex autem ab commodi, maiores officiis doloribus provident optio, architecto assumenda! Nihil cum laboriosam eos dolore aliquid perferendis amet doloremque quibusdam odio soluta vero odit, ipsa, quisquam quod nulla.</p>
-              <p>Consequuntur corrupti fugiat quod! Ducimus sequi nemo illo ad necessitatibus amet nobis corporis et quasi. Optio cum neque fuga. Ad excepturi magnam quisquam ex voluptatibus vitae aut nam quidem doloribus, architecto perspiciatis sit consequatur pariatur alias animi expedita quas? Et doloribus voluptatibus perferendis qui fugiat voluptatum autem facere aspernatur quidem quae assumenda iste, sit similique, necessitatibus laborum magni. Ea, dolores!</p>
-              <p>Possimus temporibus rerum illo quia repudiandae provident sed quas atque. Ipsam adipisci accusamus iste optio illo aliquam molestias? Voluptatibus, veniam recusandae facilis nobis perspiciatis rem similique, nisi ad explicabo ipsa voluptatum, inventore molestiae natus adipisci? Fuga delectus quia assumenda totam aspernatur. Nobis hic ea rem, quaerat voluptate vero illum laboriosam omnis aspernatur labore, natus ex iusto ducimus exercitationem a officia.</p>
-            </div><!-- End Single Post Content -->
-
-          </div>
-          <div class="col-md-3">
-              </div>
+<main>
+        <!-- About US Start -->
+        <div class="about-area">
+            <div class="container">
+                    <!-- Hot Aimated News Tittle-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                        </div>
+                    </div>
+                   <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Trending Tittle -->
+                            <div class="about-right mb-90">
+                                <div class="about-img">
+                                    <img src="https://i.postimg.cc/pLvV3Nkb/icon.png" alt="">
+                                </div>
+                                <div class="section-tittle mb-30 pt-30">
+                                    <h3>Here come the moms in space</h3>
+                                </div>
+                                <div class="about-prea">
+                                    <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                    <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                    <p class="about-pera1 mb-25">
+                                        My hero when I was a kid was my mom. Same for everyone I knew. Moms are untouchable. They’re elegant, smart, beautiful, kind…everything we want to be. At 29 years old, my favorite compliment is being told that I look like my mom. Seeing myself in her image, like this daughter up top, makes me so proud of how far I’ve come, and so thankful for where I come from.
+                                        the refractor telescope uses a convex lens to focus the light on the eyepiece.
+                                        The reflector telescope has a concave lens which means it bends in. It uses mirrors to focus the image that you eventually see.
+                                        Collimation is a term for how well tuned the telescope is to give you a good clear image of what you are looking at. You want your telescope to have good collimation so you are not getting a false image of the celestial body.
+                                        Aperture is a fancy word for how big the lens of your telescope is. But it’s an important word because the aperture of the lens is the key to how powerful your telescope is. Magnification has nothing to do with it, its all in the aperture.
+                                        Focuser is the housing that keeps the eyepiece of the telescope, or what you will look through, in place. The focuser has to be stable and in good repair for you to have an image you can rely on.
+                                        Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The mount is the actual tripod and the wedge is the device that lets you attach the telescope to the mount.
+                                        Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                </div> 
+                                <div class="section-tittle">
+                                    <h3>Unordered list style?</h3>
+                                </div>
+                                <div class="about-prea">
+                                    <p class="about-pera1 mb-25">The refractor telescope uses a convex lens to focus the light on the eyepiece.
+                                        The reflector telescope has a concave lens which means it bends in. It uses mirrors to focus the image that you eventually see.</p>
+                                    <p class="about-pera1 mb-25">Collimation is a term for how well tuned the telescope is to give you a good clear image of what you are looking at. You want your telescope to have good collimation so you are not getting a false image of the celestial body.</p>
+                                    <p class="about-pera1 mb-25">
+                                        My hero when I was a kid was my mom. Same for everyone I knew. Moms are untouchable. They’re elegant, smart, beautiful, kind…everything we want to be. At 29 years old, my favorite compliment is being told that I look like my mom. Seeing myself in her image, like this daughter up top, makes me so proud of how far I’ve come, and so thankful for where I come from.
+                                        the refractor telescope uses a convex lens to focus the light on the eyepiece.
+                                        The reflector telescope has a concave lens which means it bends in. It uses mirrors to focus the image that you eventually see.
+                                        Collimation is a term fo
+                                        Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p> 
+                                        <p class="about-pera1 mb-25">
+                                        Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The mount is the actual tripod and the wedge is the device that lets you attach the telescope to the mount.
+                                        Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                        <p class="about-pera1 mb-25">
+                                        Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The mount is the actual tripod and the wedge is the device that lets you attach the telescope to the mount.
+                                        Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
             </div>
-
-            <div class="aside-block">
-              <h3 class="aside-title">Video</h3>
-              <div class="video-post">
-                <a href="https://www.youtube.com/watch?v=AiFfDjmd0jU" class="glightbox link-video">
-                  <span class="bi-play-fill"></span>
-                  <img src="<?php echo base_url('assets-news/img/post-landscape-5.jpg') ?>" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div><!-- End Video -->
-
-            <div class="aside-block">
-              <h3 class="aside-title">Categories</h3>
-              <ul class="aside-links list-unstyled">
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
-              </ul>
-            </div><!-- End Categories -->
-
-            <div class="aside-block">
-              <h3 class="aside-title">Tags</h3>
-              <ul class="aside-tags list-unstyled">
-                <li><a href="category.html">Business</a></li>
-                <li><a href="category.html">Culture</a></li>
-                <li><a href="category.html">Sport</a></li>
-                <li><a href="category.html">Food</a></li>
-                <li><a href="category.html">Politics</a></li>
-                <li><a href="category.html">Celebrity</a></li>
-                <li><a href="category.html">Startups</a></li>
-                <li><a href="category.html">Travel</a></li>
-              </ul>
-            </div><!-- End Tags -->
-
-          </div>
         </div>
-      </div>
-    </section>
-  </main><!-- End #main -->
-
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-</body>
-
-</html>
+        <!-- About US End -->
+    </main>
