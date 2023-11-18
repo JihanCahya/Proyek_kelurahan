@@ -16,12 +16,6 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/index', $this->app_data);
         $this->footer();
     }
-    public function login() {
-        $this->load->view('front_page/auth/login');
-    }
-    public function register() {
-        $this->load->view('front_page/auth/registration');
-    }
     public function district_news(){
         $this->header();
         $this->load->view('front_page/public_information/district_news');
