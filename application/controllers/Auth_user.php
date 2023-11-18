@@ -19,11 +19,13 @@ class Auth_user extends CI_Controller
 
     public function index()
     {
-
+        $this->load->view('front_page/auth/login');
+        $this->load->view('js-custom', $this->app_data);
     }
 
     public function daftar()
     {
+
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('telepon', 'No HP', 'required|trim|numeric');
@@ -32,7 +34,8 @@ class Auth_user extends CI_Controller
         $this->form_validation->set_rules('password1', 'Ulangi', 'required|trim|matches[password]');
 
         if ($this->form_validation->run() == false) {
-            $response['errors'] = $this->form_validation->error_array();
+            $this->load->view('front_page/auth/registration');
+            $this->load->view('js-custom', $this->app_data);
         } else {
             $nama = $this->input->post('nama');
             $email = $this->input->post('email');
@@ -40,40 +43,21 @@ class Auth_user extends CI_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $hash = hash("sha256", $password . config_item('encryption_key'));
-                    $data = array(
-                        'name' => $nama,
-                        'email' => $email,
-                        'phone_number' => $telepon,
-                        'id_credential' => '3',
-                        'username' => $username,
-                        'password' => $hash,
-                    );
 
-                    $this->data->insert('st_user', $data);
-                        
-                
-                    $response['success'] = "<script>$(document).ready(function () {
-                        var Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 2000,
-                          });
-
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Anda telah melakukan aksi tambah data Data berhasil dimasukkan'
-                          })
-                      });</script>";
+            $data = array(
+                'name' => $nama,
+                'email' => $email,
+                'phone_number' => $telepon,
+                'username' => $username,
+                'password' => $hash,
+            );
+            $this->data->insert('st_user', $data);
+            redirect('login');
         }
-        echo json_encode($response);
-    }
-    
-    public function login() {
-        $this->load->view('front_page/auth/login');
     }
 
-    public function register() {
+    public function register()
+    {
         $this->load->view('front_page/auth/registration');
         $this->load->view('js-custom', $this->app_data);
     }

@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <input type="submit" class="btn btn-success" value="Cari data">
+                            <button class="btn btn-success" onclick="get_data_filter()">Cari data</button>
                         </div>
                     </div>
                 </form>

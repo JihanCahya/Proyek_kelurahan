@@ -97,22 +97,14 @@ class Manage_history extends CI_Controller
         $date1 = $this->input->post('date1');
         $date2 = $this->input->post('date2');
 
-        $query = [
-            'select' => 'a.id, a.submit_date, a.finish_date, b.name, c.name as letter_name',
-            'from' => 'administration a',
-            'join' => [
-                'st_user b, b.id = a.id_user',
-                'letter c, c.id = a.id_letter'
-            ],
-            'where' => [
-                'a.status' => '3',
-            ],
-            'between' => [
-                'submit_date' => [$date1, $date2],
-            ]
-        ];
+        $query = "SELECT a.id, a.submit_date, a.finish_date, b.name, c.name AS letter_name 
+                FROM administration a, st_user b, letter c
+                WHERE a.id_user = b.id AND
+                a.id_letter = c.id AND
+                STATUS = '3' AND
+                submit_date BETWEEN ? AND ?";
 
-        $result = $this->data->get($query)->result();
+        $result = $this->data->custom($query, array($date1, $date2))->result();
         echo json_encode($result);
     }
     public function get_data_id()
