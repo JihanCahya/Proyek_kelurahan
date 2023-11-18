@@ -76,8 +76,8 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/administrative_services/history');
         $this->footer();
     }
-    public function letter(){
-        $this->header();
+    public function letter()
+    {
         $this->load->view('front_page/administrative_services/letter');
         $this->footer();
     }

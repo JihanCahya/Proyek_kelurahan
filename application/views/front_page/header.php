@@ -85,7 +85,7 @@
               <li><a href="<?php echo base_url("Front_page/history"); ?>">History</a></li>
             </ul>
           </li>
-          <li><a class="getstarted scrollto" href="<?php echo base_url("Front_page/login"); ?>">Masuk</a></li>
+          <li><a class="getstarted scrollto" href="<?php echo base_url("login"); ?>">Masuk</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
