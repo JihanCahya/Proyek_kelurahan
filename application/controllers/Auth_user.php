@@ -71,6 +71,7 @@ class Auth_user extends CI_Controller
     
     public function login() {
         $this->load->view('front_page/auth/login');
+        $this->load->view('js-custom', $this->app_data);
     }
 
     public function register() {
