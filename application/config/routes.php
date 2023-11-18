@@ -67,6 +67,5 @@ $route['manage-jabatan'] = 'Manage_bridge';
 $route['manage-letter'] = 'Manage_letter';
 $route['manage-history'] = 'Manage_history';
 $route['registrasi'] = 'Auth_user/register';
-$route['daftar'] = 'Auth_user/daftar';
 $route['login'] = 'Auth_user';
 

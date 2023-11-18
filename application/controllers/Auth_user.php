@@ -23,9 +23,8 @@ class Auth_user extends CI_Controller
         $this->load->view('js-custom', $this->app_data);
     }
 
-    public function daftar()
+    public function register()
     {
-
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('telepon', 'No HP', 'required|trim|numeric');
@@ -54,12 +53,6 @@ class Auth_user extends CI_Controller
             $this->data->insert('st_user', $data);
             redirect('login');
         }
-    }
-
-    public function register()
-    {
-        $this->load->view('front_page/auth/registration');
-        $this->load->view('js-custom', $this->app_data);
     }
 
     public function logout()

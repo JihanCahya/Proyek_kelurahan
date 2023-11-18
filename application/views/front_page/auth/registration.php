@@ -37,7 +37,7 @@
                                     <h3 class="mb-4">Silahkan Daftar</h3>
                                 </div>
                             </div>
-                            <form method="post" action="<?php echo base_url('daftar'); ?>" class="signin-form">
+                            <form method="post" action="<?php echo base_url('registrasi'); ?>" class="signin-form">
                                 <div class="form-group mb-3">
                                     <label class="label" for="nama">Nama</label>
                                     <input type="text" class="form-control" placeholder="Masukkan Nama" id="nama"
