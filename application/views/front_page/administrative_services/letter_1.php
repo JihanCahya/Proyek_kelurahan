@@ -47,3 +47,8 @@
         <button type="button" class="btn btn-primary" onclick="insert_data()">Ajukan surat</button>
     </div>
 </div>
+
+<script>
+    var base_url = '<?php echo base_url() ?>';
+    var _controller = '<?= $this->router->fetch_class() ?>';
+</script>

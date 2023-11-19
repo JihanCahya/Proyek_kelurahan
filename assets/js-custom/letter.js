@@ -22,3 +22,43 @@ function delete_error() {
 	$("#error-akta").hide();
 	$("#error-kia").hide();
 }
+
+function insert_data() {
+	var formData = new FormData();
+
+	var kkInput = $("[name='kk']")[0];
+	var aktaInput = $("[name='akta']")[0];
+	var kiaInput = $("[name='kia']")[0];
+	if (kkInput.files.length > 0) {
+		formData.append("kk", kkInput.files[0]);
+	}
+	if (aktaInput.files.length > 0) {
+		formData.append("akta", aktaInput.files[0]);
+	}
+	if (kiaInput.files.length > 0) {
+		formData.append("kia", kiaInput.files[0]);
+	}
+
+	$.ajax({
+		type: "POST",
+		url: base_url + "/" + _controller + "/insert_data",
+		data: formData,
+		dataType: "json",
+		processData: false,
+		contentType: false,
+		success: function (response) {
+			delete_error();
+			if (response.errors) {
+				for (var fieldName in response.errors) {
+					$("#error-" + fieldName).show();
+					$("#error-" + fieldName).html(response.errors[fieldName]);
+				}
+			} else if (response.success) {
+				$("body").append(response.success);
+			}
+		},
+		error: function (xhr, status, error) {
+			console.error("AJAX Error: " + error);
+		},
+	});
+}
