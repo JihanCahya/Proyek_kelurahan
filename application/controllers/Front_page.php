@@ -44,6 +44,26 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/index', $this->app_data);
         $this->footer();
     }
+    public function village_history()
+    {
+        $this->load->view('front_page/district_profile/village_history');
+        $this->footer();
+    }
+    public function sub_district_structure()
+    {
+        $this->load->view('front_page/district_profile/sub_district_structure');
+        $this->footer();
+    }
+    public function vission_mission()
+    {
+        $this->load->view('front_page/district_profile/vission_mission');
+        $this->footer();
+    }
+    public function location_contact()
+    {
+        $this->load->view('front_page/district_profile/location_contact');
+        $this->footer();
+    }
     public function district_news()
     {
         $this->load->view('front_page/public_information/district_news');

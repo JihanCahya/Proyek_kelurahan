@@ -14,20 +14,14 @@
     <link href="<?= base_url() ?>assets/template-user/assets-user/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/aos/aos.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/bootstrap/css/bootstrap.min.css"
-        rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/bootstrap-icons/bootstrap-icons.css"
-        rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/boxicons/css/boxicons.min.css"
-        rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/glightbox/css/glightbox.min.css"
-        rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/template-user/assets-user/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
@@ -48,8 +42,7 @@
     <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope d-flex align-items-center"><a
-                        href="mailto:contact@example.com">contact@example.com</a></i>
+                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
                 <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
             </div>
             <div class="social-links d-none d-md-flex align-items-center">
@@ -69,25 +62,22 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="<?php echo base_url("Front_page/index"); ?>">Home</a>
                     </li>
-                    <li class="dropdown"><a href="#"><span>Profil Kelurahan</span> <i
-                                class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a href="#"><span>Profil Kelurahan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Sejarah Kelurahan</a></li>
-                            <li><a href="#">Struktur Kelurahan</a></li>
-                            <li><a href="#">Visi & Misi</a></li>
-                            <li><a href="#">Lokasi & Kontak</a></li>
+                            <li><a href="<?php echo base_url("Front_page/village_history"); ?>">Sejarah Kelurahan</a></li>
+                            <li><a href="<?php echo base_url("Front_page/sub_district_structure"); ?>">Struktur Kelurahan</a></li>
+                            <li><a href="<?php echo base_url("Front_page/vission_mission"); ?>">Visi & Misi</a></li>
+                            <li><a href="<?php echo base_url("Front_page/location_contact"); ?>">Lokasi & Kontak</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#"><span>Informasi Publik</span> <i
-                                class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a href="#"><span>Informasi Publik</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?php echo base_url("Front_page/district_news"); ?>">Berita Kelurahan</a></li>
                             <li><a href="<?php echo base_url("Front_page/help_information"); ?>">Informasi Bantuan</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#services"><span>Layanan Administrasi</span> <i
-                                class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a href="#services"><span>Layanan Administrasi</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?php echo base_url("Front_page/submission_letter"); ?>">Pengajuan Surat</a>
                             </li>
