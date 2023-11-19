@@ -39,7 +39,12 @@ class Admin extends CI_Controller
             $password = $this->input->post('password');
             $hash = hash("sha256", $password . config_item('encryption_key'));
 
-            $user = $this->db->where(['username' => $username, 'is_deleted' => '0'])->get('st_user')->row_array();
+            $user = $this->db
+                ->where(['username' => $username, 'is_deleted' => '0', 'id_credential' => '1'])
+                ->or_where(['id_credential' => '2'])
+                ->get('st_user')
+                ->row_array();
+
 
             if ($user) {
                 if ($hash == $user['password']) {

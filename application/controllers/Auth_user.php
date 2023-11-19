@@ -102,6 +102,7 @@ class Auth_user extends CI_Controller
                 'phone_number' => $telepon,
                 'username' => $username,
                 'password' => $hash,
+                'id_credential' => '3'
             );
             $this->data->insert('st_user', $data);
             redirect('login');

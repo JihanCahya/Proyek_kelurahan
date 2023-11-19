@@ -64,11 +64,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
-
             <h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo"><img src="<?= base_url() ?>assets/template-user/assets-userimg/logo.png" alt=""></a>-->
-
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="<?php echo base_url("Front_page/index"); ?>">Home</a>
@@ -100,16 +96,29 @@
                     </li>
                     <li class="dropdown">
                         <a href="#"><img src="<?= base_url() ?>assets/image/user/ktm.jpeg" alt="User Profile"
-                                class="rounded-circle" width="30" height="30"><i class="bi bi-chevron-down"></i></a>
+                                class="rounded-circle" width="40" height="40"><i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Profile</a></li>
                             <li><a href="#">Settings</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modalLogout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
-
+            <!-- modal untuk logout -->
+            <div class="modal fade" id="modalLogout">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h5 class="modal-title" id="exampleModalLabel">Yakin untuk keluar?</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                            <a class="btn btn-primary" href="<?php echo base_url('logout_1') ?>">Yakin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header><!-- End Header -->
