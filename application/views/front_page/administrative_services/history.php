@@ -1,39 +1,47 @@
-<head>
-<link href="<?php echo base_url('assets/template-user/css/style-history.css') ?>" rel="stylesheet">
-</head>
-<div class="container-fluid">
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
+<link href="<?= base_url() ?>assets/template-user/assets-user/css/style-history.css" rel="stylesheet">
+<div class="row d-flex justify-content-center mt-70 mb-70">
+
+    <div class="col-md-6">
+
+        <div class="main-card mb-3 card">
             <div class="card-body">
-                <h4 class="card-title mb-5">History</h4>
-                <div class="hori-timeline" dir="ltr">
-                    <ul class="list-inline events">
-                        <li class="list-inline-item event-list">
-                            <div class="px-4">
-                                <div class="event-date bg-soft-primary text-primary">2 June</div>
-                                <h5 class="font-size-16">Surat 1</h5>
-                                <p class="text-muted">It will be as simple as occidental in fact it will be Occidental Cambridge friend</p>
-                                <div>
-                                    <a href="#" class="btn btn-primary btn-sm">Cek Surat</a>
-                                </div>
+                <h1 class="card-title">History</h1>
+                <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in">
+                                <i class="badge badge-dot badge-dot-xl badge-success"></i>
+                            </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Surat 1</h4>
+                                <p>Tanggal Pengajuan Surat </p>
+                                <a href="#" class="btn btn-primary mt-2">Cek Surat</a>
                             </div>
-                        </li>
-                        <li class="list-inline-item event-list">
-                            <div class="px-4">
-                                <div class="event-date bg-soft-success text-success">5 June</div>
-                                <h5 class="font-size-16">Surat 2</h5>
-                                <p class="text-muted">Everyone realizes why a new common language one could refuse translators.</p>
-                                <div>
-                                    <a href="#" class="btn btn-primary btn-sm">Cek Surat</a>
-                                </div>
+                        </div>
+                    </div>
+                    <span class="vertical-timeline-element-icon bounce-in">
+                        <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
+                    </span>
+                </div>
+                <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon bounce-in">
+                                <i class="badge badge-dot badge-dot-xl badge-success"></i>
+                            </span>
+                            <div class="vertical-timeline-element-content bounce-in">
+                                <h4 class="timeline-title">Surat 2</h4>
+                                <p>Tanggal Pengajuan Surat </p>
+                                <a href="#" class="btn btn-primary mt-2">Cek Surat</a>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                    <span class="vertical-timeline-element-icon bounce-in">
+                        <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
+                    </span>
                 </div>
             </div>
         </div>
-        <!-- end card -->
+
     </div>
-</div>
 </div>
