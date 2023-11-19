@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Front_page extends CI_Controller
 {
-    var $module_js = ['message'];
+    var $module_js = ['letter'];
     var $app_data = [];
 
     public function __construct()
@@ -96,9 +96,10 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/administrative_services/history');
         $this->footer();
     }
-    public function letter()
+    public function letter_1()
     {
-        $this->load->view('front_page/administrative_services/letter');
+        $this->load->view('front_page/administrative_services/letter_1');
         $this->footer();
+        $this->load->view('js-custom', $this->app_data);
     }
 }
