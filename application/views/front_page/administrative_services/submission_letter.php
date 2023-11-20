@@ -18,7 +18,9 @@
                         <strong>Persyaratan Surat</strong><br>
                         <p>1. Foto copy KK<br>
                             2. Foto copy Akta Kelahiran<br>
-                            3. KIA asli/KTP lama</p>
+                            3. KIA asli/KTP lamabr<br>
+                            4. Surat pengantar RT
+                        </p>
                         <a href="<?php echo base_url("Front_page/letter_1"); ?>" class="btn btn-primary mt-2">Ajukan
                             Surat</a>
                     </div>
@@ -35,14 +37,11 @@
                 <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                     data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                        until the collapse plugin adds the appropriate classes that we use to style each
-                        element. These classes control the overall appearance, as well as the showing and
-                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just about any HTML can go within
-                        the <code>.accordion-body</code>, though the transition does limit overflow.
-                        <br>
-                        <a href="halaman_lain_1.html" class="btn btn-primary mt-2">Ajukan Surat</a>
+                        <strong>Persyaratan Surat</strong><br>
+                        <p>1. Foto copy KTP<br>
+                            2. Surat pengantar RT</p>
+                        <a href="<?php echo base_url("Front_page/letter_2"); ?>" class="btn btn-primary mt-2">Ajukan
+                            Surat</a>
                     </div>
                 </div>
             </div>
@@ -57,14 +56,11 @@
                 <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                     data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default,
-                        until the collapse plugin adds the appropriate classes that we use to style each
-                        element. These classes control the overall appearance, as well as the showing and
-                        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just about any HTML can go within
-                        the <code>.accordion-body</code>, though the transition does limit overflow.
-                        <br>
-                        <a href="halaman_lain_1.html" class="btn btn-primary mt-2">Ajukan Surat</a>
+                        <strong>Persyaratan Surat</strong><br>
+                        <p>1. Foto copy KTP<br>
+                            2. Surat pengantar RT</p>
+                        <a href="<?php echo base_url("Front_page/letter_3"); ?>" class="btn btn-primary mt-2">Ajukan
+                            Surat</a>
                     </div>
                 </div>
             </div>

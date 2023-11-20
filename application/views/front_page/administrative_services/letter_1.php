@@ -44,11 +44,25 @@
             <small class="text-danger pl-1" id="error-kia"></small>
             <div id="imageKIA"></div>
         </div>
+        <div class="form-group">
+            <label for="pengantar">Surat Pengantar RT</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="pengantar" id="pengantar"
+                        onchange="previewImage(event, 'imagePENGANTAR')">
+                    <label class="custom-file-label" for="pengantar">Pilih file</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <small class="text-danger pl-1" id="error-pengantar"></small>
+            <div id="imagePENGANTAR"></div>
+        </div>
         <button type="button" class="btn btn-primary" onclick="insert_1()">Ajukan surat</button>
     </div>
 </div>
 
 <script>
-    var base_url = '<?php echo base_url() ?>';
+    var base_url = '<?= base_url() ?>';
     var _controller = '<?= $this->router->fetch_class() ?>';
 </script>

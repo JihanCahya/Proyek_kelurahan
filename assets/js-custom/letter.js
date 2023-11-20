@@ -19,8 +19,10 @@ function previewImage(event, imageContainerId) {
 
 function delete_error() {
 	$("#error-kk").hide();
+	$("#error-ktp").hide();
 	$("#error-akta").hide();
 	$("#error-kia").hide();
+	$("#error-pengantar").hide();
 }
 
 function insert_1() {
@@ -29,6 +31,7 @@ function insert_1() {
 	var kkInput = $("[name='kk']")[0];
 	var aktaInput = $("[name='akta']")[0];
 	var kiaInput = $("[name='kia']")[0];
+	var pengantarInput = $("[name='pengantar']")[0];
 
 	if (kkInput.files.length > 0) {
 		formData.append("kk", kkInput.files[0]);
@@ -39,15 +42,19 @@ function insert_1() {
 	if (kiaInput.files.length > 0) {
 		formData.append("kia", kiaInput.files[0]);
 	}
+	if (pengantarInput.files.length > 0) {
+		formData.append("pengantar", pengantarInput.files[0]);
+	}
 
 	$.ajax({
 		type: "POST",
-		url: base_url + "/" + _controller + "/insert_1",
+		url: base_url + _controller + "/insert_1",
 		data: formData,
 		dataType: "json",
 		processData: false,
 		contentType: false,
 		success: function (response) {
+			console.log(response);
 			delete_error();
 			if (response.errors) {
 				for (var fieldName in response.errors) {
@@ -55,11 +62,12 @@ function insert_1() {
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
-				$("body").append(response.success);
+				console.log(response.success);
 			}
 		},
 		error: function (xhr, status, error) {
 			console.error("AJAX Error: " + error);
+			console.log(xhr.responseText);
 		},
 	});
 }
