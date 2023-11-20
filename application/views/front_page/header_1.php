@@ -98,7 +98,6 @@
                                 class="rounded-circle" width="40" height="40"><i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?= base_url('profile') ?>">Profile</a></li>
-                            <li><a href="#">Settings</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#modalLogout">Logout</a></li>
                         </ul>
                     </li>
