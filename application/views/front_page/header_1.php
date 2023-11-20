@@ -58,7 +58,7 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <h1 class="logo"><a href="index.html">Burengan<span>.</span></a></h1>
+            <h1 class="logo"><a href="index.html">SIPK Burengan<span>.</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="<?= base_url() ?>assets/template-user/assets-userimg/logo.png" alt=""></a>-->
 
@@ -97,7 +97,7 @@
                         <a href="#"><img src="<?= base_url() ?>assets/image/user/ktm.jpeg" alt="User Profile"
                                 class="rounded-circle" width="40" height="40"><i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="<?= base_url('profile') ?>">Profile</a></li>
                             <li><a href="#">Settings</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#modalLogout">Logout</a></li>
                         </ul>
