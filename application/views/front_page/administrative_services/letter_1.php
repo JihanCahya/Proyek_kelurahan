@@ -44,7 +44,7 @@
             <small class="text-danger pl-1" id="error-kia"></small>
             <div id="imageKIA"></div>
         </div>
-        <button type="button" class="btn btn-primary" onclick="insert_data()">Ajukan surat</button>
+        <button type="button" class="btn btn-primary" onclick="insert_1()">Ajukan surat</button>
     </div>
 </div>
 

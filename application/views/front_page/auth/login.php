@@ -64,6 +64,7 @@
                                     <button type="submit"
                                         class="form-control btn btn-primary rounded submit px-3">Login</button>
                                 </div>
+                                <a href="<?= base_url('') ?>">Kembali ke dashboard</a> <strong> || </strong>
                                 <a href="<?= base_url('registrasi') ?>">Belum punya akun?</a>
                             </form>
                         </div>

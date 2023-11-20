@@ -102,4 +102,78 @@ class Front_page extends CI_Controller
         $this->footer();
         $this->load->view('js-custom', $this->app_data);
     }
+
+    public function insert_1()
+    {
+        $response = array();
+
+        $where = array('email' => $this->session->userdata('email'));
+        $data['user'] = $this->data->find('st_user', $where)->row_array();
+
+        $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
+
+        $data = array(
+            'id_user' => $data['user']['id'],
+            'id_letter' => '1',
+            'submit_date' => $timestamp,
+        );
+
+        $inserted_id = $this->data->insert('administration', $data);
+
+        if (!$inserted_id) {
+            $response['errors']['database'] = "Failed to insert data into the database.";
+        } else {
+            if (!empty($_FILES['kk']['name']) && !empty($_FILES['kia']['name']) && !empty($_FILES['akta']['name'])) {
+                $currentDateTime = date('Y-m-d_H-i-s');
+
+                // Upload KK
+                $config['upload_path'] = './assets/image/administration/requirement/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['max_size'] = 2048;
+                $config['file_name'] = 'requirement_kk_' . $currentDateTime;
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('kk')) {
+                    $upload_data = $this->upload->data();
+                    $file_kk = $upload_data['file_name'];
+
+                    // Upload KIA
+                    $config['file_name'] = 'requirement_kia_' . $currentDateTime;
+                    $this->upload->initialize($config);
+
+                    if ($this->upload->do_upload('kia')) {
+                        $upload_data = $this->upload->data();
+                        $file_kia = $upload_data['file_name'];
+
+                        // Upload AKTA
+                        $config['file_name'] = 'requirement_akta_' . $currentDateTime;
+                        $this->upload->initialize($config);
+
+                        if ($this->upload->do_upload('akta')) {
+                            $upload_data = $this->upload->data();
+                            $file_akta = $upload_data['file_name'];
+
+                            $requirement = array(
+                                'id_administration' => $inserted_id,
+                                'kk' => $file_kk,
+                                'akta' => $file_akta,
+                                'kia' => $file_kia,
+                            );
+                            $inserted_id = $this->data->insert('administration_has_requirements', $requirement);
+                        } else {
+                            $response['errors']['akta'] = $this->upload->display_errors();
+                        }
+                    } else {
+                        $response['errors']['kia'] = $this->upload->display_errors();
+                    }
+                } else {
+                    $response['errors']['kk'] = $this->upload->display_errors();
+                }
+            } else {
+                $response['errors']['akta'] = 'Please upload all required files (KK, KIA, AKTA)';
+            }
+            $response['success'] = "Data successfully inserted!";
+        }
+        echo json_encode($response);
+    }
 }

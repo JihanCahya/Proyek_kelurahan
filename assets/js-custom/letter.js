@@ -23,12 +23,13 @@ function delete_error() {
 	$("#error-kia").hide();
 }
 
-function insert_data() {
+function insert_1() {
 	var formData = new FormData();
 
 	var kkInput = $("[name='kk']")[0];
 	var aktaInput = $("[name='akta']")[0];
 	var kiaInput = $("[name='kia']")[0];
+
 	if (kkInput.files.length > 0) {
 		formData.append("kk", kkInput.files[0]);
 	}
@@ -41,7 +42,7 @@ function insert_data() {
 
 	$.ajax({
 		type: "POST",
-		url: base_url + "/" + _controller + "/insert_data",
+		url: base_url + "/" + _controller + "/insert_1",
 		data: formData,
 		dataType: "json",
 		processData: false,

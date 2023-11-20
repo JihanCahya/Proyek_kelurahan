@@ -81,8 +81,7 @@
           <li class="dropdown"><a href="#services"><span>Layanan Administrasi</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="<?php echo base_url("Front_page/submission_letter"); ?>">Pengajuan Surat</a></li>
-              <li><a href="<?php echo base_url("Front_page/history"); ?>">History</a></li>
+              <li><a href="<?php echo base_url("login"); ?>">Login terlebih dahulu!</a></li>
             </ul>
           </li>
           <li><a class="getstarted scrollto" href="<?php echo base_url("login"); ?>">Masuk</a></li>
