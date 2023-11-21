@@ -70,3 +70,4 @@ $route['registrasi'] = 'Auth_user/register';
 $route['login'] = 'Auth_user';
 $route['logout_1'] = 'Auth_user/logout';
 $route['profile'] = 'Front_page/profile';
+$route['manage-validasi'] = 'Manage_validation';
