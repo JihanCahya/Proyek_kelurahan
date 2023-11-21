@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Front_page extends CI_Controller
 {
-    var $module_js = ['history'];
+    var $module_js = ['letter', 'history'];
     var $app_data = [];
 
     public function __construct()
@@ -90,7 +90,51 @@ class Front_page extends CI_Controller
     {
         $this->load->view('front_page/administrative_services/submission_letter');
         $this->footer();
+        $this->load->view('js-custom', $this->app_data);
     }
+
+    public function insert_2()
+    {
+        $where = array('email' => $this->session->userdata('email'));
+        $data['user'] = $this->data->find('st_user', $where)->row_array();
+
+        if (empty($_FILES['ktp']['name'])) {
+            $response['errors']['ktp'] = "Foto harus diupload";
+        } else {
+            $insert = array(
+                'id_user' => $data['user']['id'],
+                'id_letter' => '2'
+            );
+            $inserted_id = $this->data->insert('administration', $insert);
+
+            if (!$inserted_id) {
+                $response['errors']['database'] = "Failed to insert data into the database.";
+            } else {
+                if (!empty($_FILES['ktp']['name'])) {
+                    $currentDateTime = date('Y-m-d_H-i-s');
+                    $config['upload_path'] = './assets/image/administration/requirement/';
+                    $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                    $config['max_size'] = 2048;
+                    $config['file_name'] = 'requirement_' . $currentDateTime;
+                    $this->load->library('upload', $config);
+
+                    if ($this->upload->do_upload('ktp')) {
+                        $upload_data = $this->upload->data();
+                        $file_name = $upload_data['file_name'];
+
+                        $this->data->insert('administration_has_requirements', array('id_administration' => $inserted_id, 'ktp' => $file_name));
+                    } else {
+                        $response['errors']['ktp'] = $this->upload->display_errors();
+                    }
+                } else {
+                    $response['errors']['ktp'] = "Foto harus diupload";
+                }
+                $response['success'] = "Data successfully inserted!";
+            }
+        }
+        echo json_encode($response);
+    }
+
     public function history()
     {
         $this->load->view('front_page/administrative_services/history');
@@ -121,28 +165,5 @@ class Front_page extends CI_Controller
     {
         $this->load->view('front_page/profile');
         $this->footer();
-    }
-    public function letter_1()
-    {
-        $this->load->view('front_page/administrative_services/letter_1');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
-    }
-    public function letter_2()
-    {
-        $this->load->view('front_page/administrative_services/letter_2');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
-    }
-    public function letter_3()
-    {
-        $this->load->view('front_page/administrative_services/letter_3');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
-    }
-
-    public function insert_1()
-    {
-
     }
 }
