@@ -11,8 +11,8 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="20%">Nama Surat</th>
-                        <th width="20%">Status</th>
                         <th width="30%">Tanggal pengajuan</th>
+                        <th width="20%">Status</th>
                         <th width="10%">Aksi</th>
                     </tr>
                 </thead>
@@ -23,3 +23,8 @@
         </div>
     </div>
 </div>
+
+<script>
+    var base_url = '<?php echo base_url() ?>';
+    var _controller = '<?= $this->router->fetch_class() ?>';
+</script>

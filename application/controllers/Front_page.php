@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Front_page extends CI_Controller
 {
-    var $module_js = ['letter', 'history'];
+    var $module_js = ['history'];
     var $app_data = [];
 
     public function __construct()
@@ -97,6 +97,26 @@ class Front_page extends CI_Controller
         $this->footer();
         $this->load->view('js-custom', $this->app_data);
     }
+
+    public function get_data_history()
+    {
+        $where = array('email' => $this->session->userdata('email'));
+        $data['user'] = $this->data->find('st_user', $where)->row_array();
+        $query = [
+            'select' => 'a.id, a.submit_date, a.status, b.name, c.name as letter_name',
+            'from' => 'administration a',
+            'join' => [
+                'st_user b, b.id = a.id_user',
+                'letter c, c.id = a.id_letter'
+            ],
+            'where' => [
+                'a.id_user' => $data['user']['id'],
+            ]
+        ];
+        $result = $this->data->get($query)->result();
+        echo json_encode($result);
+    }
+
     public function profile()
     {
         $this->load->view('front_page/profile');
