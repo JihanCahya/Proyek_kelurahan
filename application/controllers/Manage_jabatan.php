@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Manage_bridge extends CI_Controller
+class Manage_jabatan extends CI_Controller
 {
-    var $module_js = ['manage-bridge'];
+    var $module_js = ['manage-jabatan'];
     var $app_data = [];
 
     public function __construct()
@@ -70,7 +70,7 @@ class Manage_bridge extends CI_Controller
         $this->app_data['user'] = $this->data->get($user)->row_array();
         $this->load->view('template-admin/start');
         $this->load->view('template-admin/header', $this->app_data);
-        $this->load->view('menu-admin/manage_bridge');
+        $this->load->view('menu-admin/manage_jabatan');
         $this->load->view('template-admin/footer');
         $this->load->view('template-admin/end');
         $this->load->view('js-custom', $this->app_data);
@@ -79,21 +79,21 @@ class Manage_bridge extends CI_Controller
     public function get_data()
     {
         $where = array('is_deleted' => '0');
-        $result = $this->data->find('bridge', $where)->result();
+        $result = $this->data->find('jabatan', $where)->result();
         echo json_encode($result);
     }
 
     public function get_data_id()
     {
         $id = $this->input->post('id');
-        $where = array('id_bridge' => $id);
-        $result = $this->data->find('bridge', $where)->result();
+        $where = array('id_jabatan' => $id);
+        $result = $this->data->find('jabatan', $where)->result();
         echo json_encode($result);
     }
 
     public function insert_data()
     {
-        $this->form_validation->set_rules('bridge', 'Jabatan', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $response['errors'] = $this->form_validation->error_array();
@@ -101,12 +101,12 @@ class Manage_bridge extends CI_Controller
             $where = array('email' => $this->session->userdata('email'));
             $data['user'] = $this->data->find('st_user', $where)->row_array();
 
-            $bridge = $this->input->post('bridge');
+            $jabatan = $this->input->post('jabatan');
             $data = array(
-                'name_bridge' => $bridge,
+                'name_jabatan' => $jabatan,
                 'created_by' => $data['user']['id'],
             );
-            $this->data->insert('bridge', $data);
+            $this->data->insert('jabatan', $data);
             $response['success'] = "<script>$(document).ready(function () {
                         var Toast = Swal.mixin({
                             toast: true,
@@ -126,7 +126,7 @@ class Manage_bridge extends CI_Controller
 
     public function edit_data()
     {
-        $this->form_validation->set_rules('bridge', 'Jabatan', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $response['errors'] = $this->form_validation->error_array();
@@ -135,17 +135,17 @@ class Manage_bridge extends CI_Controller
             $data['user'] = $this->data->find('st_user', $where)->row_array();
 
             $id = $this->input->post('id');
-            $bridge = $this->input->post('bridge');
+            $jabatan = $this->input->post('jabatan');
             $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
 
             $data = array(
-                'name_bridge' => $bridge,
+                'name_jabatan' => $jabatan,
                 'updated_date' => $timestamp,
                 'updated_by' => $data['user']['id'],
             );
 
-            $where = array('id_bridge' => $id);
-            $this->data->update('bridge', $where, $data);
+            $where = array('id_jabatan' => $id);
+            $this->data->update('jabatan', $where, $data);
             $response['success'] = "<script>$(document).ready(function () {
                         var Toast = Swal.mixin({
                             toast: true,
@@ -175,9 +175,9 @@ class Manage_bridge extends CI_Controller
             'deleted_date' => $timestamp,
             'deleted_by' => $data['user']['id'],
         );
-        $where = array('id_bridge' => $id);
+        $where = array('id_jabatan' => $id);
 
-        $updated = $this->data->update('bridge', $where, $data);
+        $updated = $this->data->update('jabatan', $where, $data);
         if ($updated) {
             $response['success'] = "<script>$(document).ready(function () {
                 var Toast = Swal.mixin({

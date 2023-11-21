@@ -55,8 +55,8 @@
                                 <label for="nama" class="col-lg-2 col-form-label">Nama Jabatan</label>
                                 <div class="col-lg-10">
                                     <input type="hidden" name="id" class="form-control">
-                                    <input type="text" name="bridge" id="bridge" class="form-control" placeholder="Masukkan jabatan">
-                                    <small class="text-danger pl-1" id="error-bridge"></small>
+                                    <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Masukkan jabatan">
+                                    <small class="text-danger pl-1" id="error-jabatan"></small>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
 </div>
 
 <!-- modal untuk hapus data -->
-<div class="modal fade" id="hapusBridge">
+<div class="modal fade" id="hapusjabatan">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">

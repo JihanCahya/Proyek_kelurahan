@@ -6,14 +6,14 @@ $(function () {
 
 function delete_form() {
 	$("[name='id']").val("");
-	$("[name='bridge']").val("");
+	$("[name='jabatan']").val("");
 }
 
 function delete_error() {
-	$("#error-bridge").html("");
+	$("#error-jabatan").html("");
 }
 
-$("#hapusBridge").on("show.bs.modal", function (e) {
+$("#hapusjabatan").on("show.bs.modal", function (e) {
 	var button = $(e.relatedTarget);
 	var id = button.data("id");
 	var modalButton = $(this).find("#btn-hapus");
@@ -37,17 +37,17 @@ function get_data() {
 							return meta.row + 1;
 						},
 					},
-					{ data: "name_bridge" },
+					{ data: "name_jabatan" },
 					{
 						data: null,
 						className: "text-center",
 						render: function (data, type, row) {
 							return (
 								'<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" title="edit" onclick="submit(' +
-								row.id_bridge +
+								row.id_jabatan +
 								')"><i class="fa-solid fa-pen-to-square"></i></button> ' +
-								'<button class="btn btn-warning" data-toggle="modal" data-target="#hapusBridge" title="hapus" data-id="' +
-								row.id_bridge +
+								'<button class="btn btn-warning" data-toggle="modal" data-target="#hapusjabatan" title="hapus" data-id="' +
+								row.id_jabatan +
 								'"><i class="fa-solid fa-trash-can"></i></button>'
 							);
 						},
@@ -79,8 +79,8 @@ function submit(x) {
 			url: base_url + "/" + _controller + "/get_data_id",
 			dataType: "json",
 			success: function (hasil) {
-				$("[name='id']").val(hasil[0].id_bridge);
-				$("[name='bridge']").val(hasil[0].name_bridge);
+				$("[name='id']").val(hasil[0].id_jabatan);
+				$("[name='jabatan']").val(hasil[0].name_jabatan);
 			},
 		});
 	}
@@ -90,7 +90,7 @@ function submit(x) {
 
 function insert_data() {
 	var formData = new FormData();
-	formData.append("bridge", $("[name='bridge']").val());
+	formData.append("jabatan", $("[name='jabatan']").val());
 
 	$.ajax({
 		type: "POST",
@@ -120,7 +120,7 @@ function insert_data() {
 function edit_data() {
 	var formData = new FormData();
 	formData.append("id", $("[name='id']").val());
-	formData.append("bridge", $("[name='bridge']").val());
+	formData.append("jabatan", $("[name='jabatan']").val());
 
 	$.ajax({
 		type: "POST",
