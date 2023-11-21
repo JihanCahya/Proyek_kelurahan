@@ -10,16 +10,20 @@ class Front_page extends CI_Controller
     {
         parent::__construct();
         $this->_init();
-        if (!$this->is_logged_in()) {
-            $this->header();
-        } else {
-            $this->header_1();
-        }
     }
 
     public function is_logged_in()
     {
         return $this->session->userdata('logged_in_1') === TRUE;
+    }
+
+    public function check_auth()
+    {
+        if (!$this->is_logged_in()) {
+            $this->header();
+        } else {
+            $this->header_1();
+        }
     }
 
     private function _init()
@@ -41,53 +45,61 @@ class Front_page extends CI_Controller
     }
     public function index()
     {
+        $this->check_auth();
         $this->load->view('front_page/index', $this->app_data);
         $this->footer();
     }
     public function village_history()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/village_history');
         $this->footer();
     }
     public function sub_district_structure()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/sub_district_structure');
         $this->footer();
     }
     public function vission_mission()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/vission_mission');
         $this->footer();
     }
     public function location_contact()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/location_contact');
         $this->footer();
     }
     public function district_news()
     {
+        $this->check_auth();
         $this->load->view('front_page/public_information/district_news');
         $this->footer();
     }
     public function detail_news()
     {
-
+        $this->check_auth();
         $this->load->view('front_page/public_information/detail_news');
         $this->footer();
     }
     public function help_information()
     {
-
+        $this->check_auth();
         $this->load->view('front_page/public_information/help_information');
         $this->footer();
     }
     public function detail_information()
     {
+        $this->check_auth();
         $this->load->view('front_page/public_information/detail_information');
         $this->footer();
     }
     public function submission_letter()
     {
+        $this->check_auth();
         $this->load->view('front_page/administrative_services/submission_letter');
         $this->footer();
         $this->load->view('js-custom', $this->app_data);
@@ -137,6 +149,7 @@ class Front_page extends CI_Controller
 
     public function history()
     {
+        $this->check_auth();
         $this->load->view('front_page/administrative_services/history');
         $this->footer();
         $this->load->view('js-custom', $this->app_data);
@@ -163,6 +176,7 @@ class Front_page extends CI_Controller
 
     public function profile()
     {
+        $this->check_auth();
         $this->load->view('front_page/profile');
         $this->footer();
     }
