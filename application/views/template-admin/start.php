@@ -27,4 +27,6 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/template-admin/plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet"
         href="<?= base_url() ?>assets/template-admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
 </head>

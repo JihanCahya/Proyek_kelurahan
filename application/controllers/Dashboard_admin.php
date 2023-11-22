@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard_admin extends CI_Controller
 {
 
-	var $module_js = [''];
+	var $module_js = ['dashboard'];
 	var $app_data = [];
 
 	public function __construct()
@@ -69,10 +69,35 @@ class Dashboard_admin extends CI_Controller
 		$this->app_data['get_dropdown'] = $this->data->get($query_dropdown)->result();
 		$this->app_data['get_child'] = $this->data->get($query_child)->result();
 		$this->app_data['user'] = $this->data->get($user)->row_array();
+
+		$this->app_data['surat_1'] = $this->data->count_where('administration', 'status', '1');
+		$this->app_data['surat_2'] = $this->data->count_where('administration', 'status', '2');
+		$this->app_data['surat_3'] = $this->data->count_where('administration', 'status', '3');
+		$this->app_data['surat_4'] = $this->data->count_where('administration', 'status', '4');
+
+
 		$this->load->view('template-admin/start');
 		$this->load->view('template-admin/header', $this->app_data);
 		$this->load->view('menu-admin/dashboard', $this->app_data);
 		$this->load->view('template-admin/footer');
 		$this->load->view('template-admin/end');
+		$this->load->view('js-custom', $this->app_data);
+	}
+
+	public function get_data()
+	{
+		$query = [
+			'select' => 'a.id, a.name, a.email, a.image, a.phone_number, a.address, a.card_image, a.username, a.password, a.last_login, b.name as akses',
+			'from' => 'st_user a',
+			'join' => [
+				'app_credential b, b.id = a.id_credential'
+			],
+			'where' => [
+				'a.is_deleted' => '0',
+				'a.id_credential' => '3'
+			]
+		];
+		$result = $this->data->get($query)->result();
+		echo json_encode($result);
 	}
 }
