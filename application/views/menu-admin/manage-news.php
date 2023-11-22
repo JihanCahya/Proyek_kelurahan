@@ -18,16 +18,18 @@
         <div class="card">
             <h5 class="card-header">Kelola Berita</h5>
             <div class="card-body">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="submit('tambah')"><i class="fa-solid fa-circle-plus"></i> Input data</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                    onclick="submit('tambah')"><i class="fa-solid fa-circle-plus"></i> Input data</button>
                 <hr>
                 <table id="example" class="table table-hover table-bordered" style="width:100%">
                     <thead class="table-light">
                         <tr>
                             <th width="5%">No</th>
                             <th width="10%">Tanggal</th>
+                            <th width="20%">Jenis Berita</th>
                             <th width="10%">Judul</th>
                             <th width="20%">Sub Judul</th>
-                            <th width="30%">Deskripsi</th>
+                            <th width="20%">Deskripsi</th>
                             <th width="20%">Foto</th>
                             <th width="10%">Aksi</th>
                         </tr>
@@ -56,10 +58,26 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <div class="row">
+                                <label for="jenis" class="col-lg-2 col-form-label">Jenis Berita</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control" aria-label="Default select example" id="jenis"
+                                        name="jenis[]">
+                                        <option value="">-- Pilih --</option>
+                                        <option value="1">Berita Kelurahan</option>
+                                        <option value="2">Berita Bantuan</option>
+                                    </select>
+                                    <small class="text-danger pl-1" id="error-jenis"></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
                                 <label for="nama" class="col-lg-2 col-form-label">Judul</label>
                                 <div class="col-lg-10">
                                     <input type="hidden" name="id" class="form-control">
-                                    <input type="text" name="judul" id="judul" class="form-control" placeholder="Masukkan judul">
+                                    <input type="text" name="judul" id="judul" class="form-control"
+                                        placeholder="Masukkan judul">
                                     <small class="text-danger pl-1" id="error-judul"></small>
                                 </div>
                             </div>
@@ -70,7 +88,8 @@
                                 <label for="nama" class="col-lg-2 col-form-label">Sub Judul</label>
                                 <div class="col-lg-10">
                                     <input type="hidden" name="id" class="form-control">
-                                    <input type="text" name="sub" id="sub" class="form-control" placeholder="Masukkan sub">
+                                    <input type="text" name="sub" id="sub" class="form-control"
+                                        placeholder="Masukkan sub">
                                     <small class="text-danger pl-1" id="error-sub"></small>
                                 </div>
                             </div>
@@ -81,12 +100,12 @@
                             <div class="col-lg-10">
                                 <div class="form-floating">
                                     <input type="hidden" name="id" class="form-control">
-                                    <textarea name="description" id="description" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                                    <textarea name="description" id="description" class="form-control"
+                                        placeholder="Masukkan deskripsi"></textarea>
                                 </div>
                                 <small class="text-danger pl-1" id="error-description"></small>
                             </div>
                         </div>
-
 
                         <div class="form-group">
                             <div class="row">
@@ -94,7 +113,8 @@
                                 <div class="col-lg-10">
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="image" id="image" onchange="previewImage(event)">
+                                            <input type="file" class="custom-file-input" name="image" id="image"
+                                                onchange="previewImage(event)">
                                             <label class="custom-file-label" for="image">Pilih file</label>
                                         </div>
                                     </div>
@@ -112,10 +132,12 @@
             </div>
             <div class="modal-footer d-flex justify-content-start">
                 <div class="col-lg-2">
-                    <button type="button" id="btn-tambah" onclick="insert_data()" class="btn btn-outline-primary btn-block">Tambah</button>
+                    <button type="button" id="btn-tambah" onclick="insert_data()"
+                        class="btn btn-outline-primary btn-block">Tambah</button>
                 </div>
                 <div class="col-lg-2">
-                    <button type="button" id="btn-ubah" onclick="edit_data()" class="btn btn-outline-primary btn-block">Edit</button>
+                    <button type="button" id="btn-ubah" onclick="edit_data()"
+                        class="btn btn-outline-primary btn-block">Edit</button>
                 </div>
             </div>
         </div>

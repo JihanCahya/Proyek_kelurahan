@@ -1,4 +1,4 @@
-delete_error();
+delete_2();
 
 function previewImage(event, imageContainerId) {
 	const imageInput = event.target;
@@ -17,30 +17,19 @@ function previewImage(event, imageContainerId) {
 	}
 }
 
-function delete_error() {
-	$("#error-kk").hide();
-	$("#error-ktp").hide();
-	$("#error-akta").hide();
-	$("#error-kia").hide();
-	$("#error-pengantar").hide();
+function delete_2() {
+	$("#error-ktp2").hide();
+	$("#error-pengantar2").hide();
 }
 
-function insert_1() {
+function insert_2() {
+	delete_2();
+	var ktpInput = $("[name='ktp2']")[0];
+	var pengantarInput = $("[name='pengantar2']")[0];
+
 	var formData = new FormData();
-
-	var kkInput = $("[name='kk']")[0];
-	var aktaInput = $("[name='akta']")[0];
-	var kiaInput = $("[name='kia']")[0];
-	var pengantarInput = $("[name='pengantar']")[0];
-
-	if (kkInput.files.length > 0) {
-		formData.append("kk", kkInput.files[0]);
-	}
-	if (aktaInput.files.length > 0) {
-		formData.append("akta", aktaInput.files[0]);
-	}
-	if (kiaInput.files.length > 0) {
-		formData.append("kia", kiaInput.files[0]);
+	if (ktpInput.files.length > 0) {
+		formData.append("ktp", ktpInput.files[0]);
 	}
 	if (pengantarInput.files.length > 0) {
 		formData.append("pengantar", pengantarInput.files[0]);
@@ -48,26 +37,25 @@ function insert_1() {
 
 	$.ajax({
 		type: "POST",
-		url: base_url + _controller + "/insert_1",
+		url: base_url + _controller + "/insert_2",
 		data: formData,
 		dataType: "json",
 		processData: false,
 		contentType: false,
 		success: function (response) {
-			console.log(response);
-			delete_error();
+			delete_2();
 			if (response.errors) {
 				for (var fieldName in response.errors) {
 					$("#error-" + fieldName).show();
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
-				console.log(response.success);
+				$("#modalAjukan_2").modal("hide");
 			}
 		},
 		error: function (xhr, status, error) {
 			console.error("AJAX Error: " + error);
-			console.log(xhr.responseText);
+			console.log("Response Text:", xhr.responseText);
 		},
 	});
 }
