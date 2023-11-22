@@ -92,10 +92,8 @@
                     <li class="dropdown"><a href="#"><span>Profil Kelurahan</span> <i
                                 class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="<?php echo base_url("Front_page/village_history"); ?>">Sejarah Kelurahan</a>
-                            </li>
-                            <li><a href="<?php echo base_url("Front_page/sub_district_structure"); ?>">Struktur
-                                    Kelurahan</a></li>
+                            <li><a href="<?php echo base_url("Front_page/village_history"); ?>">Sejarah Kelurahan</a></li>
+                            <li><a href="<?php echo base_url("Front_page/sub_district_structure"); ?>">Struktur Kelurahan</a></li>
                             <li><a href="<?php echo base_url("Front_page/vission_mission"); ?>">Visi & Misi</a></li>
                             <li><a href="<?php echo base_url("Front_page/location_contact"); ?>">Lokasi & Kontak</a>
                             </li>
