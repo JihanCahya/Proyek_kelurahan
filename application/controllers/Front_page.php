@@ -123,7 +123,7 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
     }
-    public function detail_information($y)
+    public function detail_information($x)
     {
         $this->check_auth();
         $where = array('is_deleted' => '0', 'status' => '2', 'id' => $x);
