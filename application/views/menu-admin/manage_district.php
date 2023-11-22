@@ -80,6 +80,16 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
+                            <label for="labelSejarah">Deskripsi Sejarah</label>
+                            <textarea class="form-control" rows="3" id="sejarah" name="sejarah"
+                                placeholder="Masukkan sejarah"></textarea>
+                            <small class="text-danger pl-1" id="error-sejarah"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
                             <label for="labelVisi">Visi</label>
                             <textarea class="form-control" rows="2" id="visi" name="visi"
                                 placeholder="Masukkan visi"></textarea>
