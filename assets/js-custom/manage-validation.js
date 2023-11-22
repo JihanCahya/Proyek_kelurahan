@@ -281,7 +281,7 @@ function arsip(x) {
 					$("#terpenuhi1").removeAttr("checked");
 					$("#belum1").removeAttr("checked");
 				}
-			var nama = hasil[0].image;
+			var nama = hasil[0].file_name;
 				imagePreviewArsip.innerHTML = `<br><img src="${base_url}assets/image/administration/letter/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
 			
 			},
