@@ -109,15 +109,6 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="ktpAsli" class="col-lg-2 col-form-label">Foto Ktp Asli</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-ktpAsli"></small>
-                                    <div id="imagePreviewKtpAsli"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
                                 <label for="akta" class="col-lg-2 col-form-label">Foto Akta</label>
                                 <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-akta"></small>
@@ -131,24 +122,6 @@
                                 <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-pengantar"></small>
                                     <div id="imagePreviewPengantarRt"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="foto" class="col-lg-2 col-form-label">Foto Pengaju</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-foto"></small>
-                                    <div id="imagePreviewFoto"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="dokumen" class="col-lg-2 col-form-label">Foto Dokumen Pendukung</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-dokumen"></small>
-                                    <div id="imagePreviewDokDukung"></div>
                                 </div>
                             </div>
                         </div>
@@ -230,10 +203,24 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <label for="status" class="col-lg-3 col-form-label">Status</label>
-                                <div class="col-lg-9">
-                                    <input type="text" value="Sudah Diambil" class="form-control" readonly>
+                                <label for="dokumen" class="col-lg-3 col-form-label">Status</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="blm1" value="1">
+                                    <label class="form-check-label" for="blm">Belum Dicek</label>
                                 </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="belum1" value="2">
+                                    <label class="form-check-label" for="belum">Belum Terpenuhi</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="terpenuhi1" value="3">
+                                    <label class="form-check-label" for="terpenuhi">Terpenuhi</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="sudah1" value="4">
+                                    <label class="form-check-label" for="non-halal">Sudah Diambil</label>
+                                </div>
+                                <small class="text-danger pl-3" id="error-status"></small>
                             </div>
                         </div>
 
@@ -250,8 +237,15 @@
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-start">
-                <div class="col-lg-2">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <button class="btn btn-outline-primary btn-block" type="button" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" id="btn-status" onclick="update_status()" class="btn btn-outline-primary btn-block">Ubah Status</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -308,15 +302,6 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="ktpAsli" class="col-lg-2 col-form-label">Foto Ktp Asli</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-ktpAsli"></small>
-                                    <div id="imagePreviewKtpAsli1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
                                 <label for="akta" class="col-lg-2 col-form-label">Foto Akta</label>
                                 <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-akta"></small>
@@ -333,24 +318,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="foto" class="col-lg-2 col-form-label">Foto Pengaju</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-foto"></small>
-                                    <div id="imagePreviewFoto1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="dokumen" class="col-lg-2 col-form-label">Foto Dokumen Pendukung</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-dokumen"></small>
-                                    <div id="imagePreviewDokDukung1"></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -363,11 +330,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="ubahStatus">
+<div class="modal fade" id="tambahArsip">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Ubah Status</h4>
+                <h4 class="modal-title">Tambah Arsip</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -395,24 +362,21 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="dokumen" class="col-lg-3 col-form-label">Status</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="blm1" value="1">
-                                    <label class="form-check-label" for="blm">Belum Dicek</label>
+                                <label for="arsip" class="col-lg-3 col-form-label">Foto Surat</label>
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="arsip" id="arsip" onchange="previewImage(event)">
+                                            <label class="custom-file-label" for="arsip">Pilih file</label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="belum1" value="2">
-                                    <label class="form-check-label" for="belum">Belum Terpenuhi</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 offset-3">
+                                    <small class="text-danger pl-1" id="error-arsip"></small>
+                                    <div id="imagePreviewArsip"></div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="terpenuhi1" value="3">
-                                    <label class="form-check-label" for="terpenuhi">Terpenuhi</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="sudah1" value="4">
-                                    <label class="form-check-label" for="non-halal">Sudah Diambil</label>
-                                </div>
-                                <small class="text-danger pl-3" id="error-status"></small>
                             </div>
                         </div>
                     </div>
@@ -420,7 +384,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-start">
                 <div class="col-lg-2">
-                    <button type="button" id="btn-status" onclick="update_status()" class="btn btn-outline-primary btn-block">Simpan</button>
+                    <button type="button" id="btn-status" onclick="tambah_arsip()" class="btn btn-outline-primary btn-block">Simpan</button>
                 </div>
             </div>
 

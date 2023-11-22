@@ -69,7 +69,8 @@ class Manage_news extends CI_Controller
         $this->app_data['get_child'] = $this->data->get($query_child)->result();
         $this->app_data['user'] = $this->data->get($user)->row_array();
 
-        $this->load->view('template-admin/start');
+        $this->app_data['title'] = 'Kelola berita';
+        $this->load->view('template-admin/start', $this->app_data);
         $this->load->view('template-admin/header', $this->app_data);
         $this->load->view('menu-admin/manage-news');
         $this->load->view('template-admin/footer');

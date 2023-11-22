@@ -64,13 +64,13 @@ class Manage_validation extends CI_Controller
                 'a.email' => $this->session->userdata('email')
             ]
         ];
-        $where = array('is_deleted' => '0');
         $this->app_data['select'] = $this->data->get_all('administration')->result();
         $this->app_data['get_menu'] = $this->data->get($query_menu)->result();
         $this->app_data['get_dropdown'] = $this->data->get($query_dropdown)->result();
         $this->app_data['get_child'] = $this->data->get($query_child)->result();
         $this->app_data['user'] = $this->data->get($user)->row_array();
-        $this->load->view('template-admin/start');
+        $this->app_data['title'] = 'Kelola validasi surat';
+        $this->load->view('template-admin/start', $this->app_data);
         $this->load->view('template-admin/header', $this->app_data);
         $this->load->view('menu-admin/manage_validation');
         $this->load->view('template-admin/footer');
@@ -80,7 +80,7 @@ class Manage_validation extends CI_Controller
     public function get_data()
     {
         $query = [
-            'select' => 'a.id, a.id_administration, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter, a.keterangan',
+            'select' => 'b.id , b.file_name, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
             'from' => 'administration_has_requirements a',
             'join' => [
                 'administration b, b.id = a.id_administration',
@@ -98,7 +98,7 @@ class Manage_validation extends CI_Controller
     {
         $id = $this->input->post('id');
         $query = [
-            'select' => 'a.id, a.id_administration, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
+            'select' => 'b.id , b.file_name, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
             'from' => 'administration_has_requirements a',
             'join' => [
                 'administration b, b.id = a.id_administration',
@@ -107,7 +107,7 @@ class Manage_validation extends CI_Controller
 
             ],
             'where' => [
-                'a.id' => $id,
+                'b.id' => $id,
             ]
         ];
         $result = $this->data->get($query)->result();
@@ -134,7 +134,7 @@ class Manage_validation extends CI_Controller
             } else {
                 $keterangan = $this->input->post('keterangan');
                 $this->data->update('administration_has_requirements', array('id_administration' => $id), array('keterangan' => $keterangan));
-                $response['success'] = "Data successfully inserted!";
+                $response['success'] = "Data successfully updated!";
             }
         }
         echo json_encode($response);
@@ -150,7 +150,35 @@ class Manage_validation extends CI_Controller
         $where = array('id' => $id);
         $this->data->update('administration', $where, $data);
 
-        $response['success'] = "Data successfully inserted!";
+        $response['success'] = "Data successfully updated!";
+        echo json_encode($response);
+    }
+
+    public function tambah_arsip()
+    {
+        $id = $this->input->post('id');
+        if (!empty($_FILES['arsip']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/letter/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = "Letter -" . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('arsip')) {
+                $upload_data = $this->upload->data();
+                $file_name = $upload_data['file_name'];
+                $data = array(
+                    'finish_date' => $currentDateTime,
+                    'file_name' => $file_name
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration', $where, $data);
+                $response['success'] = "Data successfully updated!";
+            } else {
+                $response['errors']['arsip'] = strip_tags($this->upload->display_errors());
+            }
+        }
         echo json_encode($response);
     }
 }

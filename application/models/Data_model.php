@@ -41,6 +41,12 @@ class Data_model extends CI_Model
         return $query;
     }
 
+    public function count_where($table, $column, $id)
+    {
+        $query = $this->db->query("SELECT COUNT(*) as count FROM $table where $column = $id");
+        return $query->row()->count;
+    }
+
     public function get(array $data)
     {
         //decleare select
