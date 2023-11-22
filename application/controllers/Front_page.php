@@ -78,23 +78,23 @@ class Front_page extends CI_Controller
     public function district_news()
     {
         $this->check_auth();
-        $where = array('is_deleted' => '0','status' => '1');
+        $where = array('is_deleted' => '0', 'status' => '1');
         $this->berita['news'] = $this->data->find('news', $where)->result();
-        $this->load->view('front_page/public_information/district_news',$this->berita);
+        $this->load->view('front_page/public_information/district_news', $this->berita);
         $this->footer();
     }
     public function detail_news()
     {
-        $this->check_auth();        
-        $where = array('is_deleted' => '0','status' => '1');
+        $this->check_auth();
+        
+        $where = array('is_deleted' => '0', 'status' => '1');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_news', $this->berita);
         $this->footer();
     }
     public function help_information()
     {
-        $this->check_auth();        
-        $where = array('is_deleted' => '0','status' => '2');
+        $this->check_auth();        $where = array('is_deleted' => '0','status' => '2');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
@@ -102,7 +102,7 @@ class Front_page extends CI_Controller
     public function detail_information()
     {
         $this->check_auth();
-        $where = array('is_deleted' => '0','status' => '2');
+        $where = array('is_deleted' => '0', 'status' => '2');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_information', $this->berita);
         $this->footer();
@@ -121,37 +121,49 @@ class Front_page extends CI_Controller
         $data['user'] = $this->data->find('st_user', $where)->row_array();
 
         if (empty($_FILES['ktp']['name'])) {
-            $response['errors']['ktp'] = "Foto harus diupload";
+            $response['errors']['ktp2'] = "KTP harus diupload";
+        }
+        if (empty($_FILES['pengantar']['name'])) {
+            $response['errors']['pengantar2'] = "Pengantar harus diupload";
         } else {
-            $insert = array(
-                'id_user' => $data['user']['id'],
-                'id_letter' => '2'
-            );
-            $inserted_id = $this->data->insert('administration', $insert);
+            if (!empty($_FILES['ktp']['name'])) {
+                $currentDateTime = date('Y-m-d_H-i-s');
+                $config['upload_path'] = './assets/image/administration/requirement/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['max_size'] = 2048;
+                $config['file_name'] = 'requirement_' . $currentDateTime;
+                $this->load->library('upload', $config);
 
-            if (!$inserted_id) {
-                $response['errors']['database'] = "Failed to insert data into the database.";
-            } else {
-                if (!empty($_FILES['ktp']['name'])) {
-                    $currentDateTime = date('Y-m-d_H-i-s');
-                    $config['upload_path'] = './assets/image/administration/requirement/';
-                    $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                    $config['max_size'] = 2048;
-                    $config['file_name'] = 'requirement_' . $currentDateTime;
-                    $this->load->library('upload', $config);
+                if ($this->upload->do_upload('ktp')) {
+                    $upload_data = $this->upload->data();
+                    $ktp = $upload_data['file_name'];
 
-                    if ($this->upload->do_upload('ktp')) {
-                        $upload_data = $this->upload->data();
-                        $file_name = $upload_data['file_name'];
+                    if (!empty($_FILES['pengantar']['name'])) {
+                        $currentDateTime = date('Y-m-d_H-i-s');
+                        $config['upload_path'] = './assets/image/administration/requirement/';
+                        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                        $config['max_size'] = 2048;
+                        $config['file_name'] = 'requirement_' . $currentDateTime;
+                        $this->load->library('upload', $config);
 
-                        $this->data->insert('administration_has_requirements', array('id_administration' => $inserted_id, 'ktp' => $file_name));
-                    } else {
-                        $response['errors']['ktp'] = $this->upload->display_errors();
+                        if ($this->upload->do_upload('pengantar')) {
+                            $upload_data = $this->upload->data();
+                            $pengantar = $upload_data['file_name'];
+                            $insert = array(
+                                'id_user' => $data['user']['id'],
+                                'id_letter' => '2'
+                            );
+                            $inserted_id = $this->data->insert('administration', $insert);
+
+                            $this->data->insert('administration_has_requirements', array('id_administration' => $inserted_id, 'ktp' => $ktp, 'pengantar_rt' => $pengantar));
+                            $response['success'] = "Data successfully inserted!";
+                        } else {
+                            $response['errors']['pengantar2'] = $this->upload->display_errors();
+                        }
                     }
                 } else {
-                    $response['errors']['ktp'] = "Foto harus diupload";
+                    $response['errors']['ktp2'] = $this->upload->display_errors();
                 }
-                $response['success'] = "Data successfully inserted!";
             }
         }
         echo json_encode($response);

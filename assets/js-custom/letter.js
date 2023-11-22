@@ -1,4 +1,4 @@
-delete_error();
+delete_2();
 
 function previewImage(event, imageContainerId) {
 	const imageInput = event.target;
@@ -17,17 +17,15 @@ function previewImage(event, imageContainerId) {
 	}
 }
 
-function delete_error() {
-	$("#error-kk").hide();
-	$("#error-ktp").hide();
-	$("#error-akta").hide();
-	$("#error-kia").hide();
-	$("#error-pengantar").hide();
+function delete_2() {
+	$("#error-ktp2").hide();
+	$("#error-pengantar2").hide();
 }
 
 function insert_2() {
-	var ktpInput = $("[name='ktp']")[0];
-	var pengantarInput = $("[name='pengantar']")[0];
+	delete_2();
+	var ktpInput = $("[name='ktp2']")[0];
+	var pengantarInput = $("[name='pengantar2']")[0];
 
 	var formData = new FormData();
 	if (ktpInput.files.length > 0) {
@@ -45,15 +43,14 @@ function insert_2() {
 		processData: false,
 		contentType: false,
 		success: function (response) {
-			delete_error();
+			delete_2();
 			if (response.errors) {
 				for (var fieldName in response.errors) {
 					$("#error-" + fieldName).show();
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
-				$("#modalAjukan").modal("hide");
-				get_data();
+				$("#modalAjukan_2").modal("hide");
 			}
 		},
 		error: function (xhr, status, error) {

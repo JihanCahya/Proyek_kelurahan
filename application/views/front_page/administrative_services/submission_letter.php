@@ -162,32 +162,32 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="ktp">Fotocopy KTP</label>
+                                    <label for="ktp2">Fotocopy KTP</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="ktp" id="ktp"
-                                                onchange="previewImage(event, 'imageKTP')">
-                                            <label class="custom-file-label" for="ktp">Pilih file</label>
+                                            <input type="file" class="custom-file-input" name="ktp2" id="ktp2"
+                                                onchange="previewImage(event, 'imageKTP2')">
+                                            <label class="custom-file-label" for="ktp2">Pilih file</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <small class="text-danger pl-1" id="error-ktp"></small>
-                                    <div id="imageKTP"></div>
+                                    <small class="text-danger pl-1" id="error-ktp2"></small>
+                                    <div id="imageKTP2"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pengantar">Surat Pengantar RT</label>
+                                    <label for="pengantar2">Surat Pengantar RT</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="pengantar" id="pengantar"
-                                                onchange="previewImage(event, 'imagePENGANTAR')">
-                                            <label class="custom-file-label" for="pengantar">Pilih file</label>
+                                            <input type="file" class="custom-file-input" name="pengantar2"
+                                                id="pengantar2" onchange="previewImage(event, 'imagePENGANTAR2')">
+                                            <label class="custom-file-label" for="pengantar2">Pilih file</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <small class="text-danger pl-1" id="error-pengantar"></small>
-                                    <div id="imagePENGANTAR"></div>
+                                    <small class="text-danger pl-1" id="error-pengantar2"></small>
+                                    <div id="imagePENGANTAR2"></div>
                                 </div>
                             </div>
                         </div>
