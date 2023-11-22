@@ -231,33 +231,53 @@
       </div>
 
       <div class="container">
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-6 col-md-6 d-flex justify-content-center">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.6733239402406!2d112.02828307540393!3d-7.824358577712787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7857717601003b%3A0x98d05845c5dbd656!2sKantor%20Kelurahan%20Burengan!5e0!3m2!1sen!2sid!4v1699169788904!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <div class="col-lg-6 col-md-6 d-flex justify-content-center">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" required>
-                </div>
-                <div class="col form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Alamat Email Anda" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Pesan, Kritik, Saran, Keluhan" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Pesan Anda Terkirim, Terima Kasih Atas Tanggapan Anda!</div>
-              </div>
-              <div class="text-center"><button type="submit">Kirim</button></div>
-            </form>
-          </div>
-
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <?php foreach ($location as $loc) : ?>
+        <div class="col-lg-6">
+          <iframe src="<?= $loc->embed_address ?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+
+        <div class="col-lg-6">
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" name="nama" id="nama" placeholder="Your Name">
+                  <label for="nama">Nama Lengkap</label>
+                  <small class="text-danger pl-1" id="error-nama"></small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Your Email">
+                  <label for="email">Email</label>
+                  <small class="text-danger pl-1" id="error-email"></small>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="text" class="form-control" name="subjek" id="subjek" placeholder="Subject">
+                  <label for="subjek">Subjek</label>
+                  <small class="text-danger pl-1" id="error-subjek"></small>
+
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Leave a message here" id="pesan" name="pesan" style="height: 100px"></textarea>
+                  <label for="pesan">pesan</label>
+                  <small class="text-danger pl-1" id="error-pesan"></small>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" onclick="insert_message()" type="button">Send
+                  Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      <?php endforeach; ?>
+    </div>
       </div>
 
       </div>
@@ -267,5 +287,10 @@
   </main>
 
 </body>
+<script>
+    var base_url = '<?php echo base_url() ?>';
+    var _controller = '<?= $this->router->fetch_class() ?>';
+</script>
+<script src="<?= base_url() ?>assets/js-custom/message.js"></script>
 
 </html>

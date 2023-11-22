@@ -53,6 +53,8 @@ class Front_page extends CI_Controller
         //carousel menu
         $where = array('is_deleted' => '0');
         $this->app_data['carousel'] = $this->data->find('carousel_menu', $where)->result();
+        $where = array('updated_by' => '1');
+        $this->app_data['location'] = $this->data->find('district_profile', $where)->result();
 
         // query perangkat kelurahan home
         $query_perangkat = [
@@ -121,7 +123,7 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
     }
-    public function detail_information($x)
+    public function detail_information($y)
     {
         $this->check_auth();
         $where = array('is_deleted' => '0', 'status' => '2', 'id' => $x);
