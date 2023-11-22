@@ -197,7 +197,7 @@
           <?php foreach ($perangkat as $perangkat): ?>
             <div class="col-lg-6" data-aos-delay="100">
               <div class="member d-flex align-items-start">
-                <div class="pic"><img src="<?php echo base_url('assets/template-user/img/team/') . $perangkat->image ?>"
+                <div class="pic"><img src="<?php echo base_url('assets/image/employee/') . $perangkat->image ?>"
                     class="img-fluid" alt="Ini Foto"></div>
                 <div class="member-info">
                   <h4>
