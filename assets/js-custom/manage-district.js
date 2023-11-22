@@ -10,6 +10,7 @@ function delete_error() {
 	$("#error-telepon").hide();
 	$("#error-email").hide();
 	$("#error-map").hide();
+	$("#error-sejarah").hide();
 	$("#error-visi").hide();
 	$("#error-misi").hide();
 }
@@ -45,6 +46,7 @@ function get_data() {
 			$("[name='alamat']").val(data[0].address);
 			$("[name='telepon']").val(data[0].phone_number);
 			$("[name='email']").val(data[0].email);
+			$("[name='sejarah']").val(data[0].sejarah);
 			$("[name='visi']").val(data[0].visi);
 			$("[name='misi']").val(data[0].misi);
 			$("[name='map']").val(data[0].embed_address);
@@ -69,6 +71,7 @@ function edit_data() {
 	formData.append("alamat", $("[name='alamat']").val());
 	formData.append("telepon", $("[name='telepon']").val());
 	formData.append("email", $("[name='email']").val());
+	formData.append("sejarah", $("[name='sejarah']").val());
 	formData.append("visi", $("[name='visi']").val());
 	formData.append("misi", $("[name='misi']").val());
 	formData.append("map", $("[name='map']").val());

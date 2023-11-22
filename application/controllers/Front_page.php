@@ -140,10 +140,14 @@ class Front_page extends CI_Controller
     }
     public function submission_letter()
     {
-        $this->check_auth();
-        $this->load->view('front_page/administrative_services/submission_letter');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
+        if (!$this->is_logged_in()) {
+            redirect('login');
+        } else {
+            $this->check_auth();
+            $this->load->view('front_page/administrative_services/submission_letter');
+            $this->footer();
+            $this->load->view('js-custom', $this->app_data);
+        }
     }
 
     public function insert_1()
