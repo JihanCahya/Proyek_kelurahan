@@ -1,9 +1,33 @@
 <body>
 
-  <!-- Carousel Start -->
-  <div id="carouselExampleCaptions" class="carousel slide mb-3" data-bs-ride="carousel">
-    <?php foreach ($carousel as $crsl): ?>
-      <div class="carousel-inner mb-3">
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center mb-5">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Kelurahan Burengan</h1>
+          <?php foreach ($profile as $profil):?>
+          <h2><?= $profil->address?></h2>
+          <?php endforeach?>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="https://www.youtube.com/watch?v=mGmtBX76Skc" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Video Profil Kelurahan</span></a>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="<?php echo base_url('assets/template-user/img/hero-img.png') ?>" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- End Hero -->
+
+    <!-- Carousel Start -->
+    <div id="carouselExampleCaptions" class="carousel slide mb-3" data-bs-ride="carousel">
+    <div class="carousel-inner mb-3">
+        <?php foreach ($carousel as $crsl) : ?>
         <div class="carousel-item active">
           <img src="<?= base_url('assets/image/carousel/') . $crsl->image ?>" class="d-block w-100" alt="Slide 1">
           <div class="carousel-caption d-none d-md-block">
@@ -54,7 +78,6 @@
   <!-- ======= Skills Section ======= -->
   <section id="skills" class="skills">
     <div class="container" data-aos="fade-up">
-      <!-- ======= Skills Section ======= -->
       <section id="skills" class="skills">
         <div class="container" data-aos="fade-up">
 
@@ -225,14 +248,12 @@
           <p>Sampaikan Keluhan, Kritik, Saran, dan Aduan Anda Melalui Media Dibawah!</p>
         </div>
         <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <?php foreach ($profile as $profil): ?>
+          <?php foreach ($profile as $profil) : ?>
             <div class="col-lg-6">
               <div class="info-box mb-4">
                 <i class="bx bx-map"></i>
                 <h3>Alamat Kelurahan Burengan</h3>
-                <p>
-                  <?= $profil->address ?>
-                </p>
+                <p><?= $profil->address ?></p>
               </div>
             </div>
 
@@ -240,9 +261,7 @@
               <div class="info-box  mb-4">
                 <i class="bx bx-envelope"></i>
                 <h3>Email Kelurahan Burengan</h3>
-                <p>
-                  <?= $profil->email ?>
-                </p>
+                <p><?= $profil->email ?></p>
               </div>
             </div>
           <?php endforeach ?>
