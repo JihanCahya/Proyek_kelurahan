@@ -50,8 +50,8 @@
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="social-links h-100 d-inline-flex align-items-center py-3 me-2">
-                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.facebook.com/kelburengan/" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/kelurahanburengan/" class="instagram"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -60,9 +60,17 @@
     <?php endforeach ?>
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex align-items-center">
+        <div class="row d-flex align-items-center ms-3">
+            <div class="col-lg-3 col-md-3">
+                <a href="index.php">
+                    <img src="<?php echo base_url('assets/image/icon.png') ?>" alt="logo" width="78%">
+                </a>
+            </div>
+            <div class="col-lg-9 col-md-9">
+                <h1 class="logo"><a href="index.html">SIPK Burengan<span>.</span></a></h1>
+            </div>
+        </div>
         <div class="container d-flex align-items-center justify-content-between">
-
-            <h1 class="logo"><a href="index.html">SIPK Burengan<span>.</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="<?= base_url() ?>assets/template-user/assets-userimg/logo.png" alt=""></a>-->
 
