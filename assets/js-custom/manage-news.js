@@ -4,6 +4,10 @@ $(function () {
 	bsCustomFileInput.init();
 });
 
+$(".jenis").select2({
+	theme: "bootstrap4",
+});
+
 function previewImage(event) {
 	const imageInput = event.target;
 	const imagePreview = document.getElementById("imagePreview");
@@ -29,14 +33,16 @@ function delete_form() {
 	$("[name='sub']").val("");
 	$("[name='description']").val("");
 	$("[name='image']").val("");
+	$("#jenis").val("").trigger("change");
 	imagePreview.innerHTML = "";
 }
 
 function delete_error() {
-	$("#error-judul").html("");
-	$("#error-sub").html("");
-	$("#error-description").html("");
-	$("#error-image").html("");
+	$("#error-judul").hide();
+	$("#error-sub").hide();
+	$("#error-description").hide();
+	$("#error-jenis").hide();
+	$("#error-image").hide();
 }
 
 $("#hapusNews").on("show.bs.modal", function (e) {
@@ -47,6 +53,7 @@ $("#hapusNews").on("show.bs.modal", function (e) {
 });
 
 function get_data() {
+	delete_error();
 	$.ajax({
 		url: base_url + _controller + "/get_data",
 		method: "GET",
@@ -64,6 +71,17 @@ function get_data() {
 						},
 					},
 					{ data: "created_date" },
+					{
+						data: "status",
+						className: "text-center",
+						render: function (data, type, row) {
+							if (data == "1") {
+								return "Berita Kelurahan";
+							} else if (data == "2") {
+								return "Berita Bantuan";
+							}
+						},
+					},
 					{ data: "title" },
 					{ data: "sub_title" },
 					{ data: "description" },
@@ -124,6 +142,7 @@ function submit(x) {
 				$("[name='judul']").val(hasil[0].title);
 				$("[name='sub']").val(hasil[0].sub_title);
 				$("[name='description']").val(hasil[0].description);
+				$("#jenis").val(hasil[0].status).trigger("change");
 				var nama = hasil[0].image;
 				imagePreview.innerHTML = `<br><img src="${base_url}assets/image/news/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
 			},
@@ -138,6 +157,7 @@ function insert_data() {
 	formData.append("judul", $("[name='judul']").val());
 	formData.append("sub", $("[name='sub']").val());
 	formData.append("description", $("[name='description']").val());
+	formData.append("jenis", $("#jenis").val());
 
 	var imageInput = $("[name='image']")[0];
 	if (imageInput.files.length > 0) {
@@ -155,6 +175,7 @@ function insert_data() {
 			delete_error();
 			if (response.errors) {
 				for (var fieldName in response.errors) {
+					$("#error-" + fieldName).show();
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
@@ -174,7 +195,8 @@ function edit_data() {
 	formData.append("id", $("[name='id']").val());
 	formData.append("judul", $("[name='judul']").val());
 	formData.append("sub", $("[name='sub']").val());
-    formData.append("description", $("[name='description']").val());
+	formData.append("description", $("[name='description']").val());
+	formData.append("jenis", $("#jenis").val());
 
 	var imageInput = $("[name='image']")[0];
 	if (imageInput.files.length > 0) {
@@ -192,6 +214,7 @@ function edit_data() {
 			if (response.errors) {
 				delete_error();
 				for (var fieldName in response.errors) {
+					$("#error-" + fieldName).show();
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
