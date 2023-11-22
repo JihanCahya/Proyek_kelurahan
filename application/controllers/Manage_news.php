@@ -206,7 +206,6 @@ class Manage_news extends CI_Controller
             if (empty($this->input->post('jenis'))) {
                 $response['errors']['jenis'] = "Jenis berita harus dipilih";
             } else {
-
                 if (!$updated) {
                     $response['errors']['database'] = "Failed to update data in the database.";
                 } else {
