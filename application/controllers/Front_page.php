@@ -70,7 +70,9 @@ class Front_page extends CI_Controller
     public function location_contact()
     {
         $this->check_auth();
-        $this->load->view('front_page/district_profile/location_contact');
+        $where = array('updated_by' => '1');
+        $this->app_data['location'] = $this->data->find('district_profile', $where)->result();
+        $this->load->view('front_page/district_profile/location_contact',$this->app_data);
         $this->footer();
     }
     public function district_news()
@@ -83,14 +85,16 @@ class Front_page extends CI_Controller
     }
     public function detail_news()
     {
-        $this->check_auth();        $where = array('is_deleted' => '0','status' => '1');
+        $this->check_auth();        
+        $where = array('is_deleted' => '0','status' => '1');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_news', $this->berita);
         $this->footer();
     }
     public function help_information()
     {
-        $this->check_auth();        $where = array('is_deleted' => '0','status' => '2');
+        $this->check_auth();        
+        $where = array('is_deleted' => '0','status' => '2');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
@@ -185,5 +189,33 @@ class Front_page extends CI_Controller
         $this->check_auth();
         $this->load->view('front_page/profile');
         $this->footer();
+    }
+    public function insert_message()
+    {
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('subjek', 'subjek', 'required|trim');
+        $this->form_validation->set_rules('pesan', 'pesan', 'required|trim');
+
+
+        if ($this->form_validation->run() == false) {
+            $response['errors'] = $this->form_validation->error_array();
+        } else {
+            $nama = $this->input->post('nama');
+            $email = $this->input->post('email');
+            $subjek = $this->input->post('subjek');
+            $pesan = $this->input->post('pesan');
+
+            $data = array(
+                'name' => $nama,
+                'email' => $email,
+                'subject' => $subjek,
+                'message' => $pesan,
+            );
+            $this->data->insert('message_user', $data);
+
+            $response['success'] = "Data successfully inserted!";
+        }
+        echo json_encode($response);
     }
 }
