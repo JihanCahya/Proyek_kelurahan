@@ -195,7 +195,7 @@
               untuk mengajukan surat.
               Surat yang bisa Anda ajukan secara online tanpa harus datang ke Kelurahan adalah Surat Keterangan,
               Pengajuan KK, dan Pengajuan KTP.
-              Ayo, Segera <a href="#">Ajukan Suratmu</a>!
+              Ayo, Segera <a href="<?= base_url("Front_page/submission_letter"); ?>">Ajukan Suratmu</a>!
             </p>
           </div>
         </div>
