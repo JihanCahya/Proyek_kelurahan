@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Front_page extends CI_Controller
 {
-    var $module_js = ['letter', 'history'];
+    var $module_js = ['letter', 'history', 'message'];
     var $app_data = [];
 
     public function __construct()
@@ -83,26 +83,26 @@ class Front_page extends CI_Controller
         $this->load->view('front_page/public_information/district_news', $this->berita);
         $this->footer();
     }
-    public function detail_news()
+    public function detail_news($x)
     {
         $this->check_auth();
-        
-        $where = array('is_deleted' => '0', 'status' => '1');
+        $where = array('is_deleted' => '0', 'status' => '1', 'id'=>$x);
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_news', $this->berita);
         $this->footer();
     }
     public function help_information()
     {
-        $this->check_auth();        $where = array('is_deleted' => '0','status' => '2');
+        $this->check_auth();        
+        $where = array('is_deleted' => '0','status' => '2');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
     }
-    public function detail_information()
+    public function detail_information($x)
     {
         $this->check_auth();
-        $where = array('is_deleted' => '0', 'status' => '2');
+        $where = array('is_deleted' => '0', 'status' => '2','id'=>$x);
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_information', $this->berita);
         $this->footer();
