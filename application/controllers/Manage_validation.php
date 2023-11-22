@@ -79,7 +79,7 @@ class Manage_validation extends CI_Controller
     public function get_data()
     {
         $query = [
-            'select' => 'b.id , a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
+            'select' => 'b.id , b.file_name, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
             'from' => 'administration_has_requirements a',
             'join' => [
                 'administration b, b.id = a.id_administration',
@@ -97,7 +97,7 @@ class Manage_validation extends CI_Controller
     {
         $id = $this->input->post('id');
         $query = [
-            'select' => 'b.id , a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
+            'select' => 'b.id , b.file_name, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
             'from' => 'administration_has_requirements a',
             'join' => [
                 'administration b, b.id = a.id_administration',
@@ -150,6 +150,33 @@ class Manage_validation extends CI_Controller
         $this->data->update('administration', $where, $data);
 
         $response['success'] = "Data successfully updated!";
+        echo json_encode($response);
+    }
+
+    public function tambah_arsip()
+    {
+        $id = $this->input->post('id');
+        if (!empty($_FILES['arsip']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/letter/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = "Letter -" . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('arsip')) {
+                $upload_data = $this->upload->data();
+                $file_name = $upload_data['file_name'];
+                $data = array(
+                    'file_name' => $file_name
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration', $where, $data);
+                $response['success'] = "Data successfully updated!";
+            } else {
+                $response['errors']['arsip'] = strip_tags($this->upload->display_errors());
+            }
+        }
         echo json_encode($response);
     }
 }
