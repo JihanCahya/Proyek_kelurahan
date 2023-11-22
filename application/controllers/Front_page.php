@@ -101,8 +101,7 @@ class Front_page extends CI_Controller
     public function location_contact()
     {
         $this->check_auth();
-        $where = array('updated_by' => '1');
-        $this->app_data['location'] = $this->data->find('district_profile', $where)->result();
+        $this->app_data['location'] = $this->data->get_all('district_profile')->result();
         $this->load->view('front_page/district_profile/location_contact', $this->app_data);
         $this->footer();
     }
