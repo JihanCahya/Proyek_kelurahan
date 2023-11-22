@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-4 offset-2">
+                                <div class="col-lg-6 offset-2">
                                     <small class="text-danger pl-1" id="error-image"></small>
                                     <div id="imagePreview"></div>
                                 </div>
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-4 offset-2">
+                                <div class="col-lg-6 offset-2">
                                     <small class="text-danger pl-1" id="error-card"></small>
                                     <div id="imagePreviewCard"></div>
                                 </div>
