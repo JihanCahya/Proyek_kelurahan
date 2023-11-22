@@ -7,8 +7,8 @@
         <img src="<?= base_url('assets/image/news/') . $ne->image ?>" class="card-img-top" alt="Gambar Bantuan">
         <div class="card-body">
           <h5 class="card-title"><?= $ne->title ?></h5>
-          <p class="card-text"><?= $ne->sub_title ?></p>
-          <a href="<?php echo base_url("Front_page/detail_news"); ?>" class="btn btn-primary">Baca Selengkapnya</a>
+          <h6 class="card-title"><?= $ne->sub_title ?></h6>
+          <a href="<?php echo base_url("Front_page/detail_news/$ne->id"); ?>" class="btn btn-primary">Baca Selengkapnya</a>
         </div>
       </div>
     </div>
