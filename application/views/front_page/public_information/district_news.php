@@ -1,48 +1,21 @@
 <body>
+
 <div class="container mt-5">
   <div class="row">
+  <?php foreach ($news as $ne): ?>
     <div class="col-md-6">
       <div class="card">
-        <img src="https://i.postimg.cc/pLvV3Nkb/icon.png" class="card-img-top" alt="Gambar Berita">
+        <img src="<?= base_url('assets/image/news/') . $ne->image ?>" class="card-img-top" alt="Gambar Berita">
         <div class="card-body">
-          <h5 class="card-title">Judul Berita</h5>
-          <p class="card-text">Deskripsi singkat dari berita ini.</p>
+          <h5 class="card-title"><?= $ne->title ?></h5>
+          <h6 class="card-title"><?= $ne->sub_title ?></h6>
           <a href="<?php echo base_url("Front_page/detail_news"); ?>" class="btn btn-primary">Baca Selengkapnya</a>
         </div>
       </div>
     </div>
-    <!-- Tambahkan berita lainnya di sini -->
-    <div class="col-md-6">
-      <div class="card">
-        <img src="https://i.postimg.cc/pLvV3Nkb/icon.png" class="card-img-top" alt="Gambar Berita">
-        <div class="card-body">
-          <h5 class="card-title">Judul Berita</h5>
-          <p class="card-text">Deskripsi singkat dari berita ini.</p>
-          <a href="<?php echo base_url("Front_page/detail_news"); ?>" class="btn btn-primary">Baca Selengkapnya</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <img src="https://i.postimg.cc/pLvV3Nkb/icon.png" class="card-img-top" alt="Gambar Berita">
-        <div class="card-body">
-          <h5 class="card-title">Judul Berita</h5>
-          <p class="card-text">Deskripsi singkat dari berita ini.</p>
-          <a href="<?php echo base_url("Front_page/detail_news"); ?>" class="btn btn-primary">Baca Selengkapnya</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <img src="https://i.postimg.cc/pLvV3Nkb/icon.png" class="card-img-top" alt="Gambar Berita">
-        <div class="card-body">
-          <h5 class="card-title">Judul Berita</h5>
-          <p class="card-text">Deskripsi singkat dari berita ini.</p>
-          <a href="<?php echo base_url("Front_page/detail_news"); ?>" class="btn btn-primary">Baca Selengkapnya</a>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
 </div>
+
 </body>
 </html>
