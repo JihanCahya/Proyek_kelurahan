@@ -123,6 +123,9 @@ class Manage_user extends CI_Controller
             if (empty($this->input->post('akses'))) {
                 $response['errors']['akses'] = "Role akses harus dipilih";
             }
+            if (empty($_FILES['card']['name'])) {
+                $response['errors']['card'] = "Foto KTP harus diupload";
+            }
             if (empty($_FILES['image']['name'])) {
                 $response['errors']['image'] = "Foto profil harus diupload";
             }
@@ -141,6 +144,9 @@ class Manage_user extends CI_Controller
 
             if (empty($this->input->post('akses'))) {
                 $response['errors']['akses'] = "Role akses harus dipilih";
+            }
+            if (empty($_FILES['card']['name'])) {
+                $response['errors']['card'] = "Foto KTP harus diupload";
             }
             if (empty($_FILES['image']['name'])) {
                 $response['errors']['image'] = "Foto profil harus diupload";
@@ -175,6 +181,23 @@ class Manage_user extends CI_Controller
                         } else {
                             $uploaded_data = $this->upload->data();
                             $data['image'] = $uploaded_data['file_name'];
+
+                            if (!empty($_FILES['card']['name'])) {
+                                $currentDateTime = date('Y-m-d_H-i-s');
+                                $config['upload_path'] = './assets/image/user/';
+                                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                                $config['file_name'] = $username . "-" . $currentDateTime;
+                                $config['max_size'] = 2048;
+
+                                $this->load->library('upload', $config);
+
+                                if ($this->upload->do_upload('card')) {
+                                    $uploaded_data = $this->upload->data();
+                                    $data['card_image'] = $uploaded_data['file_name'];
+                                } else {
+                                    $response['errors']['card'] = strip_tags($this->upload->display_errors());
+                                }
+                            }
                             $this->data->insert('st_user', $data);
                         }
                     }
@@ -264,13 +287,32 @@ class Manage_user extends CI_Controller
 
                         if ($this->upload->do_upload('image')) {
                             $upload_data = $this->upload->data();
-                            $file_name = $upload_data['file_name'];
+                            $profile = $upload_data['file_name'];
 
-                            $data = array('image' => $file_name);
+                            $data = array('image' => $profile);
                             $where = array('id' => $id);
                             $this->data->update('st_user', $where, $data);
                         } else {
                             $response['errors']['image'] = strip_tags($this->upload->display_errors());
+                        }
+                    }
+                    if (!empty($_FILES['card']['name'])) {
+                        $currentDateTime = date('Y-m-d_H-i-s');
+                        $config['upload_path'] = './assets/image/user/';
+                        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                        $config['max_size'] = 2048;
+                        $config['file_name'] = $username . "-" . $currentDateTime;
+                        $this->load->library('upload', $config);
+
+                        if ($this->upload->do_upload('card')) {
+                            $upload_data = $this->upload->data();
+                            $ktp = $upload_data['file_name'];
+
+                            $data = array('card_image' => $ktp);
+                            $where = array('id' => $id);
+                            $this->data->update('st_user', $where, $data);
+                        } else {
+                            $response['errors']['card'] = strip_tags($this->upload->display_errors());
                         }
                     }
                     $response['success'] = "<script>$(document).ready(function () {
