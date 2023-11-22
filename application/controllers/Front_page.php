@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Front_page extends CI_Controller
 {
-    var $module_js = ['letter', 'history', 'message'];
+    var $module_js = ['letter', 'history', 'message', 'profile'];
     var $app_data = [];
 
     public function __construct()
@@ -52,7 +52,7 @@ class Front_page extends CI_Controller
         $this->check_auth();
         //carousel menu
         $where = array('is_deleted' => '0');
-        $this->app_data['carousel'] = $this->data->find('carousel_menu',$where)->result();
+        $this->app_data['carousel'] = $this->data->find('carousel_menu', $where)->result();
 
         // query perangkat kelurahan home
         $query_perangkat = [
@@ -64,10 +64,10 @@ class Front_page extends CI_Controller
             'where' => [
                 'a.is_deleted' => '0'
             ]
-            ];
-            $this->app_data['perangkat'] = $this->data->get($query_perangkat)->result();
+        ];
+        $this->app_data['perangkat'] = $this->data->get($query_perangkat)->result();
         // end query perangkat kelurahan home
-        
+
         $this->load->view('front_page/index', $this->app_data);
         $this->footer();
     }
@@ -108,14 +108,15 @@ class Front_page extends CI_Controller
     public function detail_news($x)
     {
         $this->check_auth();
-        $where = array('is_deleted' => '0', 'status' => '1', 'id'=>$x);
+        $where = array('is_deleted' => '0', 'status' => '1', 'id' => $x);
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_news', $this->berita);
         $this->footer();
     }
     public function help_information()
     {
-        $this->check_auth();        $where = array('is_deleted' => '0','status' => '2');
+        $this->check_auth();
+        $where = array('is_deleted' => '0', 'status' => '2');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
@@ -123,7 +124,7 @@ class Front_page extends CI_Controller
     public function detail_information($x)
     {
         $this->check_auth();
-        $where = array('is_deleted' => '0', 'status' => '2','id'=>$x);
+        $where = array('is_deleted' => '0', 'status' => '2', 'id' => $x);
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_information', $this->berita);
         $this->footer();
@@ -388,7 +389,110 @@ class Front_page extends CI_Controller
         $this->check_auth();
         $this->load->view('front_page/profile');
         $this->footer();
+        $this->load->view('js-custom', $this->app_data);
     }
+    public function get_profile()
+    {
+        $where = array('email' => $this->session->userdata('email'));
+        $data['user'] = $this->data->find('st_user', $where)->row_array();
+
+        $where = array('id' => $data['user']['id']);
+        $result = $this->data->find('st_user', $where)->result();
+        echo json_encode($result);
+    }
+
+    public function edit_profile()
+    {
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('telepon', 'No HP', 'required|trim|numeric');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('password1', 'Password Baru', 'trim|min_length[8]');
+
+        if ($this->form_validation->run() == false) {
+            $response['errors'] = $this->form_validation->error_array();
+        } else {
+            $where = array('email' => $this->session->userdata('email'));
+            $data['user'] = $this->data->find('st_user', $where)->row_array();
+
+            $id = $this->input->post('id');
+            $nama = $this->input->post('nama');
+            $email = $this->input->post('email');
+            $telepon = $this->input->post('telepon');
+            $alamat = $this->input->post('alamat');
+            $username = $this->input->post('username');
+            $password = $this->input->post('password1');
+            $hash = hash("sha256", $password . config_item('encryption_key'));
+            $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
+
+            $data = array(
+                'name' => $nama,
+                'email' => $email,
+                'phone_number' => $telepon,
+                'address' => $alamat,
+                'username' => $username,
+                'updated_date' => $timestamp,
+                'updated_by' => $data['user']['id'],
+            );
+
+            if (!empty($password)) {
+                $data1 = array('password' => $hash);
+                $where = array('id' => $id);
+                $update = $this->data->update('st_user', $where, $data1);
+            }
+
+            $where = array('id' => $id);
+            $updated = $this->data->update('st_user', $where, $data);
+
+            if (!$updated) {
+                $response['errors']['database'] = "Failed to update data in the database.";
+            } else {
+                if (!empty($_FILES['profil']['name'])) {
+                    $currentDateTime = date('Y-m-d_H-i-s');
+                    $config['upload_path'] = './assets/image/user/';
+                    $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                    $config['max_size'] = 2048;
+                    $config['file_name'] = $username . ' - ' . $currentDateTime;
+                    $this->load->library('upload', $config);
+
+                    if ($this->upload->do_upload('profil')) {
+                        $upload_data = $this->upload->data();
+                        $file_name = $upload_data['file_name'];
+
+                        $data = array('image' => $file_name);
+                        $where = array('id' => $id);
+                        $this->data->update('st_user', $where, $data);
+                    } else {
+                        $response['errors']['image'] = strip_tags($this->upload->display_errors());
+                    }
+                }
+
+                if (!empty($_FILES['ktp']['name'])) {
+                    $currentDateTime = date('Y-m-d_H-i-s');
+                    $config['upload_path'] = './assets/image/user/';
+                    $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                    $config['max_size'] = 2048;
+                    $config['file_name'] = $username . ' - ' . $currentDateTime;
+                    $this->load->library('upload', $config);
+
+                    if ($this->upload->do_upload('ktp')) {
+                        $upload_data = $this->upload->data();
+                        $file_name = $upload_data['file_name'];
+
+                        $data = array('card_image' => $file_name);
+                        $where = array('id' => $id);
+                        $this->data->update('st_user', $where, $data);
+                    } else {
+                        $response['errors']['image'] = strip_tags($this->upload->display_errors());
+                    }
+                }
+                $response['success'] = "Data successfully updated!";
+            }
+        }
+        echo json_encode($response);
+    }
+
     public function insert_message()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
