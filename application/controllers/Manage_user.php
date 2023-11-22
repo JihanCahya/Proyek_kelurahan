@@ -68,7 +68,8 @@ class Manage_user extends CI_Controller
         $this->app_data['get_dropdown'] = $this->data->get($query_dropdown)->result();
         $this->app_data['get_child'] = $this->data->get($query_child)->result();
         $this->app_data['user'] = $this->data->get($user)->row_array();
-        $this->load->view('template-admin/start');
+        $this->app_data['title'] = 'Kelola user';
+        $this->load->view('template-admin/start', $this->app_data);
         $this->load->view('template-admin/header', $this->app_data);
 
         if ($this->app_data['user']['id_credential'] == "2") {

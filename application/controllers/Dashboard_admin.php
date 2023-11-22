@@ -75,8 +75,9 @@ class Dashboard_admin extends CI_Controller
 		$this->app_data['surat_3'] = $this->data->count_where('administration', 'status', '3');
 		$this->app_data['surat_4'] = $this->data->count_where('administration', 'status', '4');
 
+		$this->app_data['title'] = 'Dashboard';
 
-		$this->load->view('template-admin/start');
+		$this->load->view('template-admin/start', $this->app_data);
 		$this->load->view('template-admin/header', $this->app_data);
 		$this->load->view('menu-admin/dashboard', $this->app_data);
 		$this->load->view('template-admin/footer');

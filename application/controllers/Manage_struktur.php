@@ -72,7 +72,8 @@ class Manage_struktur extends CI_Controller
         $where = array('is_deleted' => '0');
         $this->app_data['select'] = $this->data->find('jabatan', $where)->result();
 
-        $this->load->view('template-admin/start');
+        $this->app_data['title'] = 'Kelola struktur';
+        $this->load->view('template-admin/start', $this->app_data);
         $this->load->view('template-admin/header', $this->app_data);
         $this->load->view('menu-admin/manage_struktur');
         $this->load->view('template-admin/footer');

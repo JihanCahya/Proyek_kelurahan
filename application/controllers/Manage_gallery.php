@@ -70,7 +70,8 @@ class Manage_gallery extends CI_Controller
         $where = array('is_deleted' => '0');
         $this->app_data['select'] = $this->data->find('gallery_category', $where)->result();
         $this->app_data['user'] = $this->data->get($user)->row_array();
-        $this->load->view('template-admin/start');
+        $this->app_data['title'] = 'Kelola galeri';
+        $this->load->view('template-admin/start', $this->app_data);
         $this->load->view('template-admin/header', $this->app_data);
         $this->load->view('menu-admin/manage_gallery', $this->app_data);
         $this->load->view('template-admin/footer');
