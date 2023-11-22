@@ -282,7 +282,7 @@ function arsip(x) {
 					$("#belum1").removeAttr("checked");
 				}
 			var nama = hasil[0].image;
-				imagePreview.innerHTML = `<br><img src="${base_url}assets/image/administration/letter/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewArsip.innerHTML = `<br><img src="${base_url}assets/image/administration/letter/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
 			
 			},
 	});
