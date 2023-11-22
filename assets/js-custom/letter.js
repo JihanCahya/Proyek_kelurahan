@@ -1,3 +1,4 @@
+delete_1();
 delete_2();
 delete_3();
 
@@ -26,6 +27,60 @@ function delete_2() {
 function delete_3() {
 	$("#error-ktp3").hide();
 	$("#error-pengantar3").hide();
+}
+
+function delete_1() {
+	$("#error-kk1").hide();
+	$("#error-kia1").hide();
+	$("#error-akta1").hide();
+	$("#error-pengantar1").hide();
+}
+
+function insert_1() {
+	delete_1();
+	var kiaInput = $("[name='kia1']")[0];
+	var pengantarInput = $("[name='pengantar1']")[0];
+	var kkInput = $("[name='kk1']")[0];
+	var aktaInput = $("[name='akta1']")[0];
+
+	var formData = new FormData();
+	if (kiaInput.files.length > 0) {
+		formData.append("kia", kiaInput.files[0]);
+	}
+	if (pengantarInput.files.length > 0) {
+		formData.append("pengantar", pengantarInput.files[0]);
+	}
+	if (kkInput.files.length > 0) {
+		formData.append("kk", kkInput.files[0]);
+	}
+	if (aktaInput.files.length > 0) {
+		formData.append("akta", aktaInput.files[0]);
+	}
+
+	$.ajax({
+		type: "POST",
+		url: base_url + _controller + "/insert_1",
+		data: formData,
+		dataType: "json",
+		processData: false,
+		contentType: false,
+		success: function (response) {
+			delete_1();
+			if (response.errors) {
+				for (var fieldName in response.errors) {
+					$("#error-" + fieldName).show();
+					$("#error-" + fieldName).html(response.errors[fieldName]);
+				}
+			} else if (response.success) {
+				$("#modalAjukan_1").modal("hide");
+				window.location.href = "history";
+			}
+		},
+		error: function (xhr, status, error) {
+			console.error("AJAX Error: " + error);
+			console.log("Response Text:", xhr.responseText);
+		},
+	});
 }
 
 function insert_2() {

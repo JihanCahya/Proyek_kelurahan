@@ -80,60 +80,60 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="kk">Foto copy KK</label>
+                                    <label for="kk1">Foto copy KK</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="kk" id="kk"
-                                                onchange="previewImage(event, 'imageKK')">
-                                            <label class="custom-file-label" for="kk">Pilih file</label>
+                                            <input type="file" class="custom-file-input" name="kk1" id="kk1"
+                                                onchange="previewImage(event, 'imageKK1')">
+                                            <label class="custom-file-label" for="kk1">Pilih file</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <small class="text-danger pl-1" id="error-kk"></small>
-                                    <div id="imageKK"></div>
+                                    <small class="text-danger pl-1" id="error-kk1"></small>
+                                    <div id="imageKK1"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="akta">Foto copy akta kelahiran</label>
+                                    <label for="akta1">Foto copy akta kelahiran</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="akta" id="akta"
-                                                onchange="previewImage(event, 'imageAKTA')">
-                                            <label class="custom-file-label" for="akta">Pilih file</label>
+                                            <input type="file" class="custom-file-input" name="akta1" id="akta1"
+                                                onchange="previewImage(event, 'imageAKTA1')">
+                                            <label class="custom-file-label" for="akta1">Pilih file</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <small class="text-danger pl-1" id="error-akta"></small>
-                                    <div id="imageAKTA"></div>
+                                    <small class="text-danger pl-1" id="error-akta1"></small>
+                                    <div id="imageAKTA1"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="kia">KIA asli/KTP lama</label>
+                                    <label for="kia1">KIA asli/KTP lama</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="kia" id="kia"
-                                                onchange="previewImage(event, 'imageKIA')">
-                                            <label class="custom-file-label" for="kia">Pilih file</label>
+                                            <input type="file" class="custom-file-input" name="kia1" id="kia1"
+                                                onchange="previewImage(event, 'imageKIA1')">
+                                            <label class="custom-file-label" for="kia1">Pilih file</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <small class="text-danger pl-1" id="error-kia"></small>
-                                    <div id="imageKIA"></div>
+                                    <small class="text-danger pl-1" id="error-kia1"></small>
+                                    <div id="imageKIA1"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pengantar">Surat Pengantar RT</label>
+                                    <label for="pengantar1">Surat Pengantar RT</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="pengantar" id="pengantar"
-                                                onchange="previewImage(event, 'imagePENGANTAR')">
-                                            <label class="custom-file-label" for="pengantar">Pilih file</label>
+                                            <input type="file" class="custom-file-input" name="pengantar1"
+                                                id="pengantar1" onchange="previewImage(event, 'imagePENGANTAR1')">
+                                            <label class="custom-file-label" for="pengantar1">Pilih file</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <small class="text-danger pl-1" id="error-pengantar"></small>
-                                    <div id="imagePENGANTAR"></div>
+                                    <small class="text-danger pl-1" id="error-pengantar1"></small>
+                                    <div id="imagePENGANTAR1"></div>
                                 </div>
                             </div>
                         </div>
