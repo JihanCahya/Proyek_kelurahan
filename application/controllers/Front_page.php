@@ -3,23 +3,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Front_page extends CI_Controller
 {
-    var $module_js = ['history'];
+    var $module_js = ['letter', 'history'];
     var $app_data = [];
 
     public function __construct()
     {
         parent::__construct();
         $this->_init();
-        if (!$this->is_logged_in()) {
-            $this->header();
-        } else {
-            $this->header_1();
-        }
     }
 
     public function is_logged_in()
     {
         return $this->session->userdata('logged_in_1') === TRUE;
+    }
+
+    public function check_auth()
+    {
+        if (!$this->is_logged_in()) {
+            $this->header();
+        } else {
+            $this->header_1();
+        }
     }
 
     private function _init()
@@ -41,31 +45,37 @@ class Front_page extends CI_Controller
     }
     public function index()
     {
+        $this->check_auth();
         $this->load->view('front_page/index', $this->app_data);
         $this->footer();
     }
     public function village_history()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/village_history');
         $this->footer();
     }
     public function sub_district_structure()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/sub_district_structure');
         $this->footer();
     }
     public function vission_mission()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/vission_mission');
         $this->footer();
     }
     public function location_contact()
     {
+        $this->check_auth();
         $this->load->view('front_page/district_profile/location_contact');
         $this->footer();
     }
     public function district_news()
     {
+        $this->check_auth();
         $where = array('is_deleted' => '0','status' => '1');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/district_news',$this->berita);
@@ -73,20 +83,21 @@ class Front_page extends CI_Controller
     }
     public function detail_news()
     {
-        $where = array('is_deleted' => '0','status' => '1');
+        $this->check_auth();        $where = array('is_deleted' => '0','status' => '1');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_news', $this->berita);
         $this->footer();
     }
     public function help_information()
     {
-        $where = array('is_deleted' => '0','status' => '2');
+        $this->check_auth();        $where = array('is_deleted' => '0','status' => '2');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
     }
     public function detail_information()
     {
+        $this->check_auth();
         $where = array('is_deleted' => '0','status' => '2');
         $this->berita['news'] = $this->data->find('news', $where)->result();
         $this->load->view('front_page/public_information/detail_information', $this->berita);
@@ -94,11 +105,57 @@ class Front_page extends CI_Controller
     }
     public function submission_letter()
     {
+        $this->check_auth();
         $this->load->view('front_page/administrative_services/submission_letter');
         $this->footer();
+        $this->load->view('js-custom', $this->app_data);
     }
+
+    public function insert_2()
+    {
+        $where = array('email' => $this->session->userdata('email'));
+        $data['user'] = $this->data->find('st_user', $where)->row_array();
+
+        if (empty($_FILES['ktp']['name'])) {
+            $response['errors']['ktp'] = "Foto harus diupload";
+        } else {
+            $insert = array(
+                'id_user' => $data['user']['id'],
+                'id_letter' => '2'
+            );
+            $inserted_id = $this->data->insert('administration', $insert);
+
+            if (!$inserted_id) {
+                $response['errors']['database'] = "Failed to insert data into the database.";
+            } else {
+                if (!empty($_FILES['ktp']['name'])) {
+                    $currentDateTime = date('Y-m-d_H-i-s');
+                    $config['upload_path'] = './assets/image/administration/requirement/';
+                    $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                    $config['max_size'] = 2048;
+                    $config['file_name'] = 'requirement_' . $currentDateTime;
+                    $this->load->library('upload', $config);
+
+                    if ($this->upload->do_upload('ktp')) {
+                        $upload_data = $this->upload->data();
+                        $file_name = $upload_data['file_name'];
+
+                        $this->data->insert('administration_has_requirements', array('id_administration' => $inserted_id, 'ktp' => $file_name));
+                    } else {
+                        $response['errors']['ktp'] = $this->upload->display_errors();
+                    }
+                } else {
+                    $response['errors']['ktp'] = "Foto harus diupload";
+                }
+                $response['success'] = "Data successfully inserted!";
+            }
+        }
+        echo json_encode($response);
+    }
+
     public function history()
     {
+        $this->check_auth();
         $this->load->view('front_page/administrative_services/history');
         $this->footer();
         $this->load->view('js-custom', $this->app_data);
@@ -125,30 +182,8 @@ class Front_page extends CI_Controller
 
     public function profile()
     {
+        $this->check_auth();
         $this->load->view('front_page/profile');
         $this->footer();
-    }
-    public function letter_1()
-    {
-        $this->load->view('front_page/administrative_services/letter_1');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
-    }
-    public function letter_2()
-    {
-        $this->load->view('front_page/administrative_services/letter_2');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
-    }
-    public function letter_3()
-    {
-        $this->load->view('front_page/administrative_services/letter_3');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
-    }
-
-    public function insert_1()
-    {
-
     }
 }

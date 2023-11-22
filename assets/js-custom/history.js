@@ -1,5 +1,4 @@
 get_data();
-
 function get_data() {
 	// delete_error();
 	$.ajax({

@@ -103,6 +103,9 @@ class Manage_news extends CI_Controller
             if (empty($_FILES['image']['name'])) {
                 $response['errors']['image'] = "Foto profil harus diupload";
             }
+            if (empty($this->input->post('jenis'))) {
+                $response['errors']['jenis'] = "Jenis berita harus dipilih";
+            }
         } else {
             $where = array('email' => $this->session->userdata('email'));
             $data['user'] = $this->data->find('st_user', $where)->row_array();
@@ -110,14 +113,18 @@ class Manage_news extends CI_Controller
             $judul = $this->input->post('judul');
             $sub = $this->input->post('sub');
             $description = $this->input->post('description');
+            $jenis = $this->input->post('jenis');
 
             if (empty($_FILES['image']['name'])) {
                 $response['errors']['image'] = "Foto profil harus diupload";
+            } else if (empty($this->input->post('jenis'))) {
+                $response['errors']['jenis'] = "Jenis berita harus dipilih";
             } else {
                 $data = array(
                     'title' => $judul,
                     'sub_title' => $sub,
                     'description' => $description,
+                    'status' => $jenis,
                     'created_by' => $data['user']['id'],
                 );
 
@@ -138,21 +145,21 @@ class Manage_news extends CI_Controller
                         $uploaded_data = $this->upload->data();
                         $data['image'] = $uploaded_data['file_name'];
                         $this->data->insert('news', $data);
+                        $response['success'] = "<script>$(document).ready(function () {
+                            var Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 2000,
+                              });
+    
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Anda telah melakukan aksi tambah data Data berhasil dimasukkan'
+                              })
+                          });</script>";
                     }
                 }
-                $response['success'] = "<script>$(document).ready(function () {
-                        var Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 2000,
-                          });
-
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Anda telah melakukan aksi tambah data Data berhasil dimasukkan'
-                          })
-                      });</script>";
             }
         }
         echo json_encode($response);
@@ -169,6 +176,9 @@ class Manage_news extends CI_Controller
             if (empty($_FILES['image']['name'])) {
                 $response['errors']['image'] = "Foto profil harus diupload";
             }
+            if (empty($this->input->post('jenis'))) {
+                $response['errors']['jenis'] = "Jenis berita harus dipilih";
+            }
         } else {
             $where = array('email' => $this->session->userdata('email'));
             $data['user'] = $this->data->find('st_user', $where)->row_array();
@@ -177,12 +187,15 @@ class Manage_news extends CI_Controller
             $judul = $this->input->post('judul');
             $sub = $this->input->post('sub');
             $description = $this->input->post('description');
+            $jenis = $this->input->post('jenis');
+
             $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
 
             $data = array(
                 'title' => $judul,
                 'sub_title' => $sub,
                 'description' => $description,
+                'status' => $jenis,
                 'updated_date' => $timestamp,
                 'updated_by' => $data['user']['id'],
             );
@@ -190,29 +203,33 @@ class Manage_news extends CI_Controller
             $where = array('id' => $id);
             $updated = $this->data->update('news', $where, $data);
 
-            if (!$updated) {
-                $response['errors']['database'] = "Failed to update data in the database.";
+            if (empty($this->input->post('jenis'))) {
+                $response['errors']['jenis'] = "Jenis berita harus dipilih";
             } else {
-                if (!empty($_FILES['image']['name'])) {
-                    $currentDateTime = date('Y-m-d_H-i-s');
-                    $config['upload_path'] = './assets/image/news/';
-                    $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                    $config['max_size'] = 2048;
-                    $config['file_name'] = "News -" . $currentDateTime;
-                    $this->load->library('upload', $config);
 
-                    if ($this->upload->do_upload('image')) {
-                        $upload_data = $this->upload->data();
-                        $file_name = $upload_data['file_name'];
+                if (!$updated) {
+                    $response['errors']['database'] = "Failed to update data in the database.";
+                } else {
+                    if (!empty($_FILES['image']['name'])) {
+                        $currentDateTime = date('Y-m-d_H-i-s');
+                        $config['upload_path'] = './assets/image/news/';
+                        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                        $config['max_size'] = 2048;
+                        $config['file_name'] = "News -" . $currentDateTime;
+                        $this->load->library('upload', $config);
 
-                        $data = array('image' => $file_name);
-                        $where = array('id' => $id);
-                        $this->data->update('news', $where, $data);
-                    } else {
-                        $response['errors']['image'] = strip_tags($this->upload->display_errors());
+                        if ($this->upload->do_upload('image')) {
+                            $upload_data = $this->upload->data();
+                            $file_name = $upload_data['file_name'];
+
+                            $data = array('image' => $file_name);
+                            $where = array('id' => $id);
+                            $this->data->update('news', $where, $data);
+                        } else {
+                            $response['errors']['image'] = strip_tags($this->upload->display_errors());
+                        }
                     }
-                }
-                $response['success'] = "<script>$(document).ready(function () {
+                    $response['success'] = "<script>$(document).ready(function () {
                         var Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -225,6 +242,7 @@ class Manage_news extends CI_Controller
                             title: 'Anda telah melakukan aksi edit data Data berhasil diedit'
                           })
                       });</script>";
+                }
             }
         }
         echo json_encode($response);

@@ -25,22 +25,13 @@ function delete_error() {
 	$("#error-pengantar").hide();
 }
 
-function insert_1() {
-	var formData = new FormData();
-
-	var kkInput = $("[name='kk']")[0];
-	var aktaInput = $("[name='akta']")[0];
-	var kiaInput = $("[name='kia']")[0];
+function insert_2() {
+	var ktpInput = $("[name='ktp']")[0];
 	var pengantarInput = $("[name='pengantar']")[0];
 
-	if (kkInput.files.length > 0) {
-		formData.append("kk", kkInput.files[0]);
-	}
-	if (aktaInput.files.length > 0) {
-		formData.append("akta", aktaInput.files[0]);
-	}
-	if (kiaInput.files.length > 0) {
-		formData.append("kia", kiaInput.files[0]);
+	var formData = new FormData();
+	if (ktpInput.files.length > 0) {
+		formData.append("ktp", ktpInput.files[0]);
 	}
 	if (pengantarInput.files.length > 0) {
 		formData.append("pengantar", pengantarInput.files[0]);
@@ -48,13 +39,12 @@ function insert_1() {
 
 	$.ajax({
 		type: "POST",
-		url: base_url + _controller + "/insert_1",
+		url: base_url + _controller + "/insert_2",
 		data: formData,
 		dataType: "json",
 		processData: false,
 		contentType: false,
 		success: function (response) {
-			console.log(response);
 			delete_error();
 			if (response.errors) {
 				for (var fieldName in response.errors) {
@@ -62,12 +52,13 @@ function insert_1() {
 					$("#error-" + fieldName).html(response.errors[fieldName]);
 				}
 			} else if (response.success) {
-				console.log(response.success);
+				$("#modalAjukan").modal("hide");
+				get_data();
 			}
 		},
 		error: function (xhr, status, error) {
 			console.error("AJAX Error: " + error);
-			console.log(xhr.responseText);
+			console.log("Response Text:", xhr.responseText);
 		},
 	});
 }
