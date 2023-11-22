@@ -88,8 +88,21 @@ class Front_page extends CI_Controller
     }
     public function sub_district_structure()
     {
+        // query perangkat kelurahan home
+        $query_perangkat = [
+            'select' => 'a.name, b.name_jabatan, a.image',
+            'from' => 'employee a',
+            'join' => [
+                'jabatan b, b.id_jabatan = a.id_bridge'
+            ],
+            'where' => [
+                'a.is_deleted' => '0'
+            ]
+        ];
+        $this->app_data['perangkat'] = $this->data->get($query_perangkat)->result();
+        // end query perangkat kelurahan home
         $this->check_auth();
-        $this->load->view('front_page/district_profile/sub_district_structure');
+        $this->load->view('front_page\district_profile\sub_district_stucture');
         $this->footer();
     }
     public function vission_mission()
