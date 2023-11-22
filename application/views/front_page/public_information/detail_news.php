@@ -13,7 +13,7 @@
                     <!-- Trending Tittle -->
                     <div class="about-right mb-90">
                         <div class="about-img">
-                            <img src="<?= base_url('assets/image/news/') . $ne->image ?>" alt="">
+                            <img src="<?= base_url('assets/image/news/') . $ne->image ?>" class="card-img-top" alt="Gambar Berita">
                         </div>
                         <div class="section-tittle mb-30 pt-30">
                             <h3><?= $ne->sub_title ?></h3>
