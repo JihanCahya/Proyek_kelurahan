@@ -64,7 +64,6 @@ class Manage_validation extends CI_Controller
                 'a.email' => $this->session->userdata('email')
             ]
         ];
-        $where = array('is_deleted' => '0');
         $this->app_data['select'] = $this->data->get_all('administration')->result();
         $this->app_data['get_menu'] = $this->data->get($query_menu)->result();
         $this->app_data['get_dropdown'] = $this->data->get($query_dropdown)->result();
@@ -80,7 +79,7 @@ class Manage_validation extends CI_Controller
     public function get_data()
     {
         $query = [
-            'select' => 'a.id, a.id_administration, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter, a.keterangan',
+            'select' => 'b.id , a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
             'from' => 'administration_has_requirements a',
             'join' => [
                 'administration b, b.id = a.id_administration',
@@ -98,7 +97,7 @@ class Manage_validation extends CI_Controller
     {
         $id = $this->input->post('id');
         $query = [
-            'select' => 'a.id, a.id_administration, a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
+            'select' => 'b.id , a.kk, a.akta, a.ktp, a.kia, a.pengantar_rt, a.ktp_asli, a.foto, a.dokumen_pendukung,a.uploaded_date, b.submit_date,c.name, b.status, d.name AS name_letter,a.keterangan',
             'from' => 'administration_has_requirements a',
             'join' => [
                 'administration b, b.id = a.id_administration',
@@ -107,7 +106,7 @@ class Manage_validation extends CI_Controller
 
             ],
             'where' => [
-                'a.id' => $id,
+                'b.id' => $id,
             ]
         ];
         $result = $this->data->get($query)->result();
@@ -134,7 +133,7 @@ class Manage_validation extends CI_Controller
             } else {
                 $keterangan = $this->input->post('keterangan');
                 $this->data->update('administration_has_requirements', array('id_administration' => $id), array('keterangan' => $keterangan));
-                $response['success'] = "Data successfully inserted!";
+                $response['success'] = "Data successfully updated!";
             }
         }
         echo json_encode($response);
@@ -150,7 +149,7 @@ class Manage_validation extends CI_Controller
         $where = array('id' => $id);
         $this->data->update('administration', $where, $data);
 
-        $response['success'] = "Data successfully inserted!";
+        $response['success'] = "Data successfully updated!";
         echo json_encode($response);
     }
 }
