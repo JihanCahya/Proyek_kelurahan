@@ -109,15 +109,6 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="ktpAsli" class="col-lg-2 col-form-label">Foto Ktp Asli</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-ktpAsli"></small>
-                                    <div id="imagePreviewKtpAsli"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
                                 <label for="akta" class="col-lg-2 col-form-label">Foto Akta</label>
                                 <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-akta"></small>
@@ -131,24 +122,6 @@
                                 <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-pengantar"></small>
                                     <div id="imagePreviewPengantarRt"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="foto" class="col-lg-2 col-form-label">Foto Pengaju</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-foto"></small>
-                                    <div id="imagePreviewFoto"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="dokumen" class="col-lg-2 col-form-label">Foto Dokumen Pendukung</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-dokumen"></small>
-                                    <div id="imagePreviewDokDukung"></div>
                                 </div>
                             </div>
                         </div>
@@ -329,15 +302,6 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="ktpAsli" class="col-lg-2 col-form-label">Foto Ktp Asli</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-ktpAsli"></small>
-                                    <div id="imagePreviewKtpAsli1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
                                 <label for="akta" class="col-lg-2 col-form-label">Foto Akta</label>
                                 <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-akta"></small>
@@ -351,24 +315,6 @@
                                 <div class="col-lg-4 offset-2">
                                     <small class="text-danger pl-1" id="error-pengantar"></small>
                                     <div id="imagePreviewPengantarRt1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="foto" class="col-lg-2 col-form-label">Foto Pengaju</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-foto"></small>
-                                    <div id="imagePreviewFoto1"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="dokumen" class="col-lg-2 col-form-label">Foto Dokumen Pendukung</label>
-                                <div class="col-lg-4 offset-2">
-                                    <small class="text-danger pl-1" id="error-dokumen"></small>
-                                    <div id="imagePreviewDokDukung1"></div>
                                 </div>
                             </div>
                         </div>

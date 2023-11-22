@@ -70,7 +70,7 @@ class Manage_struktur extends CI_Controller
         $this->app_data['user'] = $this->data->get($user)->row_array();
 
         $where = array('is_deleted' => '0');
-        $this->app_data['select'] = $this->data->find('bridge', $where)->result();
+        $this->app_data['select'] = $this->data->find('jabatan', $where)->result();
 
         $this->load->view('template-admin/start');
         $this->load->view('template-admin/header', $this->app_data);
@@ -83,10 +83,10 @@ class Manage_struktur extends CI_Controller
     public function get_data()
     {
         $query = [
-            'select' => 'a.id, a.name, a.image, a.address, a.NIP, b.name_bridge',
+            'select' => 'a.id, a.name, a.image, a.address, a.NIP, b.name_jabatan',
             'from' => 'employee a',
             'join' => [
-                'bridge b, b.id_bridge = a.id_bridge'
+                'jabatan b, b.id_jabatan = a.id_bridge'
             ],
             'where' => [
                 'a.is_deleted' => '0'
@@ -96,13 +96,13 @@ class Manage_struktur extends CI_Controller
         echo json_encode($result);
     }
 
-    public function get_data_bridge()
+    public function get_data_jabatan()
     {
         if ($this->input->get('searchTerm', TRUE)) {
             $input = $this->input->get('searchTerm', TRUE);
             $query = [
                 'select' => 'id, name',
-                'from' => 'bridge',
+                'from' => 'jabatan',
                 'like' => [
                     'name' => "$input, both"
                 ],
@@ -111,7 +111,7 @@ class Manage_struktur extends CI_Controller
         } else {
             $query = [
                 'select' => 'id, name',
-                'from' => 'bridge',
+                'from' => 'jabatan',
             ];
             $data = $this->data->get($query)->result();
         }
@@ -123,10 +123,10 @@ class Manage_struktur extends CI_Controller
     {
         $id = $this->input->post('id');
         $query = [
-            'select' => 'a.id, a.name,a.id_bridge, a.image, a.address, a.NIP, b.id_bridge , b.name_bridge',
+            'select' => 'a.id, a.name,a.id_jabatan, a.image, a.address, a.NIP, b.id_jabatan , b.name_jabatan',
             'from' => 'employee a',
             'join' => [
-                'bridge b, b.id_bridge = a.id_bridge'
+                'jabatan b, b.id_jabatan = a.id_bridge'
             ],
             'where' => [
                 'a.is_deleted' => '0',
@@ -140,7 +140,7 @@ class Manage_struktur extends CI_Controller
 
     public function insert_data()
     {
-        $this->form_validation->set_rules('bridge', 'Bridge', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'required|trim');
         $this->form_validation->set_rules('name', 'Nama', 'required|trim');
         $this->form_validation->set_rules('NIP', 'NIP', 'required|trim');
         $this->form_validation->set_rules('address', 'Address', 'required|trim');
@@ -154,13 +154,13 @@ class Manage_struktur extends CI_Controller
             $where = array('email' => $this->session->userdata('email'));
             $data['user'] = $this->data->find('st_user', $where)->row_array();
 
-            $bridge = $this->input->post('bridge');
+            $jabatan = $this->input->post('jabatan');
             $name = $this->input->post('name');
             $address = $this->input->post('address');
             $nip = $this->input->post('NIP');
 
             $data = array(
-                'id_bridge' => $bridge,
+                'id_bridge' => $jabatan,
                 'name' => $name,
                 'address' => $address,
                 'NIP' => $nip,
@@ -192,7 +192,7 @@ class Manage_struktur extends CI_Controller
 
     public function edit_data()
     {
-        $this->form_validation->set_rules('bridge', 'Bridge', 'required');
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'required');
         $this->form_validation->set_rules('name', 'Nama', 'required|trim');
         $this->form_validation->set_rules('NIP', 'NIP', 'required|trim');
         $this->form_validation->set_rules('address', 'Address', 'required|trim');
@@ -206,14 +206,14 @@ class Manage_struktur extends CI_Controller
             $where = array('email' => $this->session->userdata('email'));
             $data['user'] = $this->data->find('st_user', $where)->row_array();
             $id = $this->input->post('id');
-            $bridge = $this->input->post('bridge');
+            $jabatan = $this->input->post('jabatan');
             $name = $this->input->post('name');
             $address = $this->input->post('address');
             $nip = $this->input->post('NIP');
             $timestamp = $this->db->query("SELECT NOW() as timestamp")->row()->timestamp;
 
             $data = array(
-                'id_bridge' => $bridge,
+                'id_bridge' => $jabatan,
                 'name' => $name,
                 'address' => $address,
                 'NIP' => $nip,
