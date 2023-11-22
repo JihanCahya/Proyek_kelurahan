@@ -41,6 +41,13 @@ class Front_page extends CI_Controller
     {
         $where = array('id' => '1');
         $this->app_data['profile'] = $this->data->find('district_profile', $where)->result();
+
+        $session = array('email' => $this->session->userdata('email'));
+        $data['user'] = $this->data->find('st_user', $session)->row_array();
+
+        $kondisi = array('id' => $data['user']['id']);
+        $this->app_data['user'] = $this->data->find('st_user', $kondisi)->row_array();
+
         $this->load->view('front_page/header_1', $this->app_data);
     }
     public function footer()
