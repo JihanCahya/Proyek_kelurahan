@@ -7,7 +7,7 @@ $(function () {
 $(".akses").select2({
 	theme: "bootstrap4",
 });
-$(".bridge").select2({
+$(".jabatan").select2({
 	theme: "bootstrap4",
 });
 
@@ -48,7 +48,7 @@ function delete_form() {
 	const imagePreview = document.getElementById("imagePreview");
 	$("[name='id']").val("");
 	$("[name='name']").val("");
-	$("#bridge").val("").trigger("change");
+	$("#jabatan").val("").trigger("change");
 	$("[name='NIP']").val("");
 	$("[name='address']").val("");
 	$("#file-label").hide();
@@ -58,7 +58,7 @@ function delete_form() {
 
 function delete_error() {
 	$("#error-name").html("");
-	$("#error-bridge").html("");
+	$("#error-jabatan").html("");
 	$("#error-NIP").html("");
 	$("#error-image").html("");
 	$("#error-address").html("");
@@ -83,7 +83,7 @@ function get_data() {
 						},
 					},
 					{ data: "name" },
-					{ data: "name_bridge" },
+					{ data: "name_jabatan" },
 					{ data: "NIP" },
 					{
 						data: "image",
@@ -138,7 +138,7 @@ function submit(x) {
 				$("[name='name']").val(hasil[0].name);
 				$("[name='NIP']").val(hasil[0].NIP);
 				$("[name='address']").val(hasil[0].address);
-				$("#bridge").val(hasil[0].id_bridge).trigger("change");
+				$("#jabatan").val(hasil[0].id_jabatan).trigger("change");
 				var nama = hasil[0].image;
 				imagePreview.innerHTML = `<br><img src="${base_url}assets/image/employee/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
 			},
@@ -151,7 +151,7 @@ function submit(x) {
 function insert_data() {
 	var formData = new FormData();
 	formData.append("name", $("[name='name']").val());
-	formData.append("bridge", $("#bridge").val());
+	formData.append("jabatan", $("#jabatan").val());
 	formData.append("NIP", $("[name='NIP']").val());
 	formData.append("address", $("[name='address']").val());
 
@@ -191,7 +191,7 @@ function edit_data() {
 	formData.append("name", $("[name='name']").val());
 	formData.append("NIP", $("[name='NIP']").val());
 	formData.append("address", $("[name='address']").val());
-	formData.append("bridge", $("#bridge").val());
+	formData.append("jabatan", $("#jabatan").val());
 
 	var imageInput = $("[name='image']")[0];
 	if (imageInput.files.length > 0) {

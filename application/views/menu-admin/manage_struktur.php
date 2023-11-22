@@ -29,8 +29,8 @@
                             <select id="filter" name="filter[]" class="form-control akses" style="width: 100%;">
                                 <option value="">Semua Jabatan</option>
                                 <?php foreach ($select as $row): ?>
-                                    <option value="<?php echo $row->name_bridge; ?>">
-                                        <?php echo $row->name_bridge; ?>
+                                    <option value="<?php echo $row->name_jabatan; ?>">
+                                        <?php echo $row->name_jabatan; ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -95,17 +95,17 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <label for="bridge" class="col-lg-2 col-form-label">Jabatan</label>
+                                <label for="jabatan" class="col-lg-2 col-form-label">Jabatan</label>
                                 <div class="col-lg-10">
-                                    <select id="bridge" name="bridge[]" class="form-control bridge"
+                                    <select id="jabatan" name="jabatan[]" class="form-control jabatan"
                                         style="width: 100%;">
                                         <?php foreach ($select as $row): ?>
-                                            <option value="<?php echo $row->id_bridge; ?>">
-                                                <?php echo $row->name_bridge; ?>
+                                            <option value="<?php echo $row->id_jabatan; ?>">
+                                                <?php echo $row->name_jabatan; ?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
-                                    <small class="text-danger pl-3" id="error-bridge"></small>
+                                    <small class="text-danger pl-3" id="error-jabatan"></small>
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,7 @@ function previewImage(event) {
 		const reader = new FileReader();
 
 		reader.onload = function (e) {
-			imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+			imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 		};
 		$("#error-image").html("");
 
@@ -147,15 +147,15 @@ function submit(x) {
 			$("[name='letter']").val(hasil[0].name_letter);
 			$("[name='keterangan']").val(hasil[0].keterangan);
 			var namakk = hasil[0].kk;
-				imagePreviewKk.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakk}" alt="Preview Image" class="img-thumbnail" style="width: 200px; height: auto;">`;
+				imagePreviewKk.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakk}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namaktp = hasil[0].ktp;
-				imagePreviewKtp.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaktp}" alt="Preview Image" class="img-thumbnail" style="width: 200px; height: auto;">`;
+				imagePreviewKtp.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaktp}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namakia = hasil[0].kia;
-				imagePreviewKia.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakia}" alt="Preview Image" class="img-thumbnail" style="width: 200px; height: auto;">`;
+				imagePreviewKia.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakia}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namaakta = hasil[0].akta;
-				imagePreviewAkta.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaakta}" alt="Preview Image" class="img-thumbnail" style="width: 200px; height: auto;">`;
+				imagePreviewAkta.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaakta}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var nama = hasil[0].pengantar_rt;
-				imagePreviewPengantarRt.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 200px; height: auto;">`;
+				imagePreviewPengantarRt.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 
 			var statusValue = hasil[0].status;
 				if (statusValue === "1") {
@@ -199,15 +199,15 @@ function detail(x) {
 			$("[name='letter']").val(hasil[0].name_letter);
 			$("[name='keterangan']").val(hasil[0].keterangan);
 			var namakk = hasil[0].kk;
-				imagePreviewKk.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakk}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewKk.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakk}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namaktp = hasil[0].ktp;
-				imagePreviewKtp.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaktp}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewKtp.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaktp}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namakia = hasil[0].kia;
-				imagePreviewKia.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakia}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewKia.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakia}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namaakta = hasil[0].akta;
-				imagePreviewAkta.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaakta}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewAkta.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaakta}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var nama = hasil[0].pengantar_rt;
-				imagePreviewPengantarRt.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewPengantarRt.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			
 			var statusValue = hasil[0].status;
 				if (statusValue === "1") {
@@ -271,7 +271,7 @@ function arsip(x) {
 					$("#belum1").removeAttr("checked");
 				}
 			var nama = hasil[0].file_name;
-				imagePreviewArsip.innerHTML = `<br><img src="${base_url}assets/image/administration/letter/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewArsip.innerHTML = `<br><img src="${base_url}assets/image/administration/letter/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			
 			},
 	});
@@ -292,15 +292,15 @@ function syarat(x) {
 			$("[name='letter']").val(hasil[0].name_letter);
 			$("[name='keterangan']").val(hasil[0].keterangan);
 			var namakk = hasil[0].kk;
-				imagePreviewKk1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakk}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewKk1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakk}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namaktp = hasil[0].ktp;
-				imagePreviewKtp1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaktp}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewKtp1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaktp}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namakia = hasil[0].kia;
-				imagePreviewKia1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakia}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewKia1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namakia}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var namaakta = hasil[0].akta;
-				imagePreviewAkta1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaakta}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewAkta1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${namaakta}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			var nama = hasil[0].pengantar_rt;
-				imagePreviewPengantarRt1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+				imagePreviewPengantarRt1.innerHTML = `<br><img src="${base_url}assets/image/administration/requirement/${nama}" alt="Preview Image" class="img-thumbnail" style="width: 400px; height: 400;">`;
 			},
 	});
 	delete_form();
