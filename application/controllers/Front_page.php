@@ -66,24 +66,30 @@ class Front_page extends CI_Controller
     }
     public function district_news()
     {
-        $this->load->view('front_page/public_information/district_news');
+        $where = array('is_deleted' => '0','status' => '1');
+        $this->berita['news'] = $this->data->find('news', $where)->result();
+        $this->load->view('front_page/public_information/district_news',$this->berita);
         $this->footer();
     }
     public function detail_news()
     {
-
-        $this->load->view('front_page/public_information/detail_news');
+        $where = array('is_deleted' => '0','status' => '1');
+        $this->berita['news'] = $this->data->find('news', $where)->result();
+        $this->load->view('front_page/public_information/detail_news', $this->berita);
         $this->footer();
     }
     public function help_information()
     {
-
-        $this->load->view('front_page/public_information/help_information');
+        $where = array('is_deleted' => '0','status' => '2');
+        $this->berita['news'] = $this->data->find('news', $where)->result();
+        $this->load->view('front_page/public_information/help_information', $this->berita);
         $this->footer();
     }
     public function detail_information()
     {
-        $this->load->view('front_page/public_information/detail_information');
+        $where = array('is_deleted' => '0','status' => '2');
+        $this->berita['news'] = $this->data->find('news', $where)->result();
+        $this->load->view('front_page/public_information/detail_information', $this->berita);
         $this->footer();
     }
     public function submission_letter()
