@@ -36,12 +36,12 @@
         <div class="carousel-item active">
           <img src="<?= base_url('assets/image/carousel/') . $crsl->image ?>" class="d-block w-100" alt="Slide 1">
           <div class="carousel-caption d-none d-md-block">
-            <h5>
+            <h1>
               <?= $crsl->title ?>
-            </h5>
-            <p>
+            </h1>
+            <h4>
               <?= $crsl->sub_title ?>
-            </p>
+            </h4>
           </div>
         </div>
       <?php endforeach; ?>
