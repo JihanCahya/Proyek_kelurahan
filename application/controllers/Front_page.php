@@ -29,10 +29,14 @@ class Front_page extends CI_Controller
 
     public function header()
     {
+        $where = array('id' => '1');
+        $this->app_data['profile'] = $this->data->find('district_profile', $where)->result();
         $this->load->view('front_page/header', $this->app_data);
     }
     public function header_1()
     {
+        $where = array('id' => '1');
+        $this->app_data['profile'] = $this->data->find('district_profile', $where)->result();
         $this->load->view('front_page/header_1', $this->app_data);
     }
     public function footer()
@@ -41,6 +45,22 @@ class Front_page extends CI_Controller
     }
     public function index()
     {
+        //carousel menu
+        $where = array('is_deleted' => '0');
+        $this->app_data['carousel'] = $this->data->find('carousel_menu',$where)->result();
+
+        // query perangkat kelurahan home
+        $query_perangkat = [
+            'select' => 'a.name, b.name_jabatan, a.NIP',
+            'from' => 'employee a',
+            'join' => [
+                'jabatan b, b.id_jabatan = a.id_bridge'
+            ],
+            'where' => [
+                'a.is_deleted' => '0'
+            ]
+            ];
+            $this->app_data['perangkat'] = $this->data->get($query_perangkat)->result();
         $this->load->view('front_page/index', $this->app_data);
         $this->footer();
     }
