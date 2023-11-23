@@ -89,41 +89,7 @@
   <main id="main">
 
     <!-- Start Section Informasi Kelurahan -->
-    <section>
-      <div class="container">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="font-weight-bold" style="font-family:'Jost', sans-serif">INFORMASI PUBLIK</h3>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-6 d-flex justify-content-center">
-                <div class="card ms-1" style="width: 30rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 d-flex justify-content-center">
-                <div class="card" style="width: 30rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
     <!-- End Section Informasi Kelurahan -->
 
     <!-- ======= About Us Section ======= -->
