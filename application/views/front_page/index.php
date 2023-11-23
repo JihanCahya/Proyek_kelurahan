@@ -194,7 +194,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Struktur Kelurahan</h2>
+          <h2>Struktur Organisasi</h2>
           <h3>Kelurahan <span>Burengan</span></h3>
         </div>
 
