@@ -77,6 +77,19 @@ class Front_page extends CI_Controller
         $this->app_data['perangkat'] = $this->data->get($query_perangkat)->result();
         // end query perangkat kelurahan home
 
+        // query galerry
+        $query_gallery = [
+            'select' => 'a.title, a.description, a.image, b.name',
+            'from' => 'gallery_image a',
+            'join' => [
+                'gallery_category b, b.id = a.id_category'
+            ],
+            'where' => [
+                'a.is_deleted' => '0'
+            ]
+            ];
+        $this->app_data['galeri'] = $this->data->get($query_gallery)->result();
+
         $this->load->view('front_page/index', $this->app_data);
         $this->footer();
     }
@@ -106,7 +119,8 @@ class Front_page extends CI_Controller
         $this->footer();
     }
     public function vission_mission()
-    {
+    {   
+        
         $this->check_auth();
         $this->load->view('front_page/district_profile/vission_mission');
         $this->footer();

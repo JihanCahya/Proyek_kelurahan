@@ -88,43 +88,6 @@
   </section><!-- End Skills Section -->
   <main id="main">
 
-    <!-- Start Section Informasi Kelurahan -->
-    <section>
-      <div class="container">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="font-weight-bold" style="font-family:'Jost', sans-serif">INFORMASI PUBLIK</h3>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-6 d-flex justify-content-center">
-                <div class="card ms-1" style="width: 30rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 d-flex justify-content-center">
-                <div class="card" style="width: 30rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Section Informasi Kelurahan -->
 
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
@@ -220,6 +183,42 @@
       </div>
     </section>
     <!-- End Team Section -->
+            
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Galeri</h2>
+          <h3>Galeri <span>Kelurahan Burengan</span></h3>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center mb-4">
+            <ul id="portfolio-flters">
+              <?php foreach($galeri as $g):?>
+              <li data-filter=".filter-app"><?= $g->name?></li>
+              <?php endforeach?>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          <?php foreach($galeri as $gal):?>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="<?= base_url('assets/image/gallery/') . $gal->image?>" class="img-fluid" alt="Gambar">
+            <div class="portfolio-info">
+              <h4><?= $gal->title?></h4>
+              <p><?= $gal->description?></p>
+              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          <?php endforeach?>
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
