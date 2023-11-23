@@ -124,7 +124,7 @@ class Manage_struktur extends CI_Controller
     {
         $id = $this->input->post('id');
         $query = [
-            'select' => 'a.id, a.name,a.id_jabatan, a.image, a.address, a.NIP, b.id_jabatan , b.name_jabatan',
+            'select' => 'a.id, a.name, a.image, a.address, a.NIP, b.id_jabatan , b.name_jabatan',
             'from' => 'employee a',
             'join' => [
                 'jabatan b, b.id_jabatan = a.id_bridge'

@@ -243,7 +243,7 @@ class Front_page extends CI_Controller
 
                                             $insert = array(
                                                 'id_user' => $data['user']['id'],
-                                                'id_letter' => '2'
+                                                'id_letter' => '1'
                                             );
                                             $inserted_id = $this->data->insert('administration', $insert);
 
