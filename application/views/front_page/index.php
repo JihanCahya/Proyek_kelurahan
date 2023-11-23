@@ -202,9 +202,8 @@
                 <p>
                   <?= $gal->description ?>
                 </p>
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
+                <a href="<?= base_url('assets/image/gallery/') . $gal->image ?>" data-gallery="portfolioGallery"
                   class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
           <?php endforeach ?>
