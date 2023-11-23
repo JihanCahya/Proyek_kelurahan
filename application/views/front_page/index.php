@@ -168,9 +168,9 @@
       </div>
     </section>
     <!-- End Team Section -->
-            
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -181,25 +181,33 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center mb-4">
             <ul id="portfolio-flters">
-              <?php foreach($galeri as $g):?>
-              <li data-filter=".filter-app"><?= $g->name?></li>
-              <?php endforeach?>
+              <li data-filter="*" class="filter-active">All</li>
+              <?php foreach ($galeri as $g): ?>
+                <li data-filter=".<?= $g->name ?>">
+                  <?= $g->name ?>
+                </li>
+              <?php endforeach ?>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          <?php foreach($galeri as $gal):?>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="<?= base_url('assets/image/gallery/') . $gal->image?>" class="img-fluid" alt="Gambar">
-            <div class="portfolio-info">
-              <h4><?= $gal->title?></h4>
-              <p><?= $gal->description?></p>
-              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          <?php foreach ($galeri as $gal): ?>
+            <div class="col-lg-4 col-md-6 portfolio-item <?= $gal->name ?>">
+              <img src="<?= base_url('assets/image/gallery/') . $gal->image ?>" class="img-fluid" alt="Gambar">
+              <div class="portfolio-info">
+                <h4>
+                  <?= $gal->title ?>
+                </h4>
+                <p>
+                  <?= $gal->description ?>
+                </p>
+                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
+                  class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
             </div>
-          </div>
-          <?php endforeach?>
+          <?php endforeach ?>
         </div>
 
       </div>
