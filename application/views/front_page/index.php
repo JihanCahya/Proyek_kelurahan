@@ -194,27 +194,12 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Perangkat Kelurahan</h2>
-          <h3>Perangkat Kelurahan <span>Burengan</span></h3>
+          <h2>Struktur Kelurahan</h2>
+          <h3>Kelurahan <span>Burengan</span></h3>
         </div>
 
         <div class="row">
-          <?php foreach ($perangkat as $perangkat): ?>
-            <div class="col-lg-6" data-aos-delay="100">
-              <div class="member d-flex align-items-start">
-                <div class="pic"><img src="<?php echo base_url('assets/image/employee/') . $perangkat->image ?>"
-                    class="img-fluid" alt="Ini Foto"></div>
-                <div class="member-info">
-                  <h4>
-                    <?= $perangkat->name ?>
-                  </h4>
-                  <span>
-                    <?= $perangkat->name_jabatan ?>
-                  </span>
-                </div>
-              </div>
-            </div>
-          <?php endforeach ?>
+          <img src="<?= base_url('assets/image/struktur.jpg') ?>" class="img-thumbnail" alt="">
         </div>
 
       </div>
