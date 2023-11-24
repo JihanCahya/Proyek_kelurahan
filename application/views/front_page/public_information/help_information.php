@@ -1,3 +1,10 @@
+<style>
+  .equal-image {
+    width: 100%; /* Set the width to 100% */
+    height: 250px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the specified dimensions */
+}
+</style>
 <body>
   <div class="container mt-5">
     <h1 class="text-center mb-4">Informasi Bantuan</h1>
@@ -6,7 +13,7 @@
         <?php foreach ($news as $ne): ?>
           <div class="col-md-6">
             <div class="card">
-              <img src="<?= base_url('assets/image/news/') . $ne->image ?>" class="card-img-top" alt="Gambar Bantuan">
+              <img src="<?= base_url('assets/image/news/') . $ne->image ?>" class="card-img-top equal-image" alt="Gambar Bantuan">
               <div class="card-body">
                 <h5 class="card-title">
                   <?= $ne->title ?>
