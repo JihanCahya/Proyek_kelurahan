@@ -182,9 +182,9 @@
           <div class="col-lg-12 d-flex justify-content-center mb-4">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <?php foreach ($galeri as $g): ?>
-                <li data-filter=".<?= $g->name ?>">
-                  <?= $g->name ?>
+              <?php foreach ($kategori as $ktg): ?>
+                <li data-filter=".<?= $ktg->name ?>">
+                  <?= $ktg->name ?>
                 </li>
               <?php endforeach ?>
             </ul>

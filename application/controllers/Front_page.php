@@ -60,8 +60,7 @@ class Front_page extends CI_Controller
         //carousel menu
         $where = array('is_deleted' => '0');
         $this->app_data['carousel'] = $this->data->find('carousel_menu', $where)->result();
-        $where = array('updated_by' => '1');
-        $this->app_data['location'] = $this->data->find('district_profile', $where)->result();
+        $this->app_data['location'] = $this->data->get_all('district_profile')->result();
 
         // query perangkat kelurahan home
         $query_perangkat = [
@@ -87,7 +86,8 @@ class Front_page extends CI_Controller
             'where' => [
                 'a.is_deleted' => '0'
             ]
-            ];
+        ];
+        $this->app_data['kategori'] = $this->data->find('gallery_category', $where)->result();
         $this->app_data['galeri'] = $this->data->get($query_gallery)->result();
 
         $this->load->view('front_page/index', $this->app_data);
@@ -95,6 +95,11 @@ class Front_page extends CI_Controller
     }
     public function village_history()
     {
+        $query = [
+            'select' => 'sejarah',
+            'from' => 'district_profile',
+        ];
+        $this->app_data['sejarah'] = $this->data->get($query)->result();
         $this->check_auth();
         $this->load->view('front_page/district_profile/village_history');
         $this->footer();
@@ -119,8 +124,8 @@ class Front_page extends CI_Controller
         $this->footer();
     }
     public function vission_mission()
-    {   
-        
+    {
+
         $this->check_auth();
         $this->load->view('front_page/district_profile/vission_mission');
         $this->footer();

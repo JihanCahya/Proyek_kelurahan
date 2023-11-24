@@ -13,9 +13,11 @@
       </div>
       <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
         data-aos-delay="100">
-        <p class="fst-italic">
-          Burengan adalah sebuah desa di wilayah Kecamatan Pesantren, Kota Kediri, Provinsi Jawa Timur.
-        </p>
+        <?php foreach ($sejarah as $sj): ?>
+          <p class="fst-italic">
+            <?= $sj->sejarah ?>
+          </p>
+        <?php endforeach ?>
       </div>
     </div>
 
