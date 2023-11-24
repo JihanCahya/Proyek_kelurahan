@@ -171,7 +171,7 @@ class Manage_struktur extends CI_Controller
                 $currentDateTime = date('Y-m-d_H-i-s');
                 $config['upload_path'] = './assets/image/employee/';
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                $config['file_name'] = "Employee -" . $currentDateTime;
+                $config['file_name'] = "Employee-" . $currentDateTime;
                 $config['max_size'] = 2048;
 
                 $this->load->library('upload', $config);
@@ -182,7 +182,30 @@ class Manage_struktur extends CI_Controller
                     return;
                 } else {
                     $uploaded_data = $this->upload->data();
-                    $data['image'] = $uploaded_data['file_name'];
+
+                    $targetWidth = 300;
+                    $targetHeight = 400;
+
+                    $sourcePath = $uploaded_data['full_path'];
+                    $imageInfo = getimagesize($sourcePath);
+                    $sourceWidth = $imageInfo[0];
+                    $sourceHeight = $imageInfo[1];
+
+                    if (($sourceWidth / $sourceHeight) != ($targetWidth / $targetHeight)) {
+                        $config['image_library'] = 'gd2';
+                        $config['source_image'] = $sourcePath;
+                        $config['maintain_ratio'] = FALSE;
+                        $config['width'] = $targetWidth;
+                        $config['height'] = $targetHeight;
+
+                        $this->load->library('image_lib', $config);
+                        $this->image_lib->resize();
+
+                        $data['image'] = $config['file_name'] . $uploaded_data['file_ext'];
+
+                    } else {
+                        $data['image'] = $uploaded_data['file_name'];
+                    }
                     $this->data->insert('employee', $data);
                 }
             }
@@ -233,12 +256,34 @@ class Manage_struktur extends CI_Controller
                     $config['upload_path'] = './assets/image/employee/';
                     $config['allowed_types'] = 'gif|jpg|jpeg|png';
                     $config['max_size'] = 2048;
-                    $config['file_name'] = "Employee -" . $currentDateTime;
+                    $config['file_name'] = "Employee-" . $currentDateTime;
                     $this->load->library('upload', $config);
 
                     if ($this->upload->do_upload('image')) {
                         $upload_data = $this->upload->data();
-                        $file_name = $upload_data['file_name'];
+
+                        $targetWidth = 300;
+                        $targetHeight = 400;
+
+                        $sourcePath = $upload_data['full_path'];
+                        $imageInfo = getimagesize($sourcePath);
+                        $sourceWidth = $imageInfo[0];
+                        $sourceHeight = $imageInfo[1];
+
+                        if (($sourceWidth / $sourceHeight) != ($targetWidth / $targetHeight)) {
+                            $config['image_library'] = 'gd2';
+                            $config['source_image'] = $sourcePath;
+                            $config['maintain_ratio'] = FALSE;
+                            $config['width'] = $targetWidth;
+                            $config['height'] = $targetHeight;
+
+                            $this->load->library('image_lib', $config);
+                            $this->image_lib->resize();
+
+                            $file_name = $config['file_name'] . $upload_data['file_ext'];
+                        } else {
+                            $file_name = $upload_data['file_name'];
+                        }
 
                         $data = array('image' => $file_name);
                         $where = array('id' => $id);

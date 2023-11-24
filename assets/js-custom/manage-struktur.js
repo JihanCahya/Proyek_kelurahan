@@ -90,11 +90,7 @@ function get_data() {
 						className: "text-center",
 						render: function (data, type, row) {
 							var imageUrl = base_url + "assets/image/employee/" + data;
-							return (
-								'<img src="' +
-								imageUrl +
-								'" style="max-width: 100px; max-height: 400px;">'
-							);
+							return '<img src="' + imageUrl + '"">';
 						},
 					},
 					{ data: "address" },
