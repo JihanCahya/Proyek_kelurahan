@@ -76,7 +76,7 @@ class Front_page extends CI_Controller
         ];
         $this->app_data['perangkat'] = $this->data->get($query_perangkat)->result();
         // end query perangkat kelurahan home
-
+        
         // query galerry
         $query_gallery = [
             'select' => 'a.title, a.description, a.image, b.name',
