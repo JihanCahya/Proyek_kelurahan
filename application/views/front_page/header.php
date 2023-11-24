@@ -28,6 +28,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="<?= base_url() ?>assets/template-user/assets-user/css/style.css" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    #hero{
+      
+    }
+  </style>
 </head>
 
 <body>
@@ -38,14 +44,14 @@
         <div class="row gx-0 d-none d-lg-flex">
           <div class="col-lg-7 px-5 text-start">
             <div class="contact-info h-100 d-inline-flex align-items-center py-3 me-3">
-              <i class="bi bi-envelope d-flex align-items-center"><a href="tel:<?= $profil->email ?>"><?= $profil->email ?></a></i>
+              <i class="bi bi-envelope d-flex align-items-center"><a target="_blank" href="tel:<?= $profil->email ?>"><?= $profil->email ?></a></i>
               <i class="bi bi-phone d-flex align-items-center ms-4"><span><?= $profil->phone_number ?></span></i>
             </div>
           </div>
           <div class="col-lg-5 px-5 text-end">
             <div class="social-links h-100 d-inline-flex align-items-center py-3 me-2">
-              <a href="https://www.facebook.com/kelburengan/" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/kelurahanburengan/" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.facebook.com/kelburengan/" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/kelurahanburengan/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
             </div>
           </div>
         </div>

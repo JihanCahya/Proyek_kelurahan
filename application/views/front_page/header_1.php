@@ -52,7 +52,7 @@
                 <div class="row gx-0 d-none d-lg-flex">
                     <div class="col-lg-7 px-5 text-start">
                         <div class="contact-info h-100 d-inline-flex align-items-center py-3 me-3">
-                            <i class="bi bi-envelope d-flex align-items-center"><a href="tel:<?= $profil->email ?>">
+                            <i class="bi bi-envelope d-flex align-items-center"><a href="tel:<?= $profil->email ?>" target="_blank">
                                     <?= $profil->email ?>
                                 </a></i>
                             <i class="bi bi-phone d-flex align-items-center ms-4"><span>
@@ -62,8 +62,8 @@
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="social-links h-100 d-inline-flex align-items-center py-3 me-2">
-                            <a href="https://www.facebook.com/kelburengan/" class="facebook"><i class="bi bi-facebook"></i></a>
-                            <a href="https://www.instagram.com/kelurahanburengan/" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.facebook.com/kelburengan/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/kelurahanburengan/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 </div>

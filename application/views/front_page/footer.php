@@ -29,11 +29,11 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Jumpai Kami Di</h4>
             <p class="mb-2">
-              <a href="https://www.facebook.com/kelburengan/" class="facebook"><i class="bi bi-facebook"></i>@kelurahanburengan</a>
+              <a href="https://www.facebook.com/kelburengan/" class="facebook" target="_blank"><i class="bi bi-facebook"></i>@kelurahanburengan</a>
             </p>
 
             <p class="mb-2">
-              <a href="https://www.instagram.com/kelurahanburengan/" class="instagram"><i class="bi bi-instagram"></i>@kelburengan</a>
+              <a href="https://www.instagram.com/kelurahanburengan/" class="instagram" target="_blank"><i class="bi bi-instagram"></i>@kelburengan</a>
             </p>
           </div>
         </div>
