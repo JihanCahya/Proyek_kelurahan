@@ -130,11 +130,32 @@ class Manage_carousel extends CI_Controller
 
                     if (!$this->upload->do_upload('image')) {
                         $response['errors']['image'] = strip_tags($this->upload->display_errors());
-                        echo json_encode($response);
-                        return;
                     } else {
                         $uploaded_data = $this->upload->data();
-                        $data['image'] = $uploaded_data['file_name'];
+
+                        $targetWidth = 1920;
+                        $targetHeight = 930;
+
+                        $sourcePath = $uploaded_data['full_path'];
+                        $imageInfo = getimagesize($sourcePath);
+                        $sourceWidth = $imageInfo[0];
+                        $sourceHeight = $imageInfo[1];
+
+                        if (($sourceWidth / $sourceHeight) != ($targetWidth / $targetHeight)) {
+                            $config['image_library'] = 'gd2';
+                            $config['source_image'] = $sourcePath;
+                            $config['maintain_ratio'] = FALSE;
+                            $config['width'] = $targetWidth;
+                            $config['height'] = $targetHeight;
+
+                            $this->load->library('image_lib', $config);
+                            $this->image_lib->resize();
+
+                            $data['image'] = $config['file_name'] . $uploaded_data['file_ext'];
+
+                        } else {
+                            $data['image'] = $uploaded_data['file_name'];
+                        }
                         $this->data->insert('carousel_menu', $data);
                     }
                 }
@@ -198,7 +219,29 @@ class Manage_carousel extends CI_Controller
 
                     if ($this->upload->do_upload('image')) {
                         $upload_data = $this->upload->data();
-                        $file_name = $upload_data['file_name'];
+
+                        $targetWidth = 1920;
+                        $targetHeight = 930;
+
+                        $sourcePath = $upload_data['full_path'];
+                        $imageInfo = getimagesize($sourcePath);
+                        $sourceWidth = $imageInfo[0];
+                        $sourceHeight = $imageInfo[1];
+
+                        if (($sourceWidth / $sourceHeight) != ($targetWidth / $targetHeight)) {
+                            $config['image_library'] = 'gd2';
+                            $config['source_image'] = $sourcePath;
+                            $config['maintain_ratio'] = FALSE;
+                            $config['width'] = $targetWidth;
+                            $config['height'] = $targetHeight;
+
+                            $this->load->library('image_lib', $config);
+                            $this->image_lib->resize();
+
+                            $file_name = $config['file_name'] . $upload_data['file_ext'];
+                        } else {
+                            $file_name = $upload_data['file_name'];
+                        }
 
                         $data = array('image' => $file_name);
                         $where = array('id' => $id);
