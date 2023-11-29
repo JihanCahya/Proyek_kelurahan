@@ -1,9 +1,13 @@
 <div class="container mt-4">
     <h1 class="text-center mb-4">Profile Diri</h1>
     <div class="row">
-        <div class="col-lg-1">
+        <div class="col-lg-2">
+            <label for="profil">Foto Profil</label>
             <img src="" style="max-width: 200px; max-height: 200;" class="img-thumbnail" alt="" name="profile_user"
                 id="profile_user">
+            <label for="ktp">Foto KTP</label>
+            <img src="" style="max-width: 200px; max-height: 200;" class="img-thumbnail" alt="" name="ktp_user"
+                id="ktp_user">
         </div>
         <div class="col-lg-6 offset-2">
             <label for="nama">Nama Lengkap</label>
@@ -40,7 +44,8 @@
             <label for="profil">Foto profil</label>
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="profil" id="profil">
+                    <input type="file" class="custom-file-input" name="profil" id="profil"
+                        onchange="previewImage(event, 'imageProfil')">
                     <label class="custom-file-label" for="profil">Pilih file</label>
                 </div>
             </div>
@@ -50,7 +55,8 @@
             <label for="ktp">Foto KTP</label>
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="ktp" id="ktp">
+                    <input type="file" class="custom-file-input" name="ktp" id="ktp"
+                        onchange="previewImage(event, 'imageKTP')">
                     <label class="custom-file-label" for="ktp">Pilih file</label>
                 </div>
             </div>

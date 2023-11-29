@@ -75,7 +75,7 @@ class Front_page extends CI_Controller
         ];
         $this->app_data['perangkat'] = $this->data->get($query_perangkat)->result();
         // end query perangkat kelurahan home
-        
+
         // query galerry
         $query_gallery = [
             'select' => 'a.title, a.description, a.image, b.name',
@@ -430,10 +430,14 @@ class Front_page extends CI_Controller
 
     public function profile()
     {
-        $this->check_auth();
-        $this->load->view('front_page/profile');
-        $this->footer();
-        $this->load->view('js-custom', $this->app_data);
+        if (!$this->is_logged_in()) {
+            redirect('login');
+        } else {
+            $this->check_auth();
+            $this->load->view('front_page/profile');
+            $this->footer();
+            $this->load->view('js-custom', $this->app_data);
+        }
     }
     public function get_profile()
     {
