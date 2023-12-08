@@ -32,9 +32,10 @@
   <!-- Carousel Start -->
   <div id="carouselExampleCaptions" class="carousel slide mb-3" data-bs-ride="carousel">
     <div class="carousel-inner mb-3">
-      <?php foreach ($carousel as $crsl): ?>
-        <div class="carousel-item active">
-          <img src="<?= base_url('assets/image/carousel/') . $crsl->image ?>" class="d-block w-100" alt="Slide 1">
+      <?php foreach ($carousel as $key => $crsl): ?>
+        <div class="carousel-item <?= $key === 0 ? 'active' : '' ?>">
+          <img src="<?= base_url('assets/image/carousel/') . $crsl->image ?>" class="d-block w-100"
+            alt="Slide <?= $key + 1 ?>">
           <div class="carousel-caption d-none d-md-block">
             <h1>
               <?= $crsl->title ?>
