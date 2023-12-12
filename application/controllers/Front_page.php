@@ -133,6 +133,14 @@ class Front_page extends CI_Controller
     public function location_contact()
     {
         $this->check_auth();
+        $where = array('is_deleted' => '0');
+        $messages = $this->data->find('message_user', $where)->result();
+
+        foreach ($messages as $msg) {
+            $msg->replies = $this->data->find('reply_message', array('id_message' => $msg->id))->result();
+        }
+
+        $this->app_data['message'] = $messages;
         $this->app_data['location'] = $this->data->get_all('district_profile')->result();
         $this->load->view('front_page/district_profile/location_contact', $this->app_data);
         $this->footer();

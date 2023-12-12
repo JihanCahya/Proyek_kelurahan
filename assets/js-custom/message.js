@@ -35,8 +35,7 @@ function insert_message() {
 			} else if (response.success) {
 				delete_error();
 				delete_form();
-
-				get_data();
+				window.location.href = "location_contact";
 			}
 		},
 		error: function (xhr, status, error) {
