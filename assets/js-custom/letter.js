@@ -22,11 +22,13 @@ function previewImage(event, imageContainerId) {
 function delete_2() {
 	$("#error-ktp2").hide();
 	$("#error-pengantar2").hide();
+	$("#error-keterangan2").hide();
 }
 
 function delete_3() {
 	$("#error-ktp3").hide();
 	$("#error-pengantar3").hide();
+	$("#error-keterangan3").hide();
 }
 
 function delete_1() {
@@ -34,6 +36,7 @@ function delete_1() {
 	$("#error-kia1").hide();
 	$("#error-akta1").hide();
 	$("#error-pengantar1").hide();
+	$("#error-keterangan1").hide();
 }
 
 function insert_1() {
@@ -44,6 +47,7 @@ function insert_1() {
 	var aktaInput = $("[name='akta1']")[0];
 
 	var formData = new FormData();
+	formData.append("keterangan", $("#keterangan1").val());
 	if (kiaInput.files.length > 0) {
 		formData.append("kia", kiaInput.files[0]);
 	}
@@ -89,6 +93,7 @@ function insert_2() {
 	var pengantarInput = $("[name='pengantar2']")[0];
 
 	var formData = new FormData();
+	formData.append("keterangan", $("#keterangan2").val());
 	if (ktpInput.files.length > 0) {
 		formData.append("ktp", ktpInput.files[0]);
 	}
@@ -128,6 +133,7 @@ function insert_3() {
 	var pengantarInput = $("[name='pengantar3']")[0];
 
 	var formData = new FormData();
+	formData.append("keterangan", $("#keterangan3").val());
 	if (ktpInput.files.length > 0) {
 		formData.append("ktp", ktpInput.files[0]);
 	}

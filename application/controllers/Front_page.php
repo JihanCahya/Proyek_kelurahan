@@ -193,6 +193,8 @@ class Front_page extends CI_Controller
     {
         $where = array('email' => $this->session->userdata('email'));
         $data['user'] = $this->data->find('st_user', $where)->row_array();
+        $keterangan = $this->input->post('keterangan');
+
 
         if (empty($_FILES['kia']['name'])) {
             $response['errors']['kia1'] = "KIA harus diupload";
@@ -256,7 +258,8 @@ class Front_page extends CI_Controller
 
                                             $insert = array(
                                                 'id_user' => $data['user']['id'],
-                                                'id_letter' => '1'
+                                                'id_letter' => '1',
+                                                'keterangan' => $keterangan
                                             );
                                             $inserted_id = $this->data->insert('administration', $insert);
 
@@ -286,6 +289,8 @@ class Front_page extends CI_Controller
     {
         $where = array('email' => $this->session->userdata('email'));
         $data['user'] = $this->data->find('st_user', $where)->row_array();
+        $keterangan = $this->input->post('keterangan');
+
 
         if (empty($_FILES['ktp']['name'])) {
             $response['errors']['ktp2'] = "KTP harus diupload";
@@ -318,7 +323,8 @@ class Front_page extends CI_Controller
                             $pengantar = $upload_data['file_name'];
                             $insert = array(
                                 'id_user' => $data['user']['id'],
-                                'id_letter' => '2'
+                                'id_letter' => '2',
+                                'keterangan' => $keterangan
                             );
                             $inserted_id = $this->data->insert('administration', $insert);
 
@@ -368,11 +374,13 @@ class Front_page extends CI_Controller
                         $this->load->library('upload', $config);
 
                         if ($this->upload->do_upload('pengantar')) {
+                            $keterangan = $this->input->post('keterangan');
                             $upload_data = $this->upload->data();
                             $pengantar = $upload_data['file_name'];
                             $insert = array(
                                 'id_user' => $data['user']['id'],
-                                'id_letter' => '3'
+                                'id_letter' => '3',
+                                'keterangan' => $keterangan
                             );
                             $inserted_id = $this->data->insert('administration', $insert);
 
@@ -403,11 +411,12 @@ class Front_page extends CI_Controller
         $where = array('email' => $this->session->userdata('email'));
         $data['user'] = $this->data->find('st_user', $where)->row_array();
         $query = [
-            'select' => 'a.id, a.submit_date, a.status, b.name, c.name as letter_name',
+            'select' => 'a.id, d.id as id_requirements , a.submit_date, a.status, a.id_letter, b.name, c.name as letter_name',
             'from' => 'administration a',
             'join' => [
                 'st_user b, b.id = a.id_user',
-                'letter c, c.id = a.id_letter'
+                'letter c, c.id = a.id_letter',
+                'administration_has_requirements d, d.id_administration = a.id'
             ],
             'where' => [
                 'a.id_user' => $data['user']['id'],
@@ -416,12 +425,12 @@ class Front_page extends CI_Controller
         $result = $this->data->get($query)->result();
         echo json_encode($result);
     }
-    public function get_data_id()
+
+    public function get_data_history_id()
     {
         $id = $this->input->post('id');
-
         $query = [
-            'select' => 'a.id, a.submit_date, a.finish_date, b.name, c.name as letter_name, d.keterangan',
+            'select' => 'a.id, d.id as id_requirements, a.submit_date, a.status, a.id_letter, b.name, c.name as letter_name',
             'from' => 'administration a',
             'join' => [
                 'st_user b, b.id = a.id_user',
@@ -429,8 +438,34 @@ class Front_page extends CI_Controller
                 'administration_has_requirements d, d.id_administration = a.id'
             ],
             'where' => [
-                'a.id' => $id,
+                'd.id' => $id,
             ]
+        ];
+        $result = $this->data->get($query)->result();
+        echo json_encode($result);
+    }
+
+    public function get_data_id()
+    {
+        $id = $this->input->post('id');
+
+        $query = [
+            'select' => 'a.id, a.submit_date, a.finish_date, b.name, c.name as letter_name, GROUP_CONCAT(f.nama) keterangan',
+            'from' => 'administration a',
+            'join' => [
+                'st_user b, b.id = a.id_user',
+                'letter c, c.id = a.id_letter',
+                'administration_has_requirements d, d.id_administration = a.id',
+                'administration_has_keterangan e, e.id_administration = d.id, left',
+                'keterangan f, f.id = e.id_keterangan, left'
+            ],
+            'where' => [
+                'a.id' => $id,
+            ],
+            'group_by' => [
+                'a.id'
+            ]
+
         ];
         $result = $this->data->get($query)->result();
         echo json_encode($result);
@@ -575,6 +610,191 @@ class Front_page extends CI_Controller
 
             $response['success'] = "Data successfully inserted!";
         }
+        echo json_encode($response);
+    }
+
+    public function edit_1()
+    {
+        $id = $this->input->post('id');
+
+        if (!empty($_FILES['kia']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('kia')) {
+                $upload_data = $this->upload->data();
+                $kia = $upload_data['file_name'];
+                $data = array(
+                    'kia' => $kia
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+            } else {
+                $response['errors']['kia1'] = $this->upload->display_errors();
+            }
+        }
+        if (!empty($_FILES['pengantar']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('pengantar')) {
+                $upload_data = $this->upload->data();
+                $pengantar = $upload_data['file_name'];
+                $data = array(
+                    'pengantar_rt' => $pengantar
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+            } else {
+                $response['errors']['pengantar1'] = $this->upload->display_errors();
+            }
+        }
+        if (!empty($_FILES['akta']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('akta')) {
+                $upload_data = $this->upload->data();
+                $akta = $upload_data['file_name'];
+                $data = array(
+                    'akta' => $akta
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+            } else {
+                $response['errors']['akta1'] = $this->upload->display_errors();
+            }
+        }
+        if (!empty($_FILES['kk']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('kk')) {
+                $upload_data = $this->upload->data();
+                $kk = $upload_data['file_name'];
+                $data = array(
+                    'kk' => $kk
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+            } else {
+                $response['errors']['kk1'] = $this->upload->display_errors();
+            }
+        }
+        $response['success'] = "Data successfully inserted!";
+        echo json_encode($response);
+    }
+
+    public function edit_2()
+    {
+        $id = $this->input->post('id');
+
+        if (!empty($_FILES['ktp']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('ktp')) {
+                $upload_data = $this->upload->data();
+                $ktp = $upload_data['file_name'];
+                $data = array(
+                    'ktp' => $ktp
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+            } else {
+                $response['errors']['ktp2'] = $this->upload->display_errors();
+            }
+        }
+        if (!empty($_FILES['pengantar']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('pengantar')) {
+                $upload_data = $this->upload->data();
+                $pengantar = $upload_data['file_name'];
+                $data = array(
+                    'pengantar_rt' => $pengantar
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+            } else {
+                $response['errors']['pengantar2'] = $this->upload->display_errors();
+            }
+        }
+        $response['success'] = "Data successfully inserted!";
+        echo json_encode($response);
+    }
+
+    public function edit_3()
+    {
+        $id = $this->input->post('id');
+        if (!empty($_FILES['ktp']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('ktp')) {
+                $upload_data = $this->upload->data();
+                $ktp = $upload_data['file_name'];
+                $data = array(
+                    'ktp' => $ktp
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+
+            } else {
+                $response['errors']['ktp3'] = $this->upload->display_errors();
+            }
+        }
+        if (!empty($_FILES['pengantar']['name'])) {
+            $currentDateTime = date('Y-m-d_H-i-s');
+            $config['upload_path'] = './assets/image/administration/requirement/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+            $config['file_name'] = 'requirement_' . $currentDateTime;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('pengantar')) {
+                $upload_data = $this->upload->data();
+                $pengantar = $upload_data['file_name'];
+                $data = array(
+                    'pengantar_rt' => $pengantar
+                );
+                $where = array('id' => $id);
+                $this->data->update('administration_has_requirements', $where, $data);
+
+            } else {
+                $response['errors']['pengantar3'] = $this->upload->display_errors();
+            }
+        }
+        $response['success'] = "Data successfully inserted!";
         echo json_encode($response);
     }
 }

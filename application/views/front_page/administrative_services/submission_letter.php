@@ -80,6 +80,14 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label>Keterangan surat</label>
+                                    <select class="form-control" aria-label="Default select example" id="keterangan1"
+                                        name="keterangan1[]">
+                                        <option value="KTP Baru">KTP baru</option>
+                                        <option value="KTP Hilang">KTP hilang</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="kk1">Foto copy KK</label>
                                     <div class="input-group">
                                         <div class="custom-file">
@@ -162,6 +170,14 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label>Keterangan surat</label>
+                                    <select class="form-control" aria-label="Default select example" id="keterangan2"
+                                        name="keterangan2[]">
+                                        <option value="KK Baru">KK baru</option>
+                                        <option value="KK Hilang">KK hilang</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="ktp2">Fotocopy KTP</label>
                                     <div class="input-group">
                                         <div class="custom-file">
@@ -215,6 +231,17 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Pilih keterangan</label>
+                                    <select class="form-control" aria-label="Default select example" id="keterangan3"
+                                        name="keterangan3[]">
+                                        <option value="Keterangan Menikah">Keterangan Menikah</option>
+                                        <option value="Keterangan Pindah">Keterangan Pindah</option>
+                                        <option value="Keterangan Cerai">Keterangan Cerai</option>
+                                        <option value="Keterangan Kematian">Keterangan Kematian</option>
+                                        <option value="Keterangan Penghasilan">Keterangan Penghasilan</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="ktp3">Fotocopy KTP</label>
                                     <div class="input-group">
