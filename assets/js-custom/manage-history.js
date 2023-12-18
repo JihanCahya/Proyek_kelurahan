@@ -142,6 +142,8 @@ function detail(x) {
 			$("[name='date2']").val(hasil[0].finish_date);
 			var url = hasil[0].file_name;
 			$("embed").attr("src", base_url + "assets/file_letter/" + url);
+
+			imagePreview.innerHTML = `<br><img src="${base_url}assets/image/administration/letter/${url}" alt="Preview Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
 		},
 	});
 }

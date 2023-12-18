@@ -128,7 +128,7 @@
                             <div class="row">
                                 <label for="date" class="col-lg-3 col-form-label">Arsip surat</label>
                                 <div class="col-lg-9">
-                                    <embed src="" type="application/pdf" width="100%" height="600px" />
+                                    <div id="imagePreview"></div>
                                 </div>
                             </div>
                         </div>

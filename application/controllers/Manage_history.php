@@ -87,7 +87,7 @@ class Manage_history extends CI_Controller
                 'letter c, c.id = a.id_letter'
             ],
             'where' => [
-                'a.status' => '3',
+                'a.status' => '4',
             ]
         ];
         $result = $this->data->get($query)->result();
